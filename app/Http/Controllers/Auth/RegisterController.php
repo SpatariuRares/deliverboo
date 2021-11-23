@@ -66,6 +66,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // User fara' riferimento alle fillable nel model
         return User::create([
             'username' => $data['username'],
             'address' => $data['address'],
