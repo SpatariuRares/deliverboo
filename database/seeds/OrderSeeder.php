@@ -14,13 +14,13 @@ class OrderSeeder extends Seeder
     public function run(Faker $faker)
     {
         for($i = 0; $i < 10; $i++){
-            $new_oeder = new Order();
-            $new_oeder->total =$faker->numberBetween(0, 100);
-            $new_oeder->email = $faker->email();
-            $new_oeder->address = $faker->image(null, 360, 360, 'oeder', true, true, 'hamburger', false);
-            $new_oeder->fullName = $faker->name();
-            $new_oeder->paymentStatus = $faker->boolean();
-            $new_oeder->save();
+            $new_order = new Order();
+            $new_order->total =$faker->numberBetween(0, 100);
+            $new_order->email = $faker->email();
+            $new_order->address = $faker->image(null, 360, 360, 'order', true, true, 'hamburger', false);
+            $new_order->fullName = $faker->name();
+            $new_order->paymentStatus = $faker->boolean();
+            $new_order->save();
         }
     }
 }
