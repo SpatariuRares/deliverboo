@@ -40,7 +40,7 @@ class FoodSeeder extends Seeder
             $new_food->user_id = $faker->numberBetween(1, 11);
             $new_food->name =$Foods[$i]['name'];
             $new_food->price = $faker->randomFloat(2, 10, 25);
-            $new_food->thumb = $faker->image(null, 360, 360, 'food', true, true, 'hamburger', false);
+            $new_food->thumb = $faker->imageUrl(360, 360, 'animals', true, 'dogs', true);
             $new_food->ingrediends = $Foods[$i]['ingrediends'];
             $new_food->visible = $faker->boolean();
             $new_food->quantity = $faker->numberBetween(0, 200);

@@ -29,42 +29,32 @@
     @endif
     <div class="row">
         <div class="col-12">
-            <h1 class="mt-4 mb-4">all order</h1>
+            <h1 class="mt-4 mb-4">all category</h1>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">total</th>
-                        <th scope="col">email</th>
-                        <th scope="col">address</th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">paymentStatus</th>
-                        <th scope="col">foods</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">category</th>
+                        <th scope="col">slug</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($orders as $order)
+                    @foreach ($Categories as $category)
                         
                         <tr>
-                            <th scope="row">{{ $order['id'] }}</th>
-                            <td>{{ $order['total'] }}</td>
-                            <td>{{ $order['email'] }}</td>
-                            <td>{{ $order['address'] }}</td>
-                            <td>{{ $order['fullName'] }}</td>
-                            <td>{{ $order['paymentStatus'] }}</td>
-                            <!-- da aggiungere i foods-->
-                            <td>{{ $order['food'] }}</td>
+                            <th scope="row">{{ $category['id'] }}</th>
+                            <td>{{ $category['name'] }}</td>
+                            <td>{{ $category['slug'] }}</td>
                             <td>
-                                <a href="{{ route('user.orders.show', $order['id']) }}"
+                                <a href="{{ route('user.categories.show', $category['id']) }}"
                                     class="btn btn-info">
                                     Details
                                 </a>
-                                <a href="{{ route('user.orders.edit', $order['id']) }}"
+                                <a href="{{ route('user.categories.edit', $category['id']) }}"
                                     class="btn btn-warning">
                                     Modify
                                 </a>
-                                <form class="d-inline" method="order" onclick="return confirm('Qesta azione è irreversibile!!! Sei sicuro di voler cancellare?')" action="{{ route('user.orders.destroy', $order['id']) }}">
+                                <form class="d-inline" method="category" onclick="return confirm('Qesta azione è irreversibile!!! Sei sicuro di voler cancellare?')" action="{{ route('user.categories.destroy', $category['id']) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
