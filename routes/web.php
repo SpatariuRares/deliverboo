@@ -17,7 +17,7 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Auth::routes();
 
-Route::middleware('auth')->namespace('User')->prefix('user')->name('user.')
+Route::middleware('auth')->namespace('User')->prefix('User')->name('user.')
 ->group(function(){
     //pagina di atterraggio dopo il login (con il prefix, l'url è /admin)
     Route::get('/', 'HomeController@index')->name('home');
