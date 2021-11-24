@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('PIVA',11);
+            //da aggiungere in register.blade.php 
+            $table->string('thumb')->nullable();
             $table->timestamps();
         });
     }
