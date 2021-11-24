@@ -17,10 +17,12 @@ class CreateFoodOrderTable extends Migration
             //$table->id();
             // chiave esterna foods
             $table->unsignedBigInteger('food_id');
+            //*forse onDelete non serve
             $table->foreign('food_id')->references('id')->on('foods')->onDelete('cascade');
 
             // chiave esterna order
             $table->unsignedBigInteger('order_id');
+            //*forse onDelete non serve
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
 
             // quntita stesso cibo preso

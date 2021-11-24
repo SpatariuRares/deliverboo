@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('fullName');
-            $table->boolean('paymentStatus');
+            $table->boolean('paymentStatus')->default(false);
             $table->timestamps();
         });
     }

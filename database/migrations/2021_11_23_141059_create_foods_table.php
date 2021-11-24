@@ -19,10 +19,10 @@ class CreateFoodsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('name');
             $table->float('price',5,2);
-            $table->string('thumb');
-            $table->text('incrediends');
-            $table->boolean('visible');
-            $table->integer('quantity');
+            $table->string('thumb')->nullable();
+            $table->text('incrediends')->nullable();
+            $table->boolean('visible')->default(true);
+            $table->integer('quantity')->nullable();
             $table->timestamps();
         });
     }
