@@ -16,11 +16,11 @@ class CreateCategoryUserTable extends Migration
         Schema::create('category_user', function (Blueprint $table) {
             // chiave esterna Categories
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories');
 
             // chiave esterna users
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->primary(['user_id','category_id']);
         });

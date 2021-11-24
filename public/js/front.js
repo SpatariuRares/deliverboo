@@ -1961,7 +1961,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Header.vue */ "./resources/js/components/Header.vue");
-/* harmony import */ var _components_Main_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Main.vue */ "./resources/js/components/Main.vue");
+/* harmony import */ var _components_Main_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Main.vue */ "./resources/js/components/Main.vue");
 //
 //
 //
@@ -1975,7 +1975,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "App",
   components: {
     Header: _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Main: _components_Main_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    Main: _components_Main_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 });
 

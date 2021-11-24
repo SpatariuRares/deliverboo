@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Food extends Model
 {
+    protected $table='foods';//indica la tabella da usare al posto da quella di default
+    
     protected $fillable = [
-        'name','price','thumb','ingredients','visible','quantity'
+        'name','price','thumb','ingrediends','visible','quantity'
     ];
 
     public function orders(){
