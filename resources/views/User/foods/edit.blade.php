@@ -27,17 +27,17 @@
 
                     <div class="form-group">
                         <label for="ingredients">ingredients</label>
-                        <input value="{{ $food['ingredients']}}" type="text" ingredients="ingredients" class="form-control" id="ingredients" placeholder="Enter ingredients">
+                        <input value="{{ $food['ingredients']}}" type="text" name="ingredients" class="form-control" id="ingredients" placeholder="Enter ingredients">
                     </div>
 
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input value="{{ $food['name']}}" type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                        <label for="visible">visible</label>
+                        <input value="{{ $food['visible']}}" type="text" name="visible" class="form-control" id="visible" placeholder="Enter visible">
                     </div>
 
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input value="{{ $food['name']}}" type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                        <label for="quantity">quantity</label>
+                        <input value="{{ $food['quantity']}}" type="text" name="quantity" class="form-control" id="quantity" placeholder="Enter quantity">
                     </div>
                     
                     <button type="submit" class="btn btn-success my-3">Submit</button>

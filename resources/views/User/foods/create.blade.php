@@ -9,8 +9,8 @@
                     @method('POST')
                     
                     <div class="form-group">
-                      <label for="name">Name</label>
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" value="{{old('name')}}">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" value="{{old('name')}}">
                     </div>
 
                     <div class="form-group">
@@ -40,7 +40,6 @@
                         <label for="quantity">Quantity</label>
                         <input type="number" name="quantity" class="form-control" id="quantity" placeholder="Enter quantity" value="{{old('quantity')}}">
                     </div>
-                      
                     <button type="submit" class="btn btn-success my-3">Submit</button>
                 </form>
             </div>
