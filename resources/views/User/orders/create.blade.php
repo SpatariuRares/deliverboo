@@ -15,7 +15,7 @@
 
                     <div class="form-group">
                         <label for="email">email</label>
-                        <input type="text" name="email" class="form-control" id="email" placeholder="Enter email" value="{{old('email')}}">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" value="{{old('email')}}">
                     </div>
 
                     <div class="form-group">
@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <label for="paymentStatus">paymentStatus</label>
                         {{-- da impostare non so come --}}
-                        <input type="text" name="paymentStatus" class="form-control" id="paymentStatus" placeholder="Enter paymentStatus" value="{{old('paymentStatus')}}">
+                        <input type="checkbox" name="paymentStatus" class="form-control" id="paymentStatus" value="{{true}}">
                     </div>
                       
                     <button type="submit" class="btn btn-success my-3">Submit</button>

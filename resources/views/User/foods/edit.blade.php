@@ -15,24 +15,22 @@
 
                     <div class="form-group">
                         <label for="price">Price</label>
-                        <input value="{{ $food['price']}}" type="number" step="0.01" price="price" class="form-control" id="price" placeholder="Enter price">
+                        <input value="{{ $food['price']}}" type="number" step="0.01" name="price" class="form-control" id="price" placeholder="Enter price">
                     </div>
 
                     <div class="form-group">
                         <label for="thumb">Thumb</label>
-
-                        {{-- da inserire input per immagini --}}
-                        {{-- <input type="text" thumb="thumb" class="form-control" id="thumb" placeholder="Enter thumb" value="{{old('thumb')}}"> --}}
+                        <input type="file" name="thumb" id="thumb" class="form-control @error('thumb') is-invalid @enderror">
                     </div>
 
                     <div class="form-group">
-                        <label for="ingredients">ingredients</label>
+                        <label for="ingredients">Ingredients</label>
                         <input value="{{ $food['ingredients']}}" type="text" name="ingredients" class="form-control" id="ingredients" placeholder="Enter ingredients">
                     </div>
 
                     <div class="form-group">
-                        <label for="visible">visible</label>
-                        <input value="{{ $food['visible']}}" type="text" name="visible" class="form-control" id="visible" placeholder="Enter visible">
+                        <label for="visible">Visible</label>
+                        <input value="{{true}}" {{ $food['visible']?'checked':null}} type="checkbox" name="visible" class="form-control" id="visible">
                     </div>
 
                     <div class="form-group">
