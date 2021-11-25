@@ -56,8 +56,6 @@
                             <td>{{ $food['ingrediends'] }}</td>
                             <td>{{ $food['visible'] }}</td>
                             <td>{{ $food['quantity'] }}</td>
-                            <!-- da aggiungere i foods-->
-                            <td>{{ $food['food'] }}</td>
                             <td>
                                 <a href="{{ route('user.foods.show', $food['id']) }}"
                                     class="btn btn-info">

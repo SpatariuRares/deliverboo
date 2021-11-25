@@ -9,8 +9,8 @@
                     @method('PUT')
                     
                     <div class="form-group">
-                    <label for="name">Name</label>
-                    <input value="{{ $food['name']}}" type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                        <label for="name">Name</label>
+                        <input value="{{ $food['name']}}" type="text" name="name" class="form-control" id="name" placeholder="Enter name">
                     </div>
 
                     <div class="form-group">
