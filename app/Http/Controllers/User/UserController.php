@@ -4,10 +4,12 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Category;
+use App\User;
+use Illuminate\Support\Facades\Auth; 
 
-class CategoryController extends Controller
+class UserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +17,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $Categories = Category::all();
-        return view('user.Categories.index', compact('Categories'));
+        $currentUser = Auth::user();
+        $users = User::where('id', '=', $currentUser->id)->first();
+        // dd($users);
+        return view("user.user.index", compact("users"));
     }
 
     /**
@@ -43,15 +47,12 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Category $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        if(!$category) {
-            abort(404);
-        }
-        return view("user.categories.show", compact("category"));
+        //
     }
 
     /**

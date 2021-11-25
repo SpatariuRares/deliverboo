@@ -51,7 +51,7 @@ class FoodController extends Controller
         ]);
         $formData=$request->all();
 
-        $newFood = new Post();
+        $newFood = new Food();
         // storiamo i dati con il metodo fill
         $newFood->fill($formData);
 
@@ -111,7 +111,7 @@ class FoodController extends Controller
         ]);
         $formData=$request->all();
 
-        $newFood = new Post();
+        $newFood = new Food();
         // storiamo i dati con il metodo fill
         $newFood->update($formData);
 

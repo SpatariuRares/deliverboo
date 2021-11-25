@@ -6,7 +6,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
-                <h1>ciao</h1>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -14,7 +13,14 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ route('user.user.index')}}">
+                                    User Info
+                                </a>
+                            </li>
+                    </ul>
+                    
                 </div>
             </div>
         </div>
