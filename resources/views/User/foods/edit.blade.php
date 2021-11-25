@@ -24,13 +24,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="ingredients">ingredients</label>
+                        <label for="ingredients">Ingredients</label>
                         <input value="{{ $food['ingredients']}}" type="text" name="ingredients" class="form-control" id="ingredients" placeholder="Enter ingredients">
                     </div>
 
                     <div class="form-group">
-                        <label for="visible">visible</label>
-                        <input value="{{ $food['visible']}}" type="text" name="visible" class="form-control" id="visible" placeholder="Enter visible">
+                        <label for="visible">Visible</label>
+                        <input value="{{true}}" type="checkbox" name="visible" class="form-control" id="visible">
                     </div>
 
                     <div class="form-group">

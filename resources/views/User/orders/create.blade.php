@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <label for="paymentStatus">paymentStatus</label>
                         {{-- da impostare non so come --}}
-                        <input type="text" name="paymentStatus" class="form-control" id="paymentStatus" placeholder="Enter paymentStatus" value="{{old('paymentStatus')}}">
+                        <input type="checkbox" name="paymentStatus" class="form-control" id="paymentStatus" value="{{true}}">
                     </div>
                       
                     <button type="submit" class="btn btn-success my-3">Submit</button>

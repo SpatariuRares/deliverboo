@@ -25,13 +25,13 @@
 
                     <div class="form-group">
                         <label for="ingredients">Ingredients</label>
-                        <textarea type="text" name="ingredients" class="form-control" id="ingredients" placeholder="Enter ingredients" value="{{old('ingredients')}}"></textarea>
+                        <textarea type="text" name="ingredients" class="form-control" id="ingredients" placeholder="Enter ingredients">{{old('ingredients')}}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="visible">Visible</label>
                         {{-- //risolvere bug --}}
-                        <input type="checkbox" name="visible" class="form-control" id="visible" placeholder="Enter visible" value="{{'checked' ? true : false}}" > 
+                        <input type="checkbox" name="visible" class="form-control" id="visible" value="{{true}}" > 
                     </div>
 
                     <div class="form-group">
