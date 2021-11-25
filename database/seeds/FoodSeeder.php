@@ -37,6 +37,7 @@ class FoodSeeder extends Seeder
         ];
         for($i = 0; $i < count($Foods); $i++){
             $new_food = new Food();
+            //!usare Food::all per recuperare tutti id e fare un faker bello
             $new_food->user_id = $faker->numberBetween(1, 11);
             $new_food->name =$Foods[$i]['name'];
             $new_food->price = $faker->randomFloat(2, 10, 25);

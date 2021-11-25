@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Food;
 use App\User;
+use Illuminate\Support\Facades\Auth;  // DA AGGIUNGERE PER PUNTARE CON L'UTENTE ATTUALMENTE AUTENTICATO
+
 class FoodController extends Controller
 {
     /**
@@ -26,8 +28,7 @@ class FoodController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        return view('user.foods.create', compact('users'));
+        return view('user.foods.create');
     }
 
     /**
@@ -38,26 +39,28 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-
-        dd($request->all());
         $request->validate([
-            'user_id'=> 'required|exists:user_id',// Quello che mi hai passato, nella tabella cagtegories esiste l'id?
-            'title'=>'required|max:255',
+            //'user_id'=> 'required|exists:user_id',// Quello che mi hai passato, nella tabella cagtegories esiste l'id?
+            'name'=>'required|max:255',
             'price'=> 'required',
             'thumb'=> 'nullable',
             'ingredients'=>'nullable',
-            'visible'=>'required',
+            'visible'=>'nullable',
             'quatity'=>'nullable',
         ]);
         $formData=$request->all();
-
-        $newFood = new Post();
+        $currentUser = Auth::user();                                     //PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
+        $formData['user_id'] = $currentUser->id; 
+        if(!isset($formData['visible'])){
+            $formData['visible']=false;
+        }
+        $newFood = new Food();
         // storiamo i dati con il metodo fill
         $newFood->fill($formData);
 
         $newFood->save();
-        
-        $newFood->user_id()->attach(1);
+        //dd($formData);
+        //$newFood->user()->attach($formData['user_id']);
         return redirect()->route('user.foods.index')->with('inserted', 'Il record è stato correttamente salvato');
     }
 
@@ -88,7 +91,7 @@ class FoodController extends Controller
         } 
         //!dobbiamo capire come passare user id al controller 
 
-        return view('user.foods.edit');
+        return view('user.foods.edit',compact('food'));
     }
 
     /**
@@ -101,25 +104,28 @@ class FoodController extends Controller
     public function update(Request $request, Food $food)
     {
         $request->validate([
-            'user_id'=> 'required|exists:user_id',// Quello che mi hai passato, nella tabella cagtegories esiste l'id?
-            'title'=>'required|max:255',
+            //'user_id'=> 'required|exists:user_id',// Quello che mi hai passato, nella tabella cagtegories esiste l'id?
+            'name'=>'required|max:255',
             'price'=> 'required',
             'thumb'=> 'nullable',
             'ingredients'=>'nullable',
-            'visible'=>'required',
+            'visible'=>'nullable',
             'quatity'=>'nullable',
         ]);
+        
         $formData=$request->all();
-
-        $newFood = new Post();
+        $currentUser = Auth::user();                                     //PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
+        $formData['user_id'] = $currentUser->id; 
+        
+        if(!isset($formData['visible'])){
+            $formData['visible']=false;
+        }
+        
         // storiamo i dati con il metodo fill
-        $newFood->update($formData);
-
-        $newFood->save();
+        $food->update($formData);
         
-        $food->user_id()->sync($formData['user_id']);
         
-        return redirect()->route('user.foods.index')->with('updated', 'Post correttamente aggiornato');
+        return redirect()->route('user.foods.index')->with('updated', 'food correttamente aggiornato');
     }
 
     /**
@@ -130,8 +136,7 @@ class FoodController extends Controller
      */
     public function destroy(Food $food)
     {
-        $food->user_id()->detach($food->user_id);
         $food->delete();
-        return redirect()->route('user.foods.index')->with('deleted', 'Post eliminato');
+        return redirect()->route('user.foods.index')->with('deleted', 'food eliminato');
     }
 }

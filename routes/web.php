@@ -17,6 +17,9 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Auth::routes();
 
+// Rotta che gestirà la vista delle categories dell'utente generico
+Route::resource("/categories", "CategoryController");
+
 Route::middleware('auth')->namespace('User')->prefix('User')->name('user.')
 ->group(function(){
     //pagina di atterraggio dopo il login (con il prefix, l'url è /admin)
@@ -25,10 +28,8 @@ Route::middleware('auth')->namespace('User')->prefix('User')->name('user.')
     Route::resource('/categories', 'CategoryController');
     Route::resource('/orders', 'OrderController');
     Route::resource('/foods', 'FoodController');
+    Route::resource('/user', 'UserController');
     
-    /* Route::resource('/posts', 'PostController');
-    Route::resource('/categories', 'CategoryController');
-    Route::resource('/tags', 'TagController');*/
 });
 
 

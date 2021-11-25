@@ -4,10 +4,12 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Category;
+use App\User;
+use Illuminate\Support\Facades\Auth;  // DA AGGIUNGERE PER PUNTARE CON L'UTENTE ATTUALMENTE AUTENTICATO
 
-class CategoryController extends Controller
+class UserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +17,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $Categories = Category::all();
-        return view('user.Categories.index', compact('Categories'));
+        $user = Auth::user();        // PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
+        // dd($users);
+        return view("user.user.index", compact("user"));
     }
 
     /**
@@ -43,26 +46,28 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Category $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        if(!$category) {
-            abort(404);
-        }
-        return view("user.categories.show", compact("category"));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        // dd($user);
+        if(!$user) {
+            abort(404);
+        }
+
+        return view("user.user.edit", compact("user"));
     }
 
     /**
