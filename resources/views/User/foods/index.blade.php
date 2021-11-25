@@ -49,7 +49,7 @@
                         
                         <tr>
                             <th scope="row">{{ $food['id'] }}</th>
-                            <td>{{ $food['user_id'] }}</td>
+                            <td>{{ $food['user']['id'] }}</td>
                             <td>{{ $food['name'] }}</td>
                             <td>{{ $food['price'] }}</td>
                             <td>{{ $food['thumb'] }}</td>
@@ -67,7 +67,7 @@
                                     class="btn btn-warning">
                                     Modify
                                 </a>
-                                <form class="d-inline" method="food" onclick="return confirm('Qesta azione è irreversibile!!! Sei sicuro di voler cancellare?')" action="{{ route('user.foods.destroy', $food['id']) }}">
+                                <form class="d-inline" method="post" onclick="return confirm('Questa azione è irreversibile!!! Sei sicuro di voler cancellare?')" action="{{ route('user.foods.destroy', $food['id']) }}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>

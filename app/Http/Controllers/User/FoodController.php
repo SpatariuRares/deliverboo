@@ -26,8 +26,7 @@ class FoodController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        return view('user.foods.create', compact('users'));
+        return view('user.foods.create');
     }
 
     /**
@@ -39,7 +38,6 @@ class FoodController extends Controller
     public function store(Request $request)
     {
 
-        dd($request->all());
         $request->validate([
             'user_id'=> 'required|exists:user_id',// Quello che mi hai passato, nella tabella cagtegories esiste l'id?
             'title'=>'required|max:255',
@@ -50,14 +48,15 @@ class FoodController extends Controller
             'quatity'=>'nullable',
         ]);
         $formData=$request->all();
-
-        $newFood = new Post();
+        $formData["user_id"]=1;
+        $formData["visible"]=true;
+        $newFood = new Food();
         // storiamo i dati con il metodo fill
         $newFood->fill($formData);
 
         $newFood->save();
-        
-        $newFood->user_id()->attach(1);
+        //dd($formData);
+        //$newFood->user()->attach($formData['user_id']);
         return redirect()->route('user.foods.index')->with('inserted', 'Il record è stato correttamente salvato');
     }
 
@@ -88,7 +87,7 @@ class FoodController extends Controller
         } 
         //!dobbiamo capire come passare user id al controller 
 
-        return view('user.foods.edit');
+        return view('user.foods.edit',compact('food'));
     }
 
     /**
@@ -130,7 +129,6 @@ class FoodController extends Controller
      */
     public function destroy(Food $food)
     {
-        $food->user_id()->detach($food->user_id);
         $food->delete();
         return redirect()->route('user.foods.index')->with('deleted', 'Post eliminato');
     }
