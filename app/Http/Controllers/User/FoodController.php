@@ -19,7 +19,6 @@ class FoodController extends Controller
     {
         $currentUser = Auth::user();
         $foods = Food::where('user_id', '=', $currentUser->id)->get();
-        //dd($food);
         return view('user.foods.index', compact('foods'));
     }
 

@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Food;
-
+use App\User;
 class FoodSeeder extends Seeder
 {
     /**
@@ -35,10 +35,16 @@ class FoodSeeder extends Seeder
                 'ingrediends'=>'kebab sadasdgasdfdgdgsfsafvfsddvxc'
             ],
         ];
+
+        $idMax=DB::table('users')->orderBy('id', 'desc')->first();;;
+        $idMin=User::all()->first();
         for($i = 0; $i < count($Foods); $i++){
             $new_food = new Food();
-            //!usare Food::all per recuperare tutti id e fare un faker bello
-            $new_food->user_id = $faker->numberBetween(1, 11);
+            //!usare user::all per recuperare tutti id e fare un faker bello
+            do{
+                $randomID=$faker->numberBetween($idMin->id, $idMax->id);
+            }while(User::where('id', '=', $randomID)->first()==null);
+            $new_food->user_id = $randomID;
             $new_food->name =$Foods[$i]['name'];
             $new_food->price = $faker->randomFloat(2, 10, 25);
             $new_food->thumb = $faker->imageUrl(360, 360, 'animals', true, 'dogs', true);
