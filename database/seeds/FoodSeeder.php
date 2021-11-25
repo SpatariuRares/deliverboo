@@ -40,7 +40,6 @@ class FoodSeeder extends Seeder
         $idMin=User::all()->first();
         for($i = 0; $i < count($Foods); $i++){
             $new_food = new Food();
-            //!usare user::all per recuperare tutti id e fare un faker bello
             do{
                 $randomID=$faker->numberBetween($idMin->id, $idMax->id);
             }while(User::where('id', '=', $randomID)->first()==null);
