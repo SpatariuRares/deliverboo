@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;                                     // DA AGGIUNGERE PER PUNTARE CON L'UTENTE ATTUALMENTE AUTENTICATO
 
 class UserController extends Controller
 {
@@ -17,8 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $currentUser = Auth::user();
-        $users = User::where('id', '=', $currentUser->id)->first();
+        $currentUser = Auth::user();                                     //         AGGIUNGERE QUESTE DUE RIGHE
+        $users = User::where('id', '=', $currentUser->id)->first();      //         PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
         // dd($users);
         return view("user.user.index", compact("users"));
     }
