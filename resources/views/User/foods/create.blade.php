@@ -9,13 +9,13 @@
                     @method('POST')
                     
                     <div class="form-group">
-                      <label for="name">Name</label>
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" value="{{old('name')}}">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter name" value="{{old('name')}}">
                     </div>
 
                     <div class="form-group">
                         <label for="price">Price</label>
-                        <input type="number" price="price" class="form-control" id="price" placeholder="Enter price" value="{{old('price')}}">
+                        <input type="number" step="0.01" name="price" class="form-control" id="price" placeholder="Enter price" value="{{old('price')}}">
                     </div>
 
                     <div class="form-group">
@@ -27,20 +27,19 @@
                     <div class="form-group">
                         <label for="ingredients">Ingredients</label>
                         {{-- da ampliare a textarea --}}
-                        <input type="text" ingredients="ingredients" class="form-control" id="ingredients" placeholder="Enter ingredients" value="{{old('ingredients')}}">
+                        <input type="text" name="ingredients" class="form-control" id="ingredients" placeholder="Enter ingredients" value="{{old('ingredients')}}">
                     </div>
 
                     <div class="form-group">
                         <label for="visible">Visible</label>
                         {{-- da impostare checkbox --}}
-                        <input type="text" visible="visible" class="form-control" id="visible" placeholder="Enter visible" value="{{old('visible')}}">
+                        <input type="text" name="visible" class="form-control" id="visible" placeholder="Enter visible" value="{{old('visible')}}">
                     </div>
 
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
-                        <input type="number" quantity="quantity" class="form-control" id="quantity" placeholder="Enter quantity" value="{{old('quantity')}}">
+                        <input type="number" name="quantity" class="form-control" id="quantity" placeholder="Enter quantity" value="{{old('quantity')}}">
                     </div>
-                      
                     <button type="submit" class="btn btn-success my-3">Submit</button>
                 </form>
             </div>

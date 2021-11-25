@@ -38,6 +38,8 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
+
+        dd($request->all());
         $request->validate([
             'user_id'=> 'required|exists:user_id',// Quello che mi hai passato, nella tabella cagtegories esiste l'id?
             'title'=>'required|max:255',
@@ -55,8 +57,7 @@ class FoodController extends Controller
 
         $newFood->save();
         
-        $newFood->user_id()->attach($formData['user_id']);
-
+        $newFood->user_id()->attach(1);
         return redirect()->route('user.foods.index')->with('inserted', 'Il record è stato correttamente salvato');
     }
 
