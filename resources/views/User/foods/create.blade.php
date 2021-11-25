@@ -20,19 +20,16 @@
 
                     <div class="form-group">
                         <label for="thumb">Thumb</label>
-                        {{-- da inserire input per immagini --}}
-                        {{-- <input type="text" name="thumb" class="form-control" id="thumb" placeholder="Enter thumb" value="{{old('thumb')}}"> --}}
+                        <input type="file" name="thumb" id="thumb" class="form-control @error('thumb') is-invalid @enderror">
                     </div>
 
                     <div class="form-group">
                         <label for="ingredients">Ingredients</label>
-                        {{-- da ampliare a textarea --}}
-                        <input type="text" name="ingredients" class="form-control" id="ingredients" placeholder="Enter ingredients" value="{{old('ingredients')}}">
+                        <textarea type="text" name="ingredients" class="form-control" id="ingredients" placeholder="Enter ingredients" value="{{old('ingredients')}}"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="visible">Visible</label>
-                        {{-- da impostare checkbox --}}
                         {{-- //risolvere bug --}}
                         <input type="checkbox" name="visible" class="form-control" id="visible" placeholder="Enter visible" value="{{'checked' ? true : false}}" > 
                     </div>

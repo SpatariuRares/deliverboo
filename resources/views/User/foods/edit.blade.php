@@ -20,9 +20,7 @@
 
                     <div class="form-group">
                         <label for="thumb">Thumb</label>
-
-                        {{-- da inserire input per immagini --}}
-                        {{-- <input type="text" thumb="thumb" class="form-control" id="thumb" placeholder="Enter thumb" value="{{old('thumb')}}"> --}}
+                        <input type="file" name="thumb" id="thumb" class="form-control @error('thumb') is-invalid @enderror">
                     </div>
 
                     <div class="form-group">
