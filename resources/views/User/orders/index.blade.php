@@ -65,7 +65,7 @@
                                         class="btn btn-warning">
                                         Modify
                                     </a>
-                                    <form class="d-inline" method="order" onclick="return confirm('Qesta azione è irreversibile!!! Sei sicuro di voler cancellare?')" action="{{ route('user.orders.destroy', $order['id']) }}">
+                                    <form class="d-inline" method="post" onclick="return confirm('Questa azione è irreversibile!!! Sei sicuro di voler cancellare?')" action="{{ route('user.orders.destroy', $order['id']) }}">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger">Delete</button>
