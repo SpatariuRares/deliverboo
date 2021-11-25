@@ -15,7 +15,7 @@
 
                     <div class="form-group">
                         <label for="price">Price</label>
-                        <input value="{{ $food['price']}}" type="number" step="0.01" price="price" class="form-control" id="price" placeholder="Enter price">
+                        <input value="{{ $food['price']}}" type="number" step="0.01" name="price" class="form-control" id="price" placeholder="Enter price">
                     </div>
 
                     <div class="form-group">
@@ -30,7 +30,7 @@
 
                     <div class="form-group">
                         <label for="visible">Visible</label>
-                        <input value="{{true}}" type="checkbox" name="visible" class="form-control" id="visible">
+                        <input value="{{true}}" {{ $food['visible']?'checked':null}} type="checkbox" name="visible" class="form-control" id="visible">
                     </div>
 
                     <div class="form-group">
