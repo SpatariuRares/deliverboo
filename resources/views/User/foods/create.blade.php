@@ -30,7 +30,6 @@
 
                     <div class="form-group">
                         <label for="visible">Visible</label>
-                        {{-- //risolvere bug --}}
                         <input type="checkbox" name="visible" class="form-control" id="visible" placeholder="Enter visible" value="{{true}}" > 
                     </div>
 
