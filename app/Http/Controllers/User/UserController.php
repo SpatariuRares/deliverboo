@@ -17,8 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $currentUser = Auth::user();                                     //         AGGIUNGERE QUESTE DUE RIGHE
-        $users = User::where('id', '=', $currentUser->id)->first();      //         PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
+        $users = Auth::user();                                           // PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
         // dd($users);
         return view("user.user.index", compact("users"));
     }
