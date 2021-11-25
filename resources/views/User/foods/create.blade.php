@@ -34,7 +34,7 @@
                         <label for="visible">Visible</label>
                         {{-- da impostare checkbox --}}
                         {{-- //risolvere bug --}}
-                        <input type="checkbox" name="visible" class="form-control" id="visible" placeholder="Enter visible" value="{{'checked' ? true : false}}" > 
+                        <input type="checkbox" name="visible" class="form-control" id="visible" placeholder="Enter visible" value="{{true}}" > 
                     </div>
 
                     <div class="form-group">

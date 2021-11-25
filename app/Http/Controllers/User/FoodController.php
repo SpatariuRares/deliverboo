@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Food;
 use App\User;
+use Illuminate\Support\Facades\Auth;  // DA AGGIUNGERE PER PUNTARE CON L'UTENTE ATTUALMENTE AUTENTICATO
+
 class FoodController extends Controller
 {
     /**
@@ -39,15 +41,21 @@ class FoodController extends Controller
     {
 
         $request->validate([
-            'user_id'=> 'required|exists:user_id',// Quello che mi hai passato, nella tabella cagtegories esiste l'id?
+            //'user_id'=> 'required|exists:user_id',// Quello che mi hai passato, nella tabella cagtegories esiste l'id?
             'title'=>'required|max:255',
-            'price'=> 'required',
+            /*'price'=> 'required',
             'thumb'=> 'nullable',
             'ingredients'=>'nullable',
-            'visible'=>'required',
-            'quatity'=>'nullable',
+            'visible'=>'nullable',
+            'quatity'=>'nullable',*/
         ]);
         $formData=$request->all();
+        $currentUser = Auth::user();                                     //PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
+        $formData['user_id'] = $currentUser->id; 
+        if(!isset($formData['visibility'])){
+            $formData['visibility']=false;
+        }
+        dd($formData);
         $newFood = new Food();
         // storiamo i dati con il metodo fill
         $newFood->fill($formData);
