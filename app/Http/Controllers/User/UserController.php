@@ -77,9 +77,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        //VALIDO I DATI
+        $request->validate([
+            "username" => "required | max:30",
+            "address" => "required | max: 100",
+        ]);
+        
+        $form_data = $request->all();
+
+        //VERIFICO SE L'USERNAME RICEVUTO DAL FORM E' DIVERSO DAL VECCHIO
+        // if($form_data["username"] != $user->username) {
+
+        // }
+
+        $user->update($form_data);
+
+        return redirect()->route("user.user.index")->with("updated", "Dati Utente correttamente aggiornati");
     }
 
     /**

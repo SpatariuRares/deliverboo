@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="container">
-        <h1>{{$order->total}}</h1>
-        <h2>{{$order->email}}</h2>
-        <h2>{{$order->address}}</h2>
-        <h2>{{$order->fullName}}</h2>
-        <h2>{{$order->paymentStatus}}</h2>
+        <h1>{{$detailOrder->total}}</h1>
+        <h2>{{$detailOrder->email}}</h2>
+        <h2>{{$detailOrder->address}}</h2>
+        <h2>{{$detailOrder->fullName}}</h2>
+        <h2>{{$detailOrder->paymentStatus}}</h2>
     </div>
 @endsection
