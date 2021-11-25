@@ -44,13 +44,13 @@
                 <tbody>
                     {{-- @foreach ($users as $user) --}}
                         <tr>
-                            <th scope="row">{{ $users['id'] }}</th>
-                            <td>{{ $users['username'] }}</td>
-                            <td>{{ $users['address'] }}</td>
-                            <td>{{ $users['email'] }}</td>
-                            <td>{{ $users['PIVA'] }}</td>
+                            <th scope="row">{{ $user['id'] }}</th>
+                            <td>{{ $user['username'] }}</td>
+                            <td>{{ $user['address'] }}</td>
+                            <td>{{ $user['email'] }}</td>
+                            <td>{{ $user['PIVA'] }}</td>
                             <td>
-                                <a href=""
+                                <a href="{{ route('user.user.edit'), $user['id'] }}"
                                     class="btn btn-warning">
                                     Modify
                                 </a>

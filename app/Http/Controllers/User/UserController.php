@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
-use Illuminate\Support\Facades\Auth;                                     // DA AGGIUNGERE PER PUNTARE CON L'UTENTE ATTUALMENTE AUTENTICATO
+use Illuminate\Support\Facades\Auth;  // DA AGGIUNGERE PER PUNTARE CON L'UTENTE ATTUALMENTE AUTENTICATO
 
 class UserController extends Controller
 {
@@ -17,9 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = Auth::user();                                           // PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
+        $user = Auth::user();        // PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
         // dd($users);
-        return view("user.user.index", compact("users"));
+        return view("user.user.index", compact("user"));
     }
 
     /**
@@ -57,12 +57,17 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        // dd($user);
+        if(!$user) {
+            abort(404);
+        }
+
+        return view("user.user.edit", compact("user"));
     }
 
     /**
