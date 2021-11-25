@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="quantity">quantity</label>
+                        <label for="quantity">Quantity</label>
                         <input value="{{ $food['quantity']}}" type="text" name="quantity" class="form-control" id="quantity" placeholder="Enter quantity">
                     </div>
                     
