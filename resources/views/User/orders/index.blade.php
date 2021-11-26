@@ -54,11 +54,17 @@
                                 <td>{{ $order['address'] }}</td>
                                 <td>{{ $order['fullName'] }}</td>
                                 <td>{{ $order['paymentStatus'] }}</td>
-                                <!-- da aggiungere i foods-->
+                                {{-- @dd($order['food']) --}}
                                 <td>
-                                    @foreach ($order['food'] as $food)
-                                        {{ $food['id'] }}
-                                    @endforeach
+                                    @if ($order->food)
+                                        @foreach ($order->food as $food)
+                                            @if ($food->last)
+                                                {{$food->id}}
+                                            @else
+                                                {{$food->id.', '}}
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 </td>
                                 <td>
                                     <a href="{{ route('user.orders.show', $order['id']) }}"
