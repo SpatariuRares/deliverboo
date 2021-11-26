@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
@@ -62,12 +63,15 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+
+        $categories = Category::all();
+
         // dd($user);
         if(!$user) {
             abort(404);
         }
 
-        return view("user.user.edit", compact("user"));
+        return view("user.user.edit", compact("user", "categories"));
     }
 
     /**
@@ -83,9 +87,12 @@ class UserController extends Controller
         $request->validate([
             "username" => "required | max:30",
             "address" => "required | max: 100",
+            "category" => "required | exists:category,id",
         ]);
         
         $form_data = $request->all();
+
+        
 
         //VERIFICO SE L'USERNAME RICEVUTO DAL FORM E' DIVERSO DAL VECCHIO
         // if($form_data["username"] != $user->username) {
@@ -93,6 +100,8 @@ class UserController extends Controller
         // }
 
         $user->update($form_data);
+        
+        $user->categories()->sync($form_data["category"]);
 
         return redirect()->route("user.user.index")->with("updated", "Dati Utente correttamente aggiornati");
     }

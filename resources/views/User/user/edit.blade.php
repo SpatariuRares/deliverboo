@@ -22,10 +22,25 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                    
-                    
-                    
+
                     <button type="submit" class="btn btn-success my-3">Submit</button>
+
+                    <div class="form-group">
+                        <p>Seleziona la categoria</p>
+                        <select name="category" id="category">
+                            @foreach ($categories as $category)
+                                <option 
+                                    value="{{ $category->id }}"
+                                    {{ old("category") == $category->id ? "selected" : null }}
+                                    >{{ $category->name }}</option>
+                            @endforeach
+                        @error("title")
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    
+                    
+                    
                 </form>
             </div>
         </div>
