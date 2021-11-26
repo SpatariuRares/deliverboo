@@ -35,6 +35,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">user_id</th>
+                        <th scope="col">thumb</th>
                         <th scope="col">name</th>
                         <th scope="col">price</th>
                         <th scope="col">thumb</th>
@@ -50,6 +51,11 @@
                         <tr>
                             <th scope="row">{{ $food['id'] }}</th>
                             <td>{{ $food['user']['id'] }}</td>
+                            <td>
+                                @if($food->thumb)
+                                    <img src="{{ asset('storage/'.$food->thumb)}}" alt="{{ $food->name}}">
+                                @endif
+                            </td>
                             <td>{{ $food['name'] }}</td>
                             <td>{{ $food['price'] }}</td>
                             <td>{{ $food['thumb'] }}</td>

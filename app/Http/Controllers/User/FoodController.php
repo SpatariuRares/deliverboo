@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Food;
 use App\User;
 use Illuminate\Support\Facades\Auth;  // DA AGGIUNGERE PER PUNTARE CON L'UTENTE ATTUALMENTE AUTENTICATO
+use Illuminate\Support\Facades\Storage;
 
 class FoodController extends Controller
 {
@@ -44,7 +45,7 @@ class FoodController extends Controller
             //'user_id'=> 'required|exists:user_id',// Quello che mi hai passato, nella tabella cagtegories esiste l'id?
             'name'=>'required|max:255',
             'price'=> 'required',
-            'thumb'=> 'nullable',
+            'image'=> 'nullable|image',
             'ingredients'=>'nullable',
             'visible'=>'nullable',
             'quatity'=>'nullable',
@@ -57,6 +58,16 @@ class FoodController extends Controller
         }
         $newFood = new Food();
         // storiamo i dati con il metodo fill
+
+        if(array_key_exists('image', $formData)){
+            //salviamo l'immagine e recuperiamo il path
+            $thumb_path = Storage::put('food_thumb', $formData['image']);
+        
+            // aggiungiamo all'array che viene usato nella funzione fill la chiave cover
+            // che contiene il percorso relativo dell'immagine caricata a partire  da public/storage
+            $formData['thumb'] = $thumb_path;
+        }
+
         $newFood->fill($formData);
 
         $newFood->save();
@@ -108,7 +119,7 @@ class FoodController extends Controller
             //'user_id'=> 'required|exists:user_id',// Quello che mi hai passato, nella tabella cagtegories esiste l'id?
             'name'=>'required|max:255',
             'price'=> 'required',
-            'thumb'=> 'nullable',
+            'image'=> 'nullable|image',
             'ingredients'=>'nullable',
             'visible'=>'nullable',
             'quatity'=>'nullable',
@@ -120,6 +131,21 @@ class FoodController extends Controller
         
         if(!isset($formData['visible'])){
             $formData['visible']=false;
+        }
+        if(isset($formData['deleteImage'])){
+            Storage::delete($food->thumb);
+            $formData['thumb']=null;
+        }
+
+        if(array_key_exists('image', $formData)){
+            Storage::delete($food->thumb);
+            //cancello l'immagine
+            //salviamo l'immagine e recuperiamo il path
+            $thumb_path = Storage::put('food_thumb', $formData['image']);
+        
+            // aggiungiamo all'array che viene usato nella funzione fill la chiave cover
+            // che contiene il percorso relativo dell'immagine caricata a partire  da public/storage
+            $formData['thumb'] = $thumb_path;
         }
         
         // storiamo i dati con il metodo fill

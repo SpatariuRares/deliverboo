@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form action="{{route('user.foods.store')}}" method="post">
+                <form action="{{route('user.foods.store')}}" method="post" enctype='multipart/form-data'>
                     @csrf
                     @method('POST')
                     
@@ -19,8 +19,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="thumb">Thumb</label>
-                        <input type="file" name="thumb" id="thumb" class="form-control @error('thumb') is-invalid @enderror">
+                        <label for="image">image</label>
+                        <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror">
+                        @error('image')
+                            <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
                     </div>
 
                     <div class="form-group">
