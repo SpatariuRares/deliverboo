@@ -69,25 +69,29 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-
         // User fara' riferimento alle fillable nel model
         $slug = Str::slug($data['username'], '-');
         $slug_presente = User::where('slug', $slug)->first();
+        // dd($slug_presente);
         $contatore = 1;
         while($slug_presente){
             $slug_attule = $slug . '-' . $contatore;
             $slug_presente = User::where('slug', $slug_attule)->first();
             $contatore++;
         }
-        return User::create(
+
+        $new_user = User::create(
             [
             'username' => $data['username'],
             'address' => $data['address'],
-            'slug'=> $slug,
+            'slug'=> $slug_attule,
             'PIVA' => $data['PIVA'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'category' => $data['category'],
         ]);
+
+        $new_user->categories()->attach($data['categories']);
+
+        return $new_user;
     }
 }

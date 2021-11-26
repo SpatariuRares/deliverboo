@@ -90,7 +90,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label for="PIVA" class="col-md-4 col-form-label text-md-right">{{ __('category') }}</label>
 
                             <div class="col-md-6">
@@ -110,6 +110,23 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div> --}}
+
+                        <div class="form-group">
+                            <p>Seleziona le categorie:</p>
+                            @foreach ($categories as $category)
+                            <div class="form-check form-check-inline">
+                                @if($errors->any())
+                                <input
+                                value="{{ $category->id }}" id="{{ "category" . $category->id }}" type="checkbox" name="categories[]" class="form-check-input">
+                                <label for="{{ "category" . $category->id }}" class="form-check-label">{{ $category->name }}</label>
+                                @else
+                                <input
+                                value="{{ $category->id }}" id="{{ "category" . $category->id }}" type="checkbox" name="categories[]" class="form-check-input">
+                                <label for="{{ "category" . $category->id }}" class="form-check-label">{{ $category->name }}</label>
+                                @endif
+                            </div>
+                            @endforeach
                         </div>
 
                         <div class="form-group row mb-0">

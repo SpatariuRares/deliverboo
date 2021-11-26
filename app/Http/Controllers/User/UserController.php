@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();        // PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
-        // dd($users);
+        // dd($user->categories);
         return view("user.user.index", compact("user"));
     }
 
@@ -87,7 +87,7 @@ class UserController extends Controller
         $request->validate([
             "username" => "required | max:30",
             "address" => "required | max: 100",
-            "category" => "required | exists:category,id",
+            "categories" => "required | exists:categories,id",
         ]);
         
         $form_data = $request->all();
@@ -99,10 +99,19 @@ class UserController extends Controller
 
         // }
 
+        
         $user->update($form_data);
         
-        $user->categories()->sync($form_data["category"]);
+        
+        if(array_key_exists("categories", $form_data)) {
+            $user->categories()->sync($form_data["categories"]);
+        }
+        else {
+            $user->categories()->sync([]);
+        }
 
+        // dd($form_data);
+        
         return redirect()->route("user.user.index")->with("updated", "Dati Utente correttamente aggiornati");
     }
 

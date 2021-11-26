@@ -35,6 +35,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">username</th>
+                        <th scope="col">categorie</th>
                         <th scope="col">address</th>
                         <th scope="col">email</th>
                         <th scope="col">P.iva</th>
@@ -46,6 +47,15 @@
                         <tr>
                             <th scope="row">{{ $user['id'] }}</th>
                             <td>{{ $user['username'] }}</td>
+                            <td>
+                                @foreach ($user->categories as $category)
+                                    @if ($category == $user->categories->last())
+                                        <a class="text-reset" href="">{{ $category->name }}</a>
+                                    @else
+                                        <a class="text-reset" href="">{{$category->name.', '}}</a>
+                                    @endif
+                                @endforeach
+                            </td>
                             <td>{{ $user['address'] }}</td>
                             <td>{{ $user['email'] }}</td>
                             <td>{{ $user['PIVA'] }}</td>
