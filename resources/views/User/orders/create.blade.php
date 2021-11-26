@@ -33,7 +33,7 @@
                         {{-- da impostare non so come --}}
                         <input type="checkbox" name="paymentStatus" class="form-control" id="paymentStatus" value="{{true}}">
                     </div>
-                      
+                    
                     <div class="form-group">
                         <p>Seleziona i food:</p>
                         @foreach ($foods as $food)
