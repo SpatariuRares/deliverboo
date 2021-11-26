@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Illuminate\Support\Str;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -67,9 +68,19 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // User fara' riferimento alle fillable nel model
-        return User::create([
+        $slug = Str::slug($data['username'], '-');
+        $slug_presente = User::where('slug', $slug)->first();
+        $contatore = 1;
+        while($slug_presente){
+            $slug_attule = $slug . '-' . $contatore;
+            $slug_presente = User::where('slug', $slug_attule)->first();
+            $contatore++;
+        }
+        return User::create(
+            [
             'username' => $data['username'],
             'address' => $data['address'],
+            'slug'=> $slug,
             'PIVA' => $data['PIVA'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

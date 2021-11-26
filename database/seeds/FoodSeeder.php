@@ -42,7 +42,7 @@ class FoodSeeder extends Seeder
             $new_food = new Food();
             do{
                 $randomID=$faker->numberBetween($idMin->id, $idMax->id);
-            }while(User::where('id', '=', $randomID)->first()==null);
+            }while(User::where('id', '=', $randomID)->first() == null);
             $new_food->user_id = $randomID;
             $new_food->name =$Foods[$i]['name'];
             $new_food->price = $faker->randomFloat(2, 10, 25);
