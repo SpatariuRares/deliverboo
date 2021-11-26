@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Support\Str;
+use App\Category;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -67,6 +68,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+
         // User fara' riferimento alle fillable nel model
         $slug = Str::slug($data['username'], '-');
         $slug_presente = User::where('slug', $slug)->first();
@@ -84,6 +87,7 @@ class RegisterController extends Controller
             'PIVA' => $data['PIVA'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'category' => $data['category'],
         ]);
     }
 }
