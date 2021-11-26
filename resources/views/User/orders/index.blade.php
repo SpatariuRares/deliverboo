@@ -55,7 +55,11 @@
                                 <td>{{ $order['fullName'] }}</td>
                                 <td>{{ $order['paymentStatus'] }}</td>
                                 <!-- da aggiungere i foods-->
-                                <td>{{ $order['food'] }}</td>
+                                <td>
+                                    @foreach ($order['food'] as $food)
+                                        {{ $food['id'] }}
+                                    @endforeach
+                                </td>
                                 <td>
                                     <a href="{{ route('user.orders.show', $order['id']) }}"
                                         class="btn btn-info">

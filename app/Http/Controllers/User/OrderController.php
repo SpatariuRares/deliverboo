@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Order;
+use App\Food;
 
 class OrderController extends Controller
 {
@@ -26,7 +27,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('user.orders.create');
+        $foods = Food::all();
+        return view('user.orders.create',compact('foods'));
     }
 
     /**
@@ -37,6 +39,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        // validazioni 
         $request->validate([
             'total'=>'required',
             'email'=> 'required|email', //tramite email fa' validascion da solo
@@ -49,6 +52,15 @@ class OrderController extends Controller
         $new_order = new Order();
         $new_order->fill($data);
         $new_order->save();
+
+        // if(array_key_exists('food', $data)){
+        //     $new_order->food()->attach($data['food']);
+        // }else{
+        //     $new_order->food()->attach([]);
+        // }
+        // dd($data['food']);
+        $new_order->food()->attach($data['food'],['order_id' => $new_order->id,'quantity'=> 1]);
+        
 
         return redirect()->route('user.orders.index')->with('inserted', 'L\'Order è stato correttamente salvato');
     }

@@ -10,7 +10,7 @@ class Order extends Model
         'total','email','address','fullName','paymentStatus'
     ];
 
-    public function user(){
-        return $this->belongsTo('App\User');
+    public function food(){
+        return $this->belongsToMany('App\Food','food_order','quantity');
     }
 }

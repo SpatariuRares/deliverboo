@@ -34,6 +34,17 @@
                         <input type="checkbox" name="paymentStatus" class="form-control" id="paymentStatus" value="{{true}}">
                     </div>
                       
+                    <div class="form-group">
+                        <p>Seleziona i food:</p>
+                        @foreach ($foods as $food)
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label" for="{{ 'food' . $food->id }}">{{ $food->name }}</label>
+                                <input value="{{ $food->id }}" type="checkbox" name="food[]" class="form-check-input" id="{{'food' . $food->id}}">
+                            </div>   
+                        @endforeach
+                    </div>
+
+
                     <button type="submit" class="btn btn-success my-3">Submit</button>
                 </form>
             </div>

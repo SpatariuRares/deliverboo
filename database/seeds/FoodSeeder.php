@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Food;
 use App\User;
+use Illuminate\Support\Facades\DB;
 class FoodSeeder extends Seeder
 {
     /**
