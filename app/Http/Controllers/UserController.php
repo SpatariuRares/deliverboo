@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $user = User::all;        // PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
-        return view("guest.restaurant.index", compact("user"));
+        return view("restaurant.index", compact("user"));
     }
 
     /**
@@ -28,6 +28,6 @@ class UserController extends Controller
         $user = Food::where('id', $id)->first();
         if(!$user){
             abort(404);
-        }return view('guest.restaurant.show', compact('user'));
+        }return view('restaurant.show', compact('user'));
     }
 }
