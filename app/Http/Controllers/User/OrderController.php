@@ -60,7 +60,7 @@ class OrderController extends Controller
         // }
 
         //dd($data['food']);
-        $new_order->food()->attach($data['food'],['quantity'=> 2,'order_id' => $new_order->id]);
+        $new_order->food()->attach($data['food'],['quantity'=> 2]);
         
 
         return redirect()->route('user.orders.index')->with('inserted', 'L\'Order è stato correttamente salvato');
