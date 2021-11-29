@@ -58,7 +58,6 @@
                             </td>
                             <td>{{ $food['name'] }}</td>
                             <td>{{ $food['price'] }}</td>
-                            <td>{{ $food['thumb'] }}</td>
                             <td>{{ $food['ingrediends'] }}</td>
                             <td>{{ $food['visible'] }}</td>
                             <td>{{ $food['quantity'] }}</td>

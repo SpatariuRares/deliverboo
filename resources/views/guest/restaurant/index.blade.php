@@ -2,6 +2,16 @@
 
 
 @section('content')
+<style>
+    a {
+        color: black;
+    }
+
+    a:hover {
+        color: grey;
+    }
+</style>
+
 <div class="container">
     <div class="container-fluid">
         <div class="row g-3 d-flex">
@@ -11,7 +21,7 @@
                             <img src="" alt="">
                         </div>
                         <div class="description py-2">
-                            <a href="{{ route('restaurant.show', $user['id']) }}">
+                            <a href="{{ route('restaurant.show', $user['slug']) }}">
                                 <h4>{{ $user['username'] }}</h4>
                             </a>
                             <p class="lh-1">
