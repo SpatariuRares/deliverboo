@@ -57,7 +57,8 @@
                                 </td>
                                 <td>{{ $user['address'] }}</td>
                                 <td>
-                                    <a href="{{ route('restaurant.show', $user['id']) }}"
+                                    @dump($user['id'])
+                                    <a href="{{route('restaurant.show', $user['slug'])}}"
                                         class="btn btn-warning">
                                         show
                                     </a>

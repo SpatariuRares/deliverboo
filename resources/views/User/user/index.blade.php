@@ -68,7 +68,7 @@
                             <td>{{ $user['email'] }}</td>
                             <td>{{ $user['PIVA'] }}</td>
                             <td>
-                                <a href="{{ route('user.user.edit', $user['id']) }}"
+                                <a href="{{ route('restaurant.show', $user['id']) }}"
                                     class="btn btn-warning">
                                     Modify
                                 </a>

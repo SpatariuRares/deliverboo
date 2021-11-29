@@ -23,10 +23,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($slug)
     {
-        // $user = Food::where('id', $id)->first();
-        dd($user);
+        $user = User::where('slug', $slug)->first();
         if(!$user){
             abort(404);
         }return view('guest.restaurant.show', compact('user'));

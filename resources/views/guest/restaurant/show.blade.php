@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container">
-        @dd($user)
+        @dump($user)
         <h1>{{$user->username}}</h1>
-        @dump($user->id)
+        {{-- @dump($user->id) --}}
     </div>
 @endsection
