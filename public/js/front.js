@@ -14960,7 +14960,11 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\bacci\Desktop\cartella progetto final\deliverboo\resources\js\front.js */"./resources/js/front.js");
+=======
+module.exports = __webpack_require__(/*! C:\Users\sb270\Desktop\deliverboo\resources\js\front.js */"./resources/js/front.js");
+>>>>>>> 131b689304443be375716f4afd4ea0cf3e8224ba
 
 
 /***/ })

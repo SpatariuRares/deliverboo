@@ -13,8 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all;        // PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
-        return view("restaurant.index", compact("user"));
+        $users = User::all();        // PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
+        return view("guest.restaurant.index", compact("users"));
     }
 
     /**
@@ -23,11 +23,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $user = Food::where('id', $id)->first();
+        // $user = Food::where('id', $id)->first();
+        dd($user);
         if(!$user){
             abort(404);
-        }return view('restaurant.show', compact('user'));
+        }return view('guest.restaurant.show', compact('user'));
     }
 }
