@@ -24,7 +24,7 @@ class CreateFoodOrderTable extends Migration
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
 
             // quntita stesso cibo preso
-            $table->integer('quantity');
+            $table->integer('quantity')->nullable();
 
             $table->primary(['food_id','order_id']);
             //$table->timestamps();

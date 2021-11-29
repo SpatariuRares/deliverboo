@@ -41,6 +41,7 @@
                                 <label class="form-check-label" for="{{ 'food' . $food->id }}">{{ $food->name }}</label>
                                 <input value="{{ $food->id }}" type="checkbox" name="food[]" class="form-check-input" id="{{'food' . $food->id}}">
                             </div>   
+                            <input type="number" name="quantity[]" id="{{'quantity' . $food->id }}" class="form-control">
                         @endforeach
                     </div>
 
