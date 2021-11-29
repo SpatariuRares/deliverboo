@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;  // DA AGGIUNGERE PER PUNTARE CON L'UTENTE ATTUALMENTE AUTENTICATO
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -19,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();        // PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
-        // dd($users);
+        // dd($user->categories);
         return view("user.user.index", compact("user"));
     }
 
@@ -87,22 +88,43 @@ class UserController extends Controller
         $request->validate([
             "username" => "required | max:30",
             "address" => "required | max: 100",
-            "category" => "required | exists:category,id",
+            "categories" => "required | exists:categories,id",
+            "image" => "nullable | image",
         ]);
         
         $form_data = $request->all();
 
+        if(!isset($form_data['visible'])){
+            $form_data['visible']=false;
+        }
+        if(isset($form_data['deleteImage'])){
+            Storage::delete($user->thumb);
+            $form_data['thumb']=null;
+        }
+
+        if(array_key_exists('image', $form_data)){
+            Storage::delete($user->thumb);
+            //cancello l'immagine
+            //salviamo l'immagine e recuperiamo il path
+            $thumb_path = Storage::put('user_thumb', $form_data['image']);
         
-
-        //VERIFICO SE L'USERNAME RICEVUTO DAL FORM E' DIVERSO DAL VECCHIO
-        // if($form_data["username"] != $user->username) {
-
-        // }
-
+            // aggiungiamo all'array che viene usato nella funzione fill la chiave cover
+            // che contiene il percorso relativo dell'immagine caricata a partire  da public/storage
+            $form_data['thumb'] = $thumb_path;
+        }
+        
+        
+        
+        if(array_key_exists("categories", $form_data)) {
+            $user->categories()->sync($form_data["categories"]);
+        }
+        else {
+            $user->categories()->sync([]);
+        }
+        
         $user->update($form_data);
+        // dd($form_data);
         
-        $user->categories()->sync($form_data["category"]);
-
         return redirect()->route("user.user.index")->with("updated", "Dati Utente correttamente aggiornati");
     }
 

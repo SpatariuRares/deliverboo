@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form action="{{route('user.foods.update', $food->id)}}" method="post">
+                <form action="{{route('user.foods.update', $food->id)}}" method="post" enctype='multipart/form-data'>
                     @csrf
                     @method('PUT')
                     
@@ -19,8 +19,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="thumb">Thumb</label>
-                        <input type="file" name="thumb" id="thumb" class="form-control @error('thumb') is-invalid @enderror">
+                        <label for="image">image</label>
+                        @if ($food['thumb'])
+                            <img src="{{ asset('storage/'.$food->thumb)}}" alt="{{ $food->name}}">
+                        @endif
+                        <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror">
+                        <input type="checkbox" name="deleteImage" id="deleteImage" class="form-control" @error('deleteImage') is-invalid @enderror>
+                        @error('image')
+                            <div class="alert alert-danger">{{message}}</div>
+                        @enderror
                     </div>
 
                     <div class="form-group">

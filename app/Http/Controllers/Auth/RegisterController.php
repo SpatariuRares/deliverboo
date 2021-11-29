@@ -68,24 +68,42 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 88e41344464e1515ce6d5faca5aca77d0b1d0e24
         // User fara' riferimento alle fillable nel model
         $slug = Str::slug($data['username'], '-');
         $slug_presente = User::where('slug', $slug)->first();
+        // dd($slug_presente);
         $contatore = 1;
-        while($slug_presente){
-            $slug_attule = $slug . '-' . $contatore;
-            $slug_presente = User::where('slug', $slug_attule)->first();
-            $contatore++;
+        if ($slug_presente){
+            while($slug_presente){
+                $slug_attuale = $slug . '-' . $contatore;
+                $slug_presente = User::where('slug', $slug_attuale)->first();
+                $contatore++;
+            }
+        } else {
+            $slug_attuale = $slug;
         }
-        return User::create(
+        
+
+        $new_user = User::create(
             [
             'username' => $data['username'],
             'address' => $data['address'],
-            'slug'=> $slug,
+            'slug'=> $slug_attuale,
             'PIVA' => $data['PIVA'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'category' => $data['category'],
+            'thumb' => 'https://mod.go.ke/wp-content/uploads/2021/04/default-profile-pic.png'
         ]);
+
+        if(isset($data['categories'])) {
+            $new_user->categories()->attach($data['categories']);
+        }
+
+
+        return $new_user;
     }
 }

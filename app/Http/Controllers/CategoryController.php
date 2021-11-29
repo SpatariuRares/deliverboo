@@ -16,7 +16,8 @@ class CategoryController extends Controller
     public function index()
     {
         $Categories = Category::all();
-        return view('categories.index', compact('Categories'));
+        //dd($Categories) ;
+        return view('guest.categories.index', compact('Categories'));
     }
 
     public function show(Category $category)
@@ -24,7 +25,6 @@ class CategoryController extends Controller
         if(!$category) {
             abort(404);
         }
-        $user = User::find($category);
-        return view("categories.show", compact("category"));
+        return view("guest.categories.show", compact("category"));
     }
 }
