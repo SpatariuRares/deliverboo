@@ -68,7 +68,7 @@
                             <td>{{ $user['email'] }}</td>
                             <td>{{ $user['PIVA'] }}</td>
                             <td>
-                                <a href="{{ route('restaurant.show', $user['id']) }}"
+                                <a href="{{ route('show', $user['slug']) }}"
                                     class="btn btn-warning">
                                     Modify
                                 </a>
