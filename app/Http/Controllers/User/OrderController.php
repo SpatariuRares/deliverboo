@@ -53,13 +53,7 @@ class OrderController extends Controller
         $new_order->fill($data);
         $new_order->save();
 
-        // if(array_key_exists('food', $data)){
-        //     $new_order->food()->attach($data['food']);
-        // }else{
-        //     $new_order->food()->attach([]);
-        // }
-
-        //dd($data['food']);
+        
         $new_order->food()->attach($data['food'],['quantity'=> 2]);
         
 
@@ -86,13 +80,14 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        // dd($order->fullName);
+
+        $foods = Food::all();
 
         if(!$order) {
 
             abort(404);
         }
-        return view('user.orders.edit', compact('order'));
+        return view('user.orders.edit', compact('order','foods'));
     }
 
     /**
@@ -116,7 +111,10 @@ class OrderController extends Controller
         if(!isset($data['paymentStatus'])){            
             $data['paymentStatus'] = false;         
         }
+
         $order->update($data);
+
+        $order->food()->sync($data['food'],['quantity'=> 2]);
 
         return redirect()->route('user.orders.index', $order['id'])->with('updated', 'Order correttamente aggiornato');
     }
@@ -129,6 +127,7 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
+        $order->food()->detach($order->id);
         $order->delete();
         return redirect()->route('user.orders.index')->with('deleted', 'Order eliminato');
     }

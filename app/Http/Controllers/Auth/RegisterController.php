@@ -68,7 +68,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
         // User fara' riferimento alle fillable nel model
         $slug = Str::slug($data['username'], '-');
         $slug_presente = User::where('slug', $slug)->first();
@@ -93,9 +92,13 @@ class RegisterController extends Controller
             'PIVA' => $data['PIVA'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'thumb' => 'https://mod.go.ke/wp-content/uploads/2021/04/default-profile-pic.png'
         ]);
 
-        $new_user->categories()->attach($data['categories']);
+        if(isset($data['categories'])) {
+            $new_user->categories()->attach($data['categories']);
+        }
+
 
         return $new_user;
     }

@@ -24,7 +24,7 @@
                             <img src="{{ asset('storage/'.$food->thumb)}}" alt="{{ $food->name}}">
                         @endif
                         <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror">
-                        <input type="checkbox" name="deleteImage" id="deleteImage" class="form-control" @error('deleteImage') is-invalid @enderror">
+                        <input type="checkbox" name="deleteImage" id="deleteImage" class="form-control" @error('deleteImage') is-invalid @enderror>
                         @error('image')
                             <div class="alert alert-danger">{{message}}</div>
                         @enderror

@@ -54,7 +54,7 @@
                                 <td>{{ $order['address'] }}</td>
                                 <td>{{ $order['fullName'] }}</td>
                                 <td>{{ $order['paymentStatus'] }}</td>
-                                {{-- @dd($order['food']) --}}
+                                
                                 <td>
                                     @if ($order->food)
                                         @foreach ($order->food as $food)
