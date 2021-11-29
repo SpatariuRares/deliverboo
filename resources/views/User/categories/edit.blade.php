@@ -9,8 +9,8 @@
                     @method('PUT')
                     
                     <div class="form-group">
-                    <label for="name">Name</label>
-                    <input value="{{ $category['name']}}" type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                        <label for="name">Name</label>
+                        <input value="{{ $category['name']}}" type="text" name="name" class="form-control" id="name" placeholder="Enter name">
                     </div>
                     
                     <button type="submit" class="btn btn-success my-3">Submit</button>

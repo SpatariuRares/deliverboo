@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="col">
-                <h1>Nome ristorante</h1>
+                <h1>{{$user->$username}}</h1>
                 <h4>Categorie ristorante</h4>
             </div>
         </div>
