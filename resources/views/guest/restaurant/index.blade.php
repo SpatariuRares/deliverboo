@@ -2,6 +2,16 @@
 
 
 @section('content')
+<style>
+    a {
+        color: black;
+    }
+
+    a:hover {
+        color: grey;
+    }
+</style>
+
 <div class="container">
     <div class="container-fluid">
         <div class="row g-3 d-flex">
