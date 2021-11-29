@@ -114,7 +114,12 @@ class OrderController extends Controller
 
         $order->update($data);
 
-        $order->food()->sync($data['food'],['quantity'=> 2]);
+        if(array_key_exists('food', $data)){
+            $order->food()->sync($data['food'],['quantity'=> 2]);
+        }
+        else{
+            $order->food()->sync([]);
+        }
 
         return redirect()->route('user.orders.index', $order['id'])->with('updated', 'Order correttamente aggiornato');
     }
