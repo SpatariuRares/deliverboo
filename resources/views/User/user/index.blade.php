@@ -68,10 +68,18 @@
                             <td>{{ $user['email'] }}</td>
                             <td>{{ $user['PIVA'] }}</td>
                             <td>
+<<<<<<< HEAD
                                 <a href="{{ route('show', $user['slug']) }}"
+=======
+                                <a href="{{ route('user.user.index', $user['slug']) }}"
+>>>>>>> 34503ad174dcfb1e6b2759cd804487d293486c37
                                     class="btn btn-warning">
                                     Modify
                                 </a>
+                                <form class="d-inline" method="post" onclick="return confirm('Questa azione è irreversibile!!! Sei sicuro di voler cancellare?')" action="{{ route('user.user.destroy', $user['id']) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
                         </tr>
