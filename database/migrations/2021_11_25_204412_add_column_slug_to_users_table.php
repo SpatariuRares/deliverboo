@@ -14,7 +14,7 @@ class AddColumnSlugToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('slug')->after('username')->unique();
+            $table->string('slug')->after('username')->unique()->nullable();
         });
     }
 

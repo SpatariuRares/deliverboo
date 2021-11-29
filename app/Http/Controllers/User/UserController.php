@@ -136,6 +136,21 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+
+        $user = User::find(Auth::user()->id);
+
+        Auth::logout();
+
+        
         $user->username=null;
+        $user->email=null;
+        $user->address=null;
+        $user->PIVA=null;
+        $user->thumb=null;
+        $user->slug=null;
+
+        $user->update();
+        // dd($user);
+        return redirect()->route('index')->with('deleted', 'Account eliminato');
     }
 }
