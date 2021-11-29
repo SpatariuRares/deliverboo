@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('index');
 
 Auth::routes();
 
@@ -25,7 +24,6 @@ Route::middleware('auth')->namespace('User')->prefix('User')->name('user.')
     //pagina di atterraggio dopo il login (con il prefix, l'url è /admin)
     Route::get('/', 'HomeController@index')->name('home');
 
-    Route::resource('/categories', 'CategoryController');
     Route::resource('/orders', 'OrderController');
     Route::resource('/foods', 'FoodController');
     Route::resource('/user', 'UserController');
@@ -34,7 +32,5 @@ Route::middleware('auth')->namespace('User')->prefix('User')->name('user.')
 
 
 Route::resource('/categories', 'CategoryController');
-Route::resource('/restaurant', 'UserController');
-
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/orders', 'OrderController');
+Route::resource('/', 'UserController');

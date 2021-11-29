@@ -22,38 +22,23 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-
-                    
-                    {{-- <div class="form-group">
-                        <p>Seleziona la categoria</p>
-                        <select name="category" id="category">
-                            @foreach ($categories as $category)
-                            <option 
-                            value="{{ $category->id }}"
-                            {{ old("category") == $category->id ? "selected" : null }}
-                            >{{ $category->name }}</option>
-                            @endforeach
-                            @error("title")
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                    </div> --}}
                         
                     <div class="form-group">
                         <p>Seleziona le categorie:</p>
                         @foreach ($categories as $category)
-                        <div class="form-check form-check-inline">
-                            @if($errors->any())
-                            <input
-                            {{ in_array($category->id, old("category", [])) ? "checked" : null }}
-                            value="{{ $category->id }}" id="{{ "category" . $category->id }}" type="checkbox" name="categories[]" class="form-check-input">
-                            <label for="{{ "category" . $category->id }}" class="form-check-label">{{ $category->name }}</label>
-                            @else
-                            <input
-                            {{ $user->categories->contains($category->id) ? "checked" : null }}
-                            value="{{ $category->id }}" id="{{ "category" . $category->id }}" type="checkbox" name="categories[]" class="form-check-input">
-                            <label for="{{ "category" . $category->id }}" class="form-check-label">{{ $category->name }}</label>
-                            @endif
-                        </div>
+                            <div class="form-check form-check-inline">
+                                @if($errors->any())
+                                <input
+                                {{ in_array($category->id, old("category", [])) ? "checked" : null }}
+                                value="{{ $category->id }}" id="{{ "category" . $category->id }}" type="checkbox" name="categories[]" class="form-check-input">
+                                <label for="{{ "category" . $category->id }}" class="form-check-label">{{ $category->name }}</label>
+                                @else
+                                <input
+                                {{ $user->categories->contains($category->id) ? "checked" : null }}
+                                value="{{ $category->id }}" id="{{ "category" . $category->id }}" type="checkbox" name="categories[]" class="form-check-input">
+                                <label for="{{ "category" . $category->id }}" class="form-check-label">{{ $category->name }}</label>
+                                @endif
+                            </div>
                         @endforeach
                     </div>
 

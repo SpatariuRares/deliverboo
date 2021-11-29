@@ -21,7 +21,7 @@
                             <img src="" alt="">
                         </div>
                         <div class="description py-2">
-                            <a href="{{ route('restaurant.show', $user['slug']) }}">
+                            <a href="{{ route('show', $user['slug']) }}">
                                 <h4>{{ $user['username'] }}</h4>
                             </a>
                             <p class="lh-1">

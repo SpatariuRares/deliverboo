@@ -8,18 +8,18 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $Categories = Category::all();
-        //dd($Categories) ;
         return view('guest.categories.index', compact('Categories'));
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  Category $category
+     * @return \Illuminate\Http\Response
+     */
     public function show(Category $category)
     {
         if(!$category) {

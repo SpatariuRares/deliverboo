@@ -55,7 +55,6 @@
                                 <td>{{ $order['fullName'] }}</td>
                                 <td>{{ $order['paymentStatus'] }}</td>
                                 <td>
-                                    
                                     @if ($order->foods)
                                         @foreach ($order->foods as $food)
                                             @if ($food->last)
@@ -71,15 +70,6 @@
                                         class="btn btn-info">
                                         Details
                                     </a>
-                                    <a href="{{ route('user.orders.edit', $order['id']) }}"
-                                        class="btn btn-warning">
-                                        Modify
-                                    </a>
-                                    <form class="d-inline" method="post" onclick="return confirm('Questa azione è irreversibile!!! Sei sicuro di voler cancellare?')" action="{{ route('user.orders.destroy', $order['id']) }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
                                 </td>
                             </tr>
                         @endforeach

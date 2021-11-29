@@ -101,8 +101,6 @@ class FoodController extends Controller
         if(!$food){
             abort(404);
         } 
-        //!dobbiamo capire come passare user id al controller 
-
         return view('user.foods.edit',compact('food'));
     }
 
@@ -124,7 +122,6 @@ class FoodController extends Controller
             'visible'=>'nullable',
             'quatity'=>'nullable',
         ]);
-        dd($request->all());
         $formData=$request->all();
         $currentUser = Auth::user();                                     //PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
         $formData['user_id'] = $currentUser->id; 
