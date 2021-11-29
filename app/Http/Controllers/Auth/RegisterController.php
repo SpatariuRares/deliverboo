@@ -68,8 +68,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-
         // User fara' riferimento alle fillable nel model
         $slug = Str::slug($data['username'], '-');
         $slug_presente = User::where('slug', $slug)->first();
