@@ -17,23 +17,23 @@ class FoodSeeder extends Seeder
         $Foods = [
             [ 
                 'name' => 'lasagna',
-                'ingrediends'=>'pasta sadasdgasdfdgdgsfsafvfsddvxc'
+                'ingredients'=>'pasta sadasdgasdfdgdgsfsafvfsddvxc'
             ],
             [ 
                 'name' => 'sushi',
-                'ingrediends'=>'pesce sadasdgasdfdgdgsfsafvfsddvxc'
+                'ingredients'=>'pesce sadasdgasdfdgdgsfsafvfsddvxc'
             ],
             [ 
                 'name' => 'gelato',
-                'ingrediends'=>'latte sadasdgasdfdgdgsfsafvfsddvxc'
+                'ingredients'=>'latte sadasdgasdfdgdgsfsafvfsddvxc'
             ],
             [ 
                 'name' => 'hamburger',
-                'ingrediends'=>'carne sadasdgasdfdgdgsfsafvfsddvxc'
+                'ingredients'=>'carne sadasdgasdfdgdgsfsafvfsddvxc'
             ],
             [ 
                 'name' => 'hamburger',
-                'ingrediends'=>'kebab sadasdgasdfdgdgsfsafvfsddvxc'
+                'ingredients'=>'kebab sadasdgasdfdgdgsfsafvfsddvxc'
             ],
         ];
 
@@ -48,7 +48,7 @@ class FoodSeeder extends Seeder
             $new_food->name =$Foods[$i]['name'];
             $new_food->price = $faker->randomFloat(2, 10, 25);
             $new_food->thumb = $faker->imageUrl(360, 360, 'animals', true, 'dogs', true);
-            $new_food->ingrediends = $Foods[$i]['ingrediends'];
+            $new_food->ingredients = $Foods[$i]['ingredients'];
             $new_food->visible = $faker->boolean();
             $new_food->quantity = $faker->numberBetween(0, 200);
             $new_food->save();
