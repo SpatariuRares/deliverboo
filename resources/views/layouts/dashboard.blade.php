@@ -20,39 +20,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <ul class="navbar-nav ml-auto"> 
-        @guest
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark flex-md-nowrap p-0">
-                <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ route('index') }}">Boolpress</a>
-                <ul class="navbar-nav px-3 ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                </ul>
-            </nav>
-            @else
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark flex-md-nowrap p-0">
-                <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ route('index') }}">Boolpress</a>
-                <ul class="navbar-nav px-3 ml-auto">
-                    <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                </ul>
-            </nav>
-        @endguest   
-    </ul>
+    @include('components.header')
+
     <div class="container-fluid">
         <div class="row">
             <nav class="col-md-2 d-none d-md-block bg-light sidebar py-4">
@@ -124,5 +93,7 @@
             </main>
         </div>
     </div>
+
+    @include('components.footer')
 </body>
 </html>
