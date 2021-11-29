@@ -29,50 +29,43 @@
     @endif
     <div class="row">
         <div class="col-12">
-            <h1 class="mt-4 mb-4">all food</h1>
+            <h1 class="mt-4 mb-4">Info Account</h1>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">user_id</th>
-                        <th scope="col">name</th>
-                        <th scope="col">price</th>
-                        <th scope="col">thumb</th>
-                        <th scope="col">ingredients</th>
-                        <th scope="col">visible</th>
-                        <th scope="col">quantity</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">username</th>
+                        <th scope="col">categorie</th>
+                        <th scope="col">address</th>
+                        <th scope="col">action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($foods as $food)
-                        
+                    {{-- @foreach ($users as $user) --}}
+                    @foreach ($users as $user)
                         <tr>
-                            <th scope="row">{{ $food['id'] }}</th>
-                            <td>{{ $food['user']['id'] }}</td>
-                            <td>{{ $food['name'] }}</td>
-                            <td>{{ $food['price'] }}</td>
-                            <td>{{ $food['thumb'] }}</td>
-                            <td>{{ $food['ingrediends'] }}</td>
-                            <td>{{ $food['visible'] }}</td>
-                            <td>{{ $food['quantity'] }}</td>
-                            <td>
-                                <a href="{{ route('user.foods.show', $food['id']) }}"
-                                    class="btn btn-info">
-                                    Details
-                                </a>
-                                <a href="{{ route('user.foods.edit', $food['id']) }}"
-                                    class="btn btn-warning">
-                                    Modify
-                                </a>
-                                <form class="d-inline" method="post" onclick="return confirm('Questa azione è irreversibile!!! Sei sicuro di voler cancellare?')" action="{{ route('user.foods.destroy', $food['id']) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
+                                <th scope="row">{{ $user['id'] }}</th>
+                                <td>{{ $user['username'] }}</td>
+                                <td>
+                                    @foreach ($user->categories as $category)
+                                        @if ($category == $user->categories->last())
+                                            <a class="text-reset" href="">{{ $category->name }}</a>
+                                        @else
+                                            <a class="text-reset" href="">{{$category->name.', '}}</a>
+                                        @endif
+                                    @endforeach
+                                </td>
+                                <td>{{ $user['address'] }}</td>
+                                <td>
+                                    <a href="{{ route('restaurant.show', $user['id']) }}"
+                                        class="btn btn-warning">
+                                        show
+                                    </a>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    {{-- @endforeach --}}
                 </tbody>
             </table>
         </div>

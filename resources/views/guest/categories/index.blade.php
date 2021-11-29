@@ -29,47 +29,27 @@
     @endif
     <div class="row">
         <div class="col-12">
-            <h1 class="mt-4 mb-4">all food</h1>
+            <h1 class="mt-4 mb-4">all category</h1>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">user_id</th>
-                        <th scope="col">name</th>
-                        <th scope="col">price</th>
-                        <th scope="col">thumb</th>
-                        <th scope="col">ingredients</th>
-                        <th scope="col">visible</th>
-                        <th scope="col">quantity</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">category</th>
+                        <th scope="col">slug</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($foods as $food)
+                    @foreach ($Categories as $category)
                         
                         <tr>
-                            <th scope="row">{{ $food['id'] }}</th>
-                            <td>{{ $food['user']['id'] }}</td>
-                            <td>{{ $food['name'] }}</td>
-                            <td>{{ $food['price'] }}</td>
-                            <td>{{ $food['thumb'] }}</td>
-                            <td>{{ $food['ingrediends'] }}</td>
-                            <td>{{ $food['visible'] }}</td>
-                            <td>{{ $food['quantity'] }}</td>
+                            <th scope="row">{{ $category['id'] }}</th>
+                            <td>{{ $category['name'] }}</td>
+                            <td>{{ $category['slug'] }}</td>
                             <td>
-                                <a href="{{ route('user.foods.show', $food['id']) }}"
+                                <a href="{{ route('categories.show', $category['id']) }}"
                                     class="btn btn-info">
                                     Details
                                 </a>
-                                <a href="{{ route('user.foods.edit', $food['id']) }}"
-                                    class="btn btn-warning">
-                                    Modify
-                                </a>
-                                <form class="d-inline" method="post" onclick="return confirm('Questa azione è irreversibile!!! Sei sicuro di voler cancellare?')" action="{{ route('user.foods.destroy', $food['id']) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
                             </td>
                         </tr>
                     @endforeach
