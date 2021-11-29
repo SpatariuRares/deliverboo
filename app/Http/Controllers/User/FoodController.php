@@ -124,7 +124,7 @@ class FoodController extends Controller
             'visible'=>'nullable',
             'quatity'=>'nullable',
         ]);
-        
+        dd($request->all());
         $formData=$request->all();
         $currentUser = Auth::user();                                     //PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
         $formData['user_id'] = $currentUser->id; 

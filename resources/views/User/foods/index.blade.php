@@ -38,7 +38,6 @@
                         <th scope="col">thumb</th>
                         <th scope="col">name</th>
                         <th scope="col">price</th>
-                        <th scope="col">thumb</th>
                         <th scope="col">ingredients</th>
                         <th scope="col">visible</th>
                         <th scope="col">quantity</th>

@@ -9,7 +9,7 @@ class Food extends Model
     protected $table='foods';//indica la tabella da usare al posto da quella di default
     
     protected $fillable = [
-        'user_id','name','price','thumb','ingrediends','visible','quantity'
+        'user_id','name','price','thumb','ingredients','visible','quantity'
     ];
     
     public function user(){

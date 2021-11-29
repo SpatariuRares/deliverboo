@@ -20,7 +20,7 @@ class CreateFoodsTable extends Migration
             $table->string('name');
             $table->float('price',5,2);
             $table->string('thumb')->nullable();
-            $table->text('ingrediends')->nullable();
+            $table->text('ingredients')->nullable();
             $table->boolean('visible')->default(true);
             $table->integer('quantity')->nullable();
             $table->timestamps();
