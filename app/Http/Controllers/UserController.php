@@ -26,7 +26,6 @@ class UserController extends Controller
     public function show(User $user)
     {
         // $user = Food::where('id', $id)->first();
-        dd($user);
         if(!$user){
             abort(404);
         }return view('guest.restaurant.show', compact('user'));
