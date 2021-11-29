@@ -54,7 +54,7 @@ class OrderController extends Controller
         $new_order->save();
 
         
-        $new_order->food()->attach($data['food'],['quantity'=> 2]);
+        $new_order->foods()->attach($data['food'],['quantity'=> 2]);
         
 
         return redirect()->route('user.orders.index')->with('inserted', 'L\'Order è stato correttamente salvato');
@@ -113,13 +113,13 @@ class OrderController extends Controller
         }
 
         $order->update($data);
-
-        if(array_key_exists('food', $data)){
-            $order->food()->sync($data['food'],['quantity'=> 2]);
+        if(array_key_exists('foods', $data)){
+            $order->foods()->sync($data['foods'],['quantity'=> 2]);
         }
         else{
-            $order->food()->sync([]);
+            $order->foods()->sync([]);
         }
+
 
         return redirect()->route('user.orders.index', $order['id'])->with('updated', 'Order correttamente aggiornato');
     }
@@ -132,7 +132,7 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        $order->food()->detach($order->id);
+        $order->foods()->detach($order->id);
         $order->delete();
         return redirect()->route('user.orders.index')->with('deleted', 'Order eliminato');
     }

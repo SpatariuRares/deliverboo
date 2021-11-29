@@ -10,7 +10,7 @@ class Order extends Model
         'total','email','address','fullName','paymentStatus'
     ];
 
-    public function food(){
+    public function foods(){
         return $this->belongsToMany('App\Food')->withPivot('quantity');
     }
 }

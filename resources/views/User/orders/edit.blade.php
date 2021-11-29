@@ -37,11 +37,20 @@
                     <div class="form-group">
                         <p>Seleziona i food:</p>
                         @foreach ($foods as $food)
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label" for="{{ 'food' . $food->id }}">{{ $food->name }}</label>
-                                <input {{ $food->visible ? 'checked' : null }} value="{{ true }}" type="checkbox" name="food" class="form-check-input" id="{{'food' . $food->id}}">
-                            </div>   
-                        @endforeach
+                                    <div class="form-check form-check-inline">
+                                        @if ($errors->any())
+                                            <input 
+                                            {{in_array($food->id,old('foods',[])) ? 'checked' : null}}
+                                            value="{{ $food->id }}" type="checkbox" name="foods[]" class="form-check-input" id="{{'food' . $food->id}}">
+                                            <label class="form-check-label" for="{{'food' . $food->id}}">{{ $food->name }}</label>
+                                        @else
+                                            <input 
+                                            {{$order->foods->contains($food) ? 'checked' : null}}
+                                            value="{{ $food->id }}" type="checkbox" name="foods[]" class="form-check-input" id="{{'food' . $food->id}}">
+                                            <label class="form-check-label" for="{{'food' . $food->id}}">{{ $food->name }}</label>
+                                        @endif
+                                        </div>   
+                                @endforeach
                     </div>
                     
                     <button type="submit" class="btn btn-success my-3">Submit</button>

@@ -54,10 +54,10 @@
                                 <td>{{ $order['address'] }}</td>
                                 <td>{{ $order['fullName'] }}</td>
                                 <td>{{ $order['paymentStatus'] }}</td>
-                                
                                 <td>
-                                    @if ($order->food)
-                                        @foreach ($order->food as $food)
+                                    
+                                    @if ($order->foods)
+                                        @foreach ($order->foods as $food)
                                             @if ($food->last)
                                                 {{$food->id}}
                                             @else
