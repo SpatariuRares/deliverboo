@@ -68,8 +68,7 @@
                             <td>{{ $user['email'] }}</td>
                             <td>{{ $user['PIVA'] }}</td>
                             <td>
-                                <a href="{{ route('show', $user['slug']) }}"
-                                    class="btn btn-warning">
+                                <a href="{{ route('user.user.edit', $user['id']) }}"  class="btn btn-warning">
                                     Modify
                                 </a>
                                 <form class="d-inline" method="post" onclick="return confirm('Questa azione è irreversibile!!! Sei sicuro di voler cancellare?')" action="{{ route('user.user.destroy', $user['id']) }}">

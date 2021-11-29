@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row p-2">
             <div class="col-3 d-flex justify-content-center">
-                logo
+                <a href="{{ route('index') }}"> logo</a>
             </div>
             <div class="col">
                 <form class="d-flex">
@@ -19,14 +19,25 @@
                 </div>
                 @else
                 <div class="col-3 d-flex justify-content-center">
-                    <a class="btn btn-danger" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                            Logout
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form> 
+                    <ul>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.user.index')}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                foods
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn btn-danger" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    Logout
+                            </a>
+                        </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form> 
+                    </ul>
                 </div>           
             @endguest 
         </div>
