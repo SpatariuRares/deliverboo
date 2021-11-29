@@ -73,11 +73,11 @@ class OrderController extends Controller
     //  * @param  int  $id
     //  * @return \Illuminate\Http\Response
     //  */
-    // public function show($id)
-    // {
-    //     $detailOrder = Order::findOrFail($id);
-    //     return view('user.orders.show', compact('detailOrder'));
-    // }
+    public function show($id)
+    {
+        $detailOrder = Order::findOrFail($id);
+        return view('user.orders.show', compact('detailOrder'));
+    }
 
     // /**
     //  * Show the form for editing the specified resource.

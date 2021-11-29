@@ -30,7 +30,12 @@ Route::middleware('auth')->namespace('User')->prefix('User')->name('user.')
     
 });
 
+// Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('/categories', 'CategoryController');
 Route::resource('/orders', 'OrderController');
-Route::resource('/', 'UserController');
+Route::get('/', 'UserController@index')->name('index');
+Route::get('/{slug}', 'UserController@show')->name('show');
+
+/*Route::get('/', 'UserController@index')->name('index');
+Route::get('/{slug}', 'UserController@show')->name('show');*/
