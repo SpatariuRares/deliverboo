@@ -35,6 +35,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">username</th>
+                        <th scope="col">image</th>
                         <th scope="col">categorie</th>
                         <th scope="col">address</th>
                         <th scope="col">email</th>
@@ -47,6 +48,13 @@
                         <tr>
                             <th scope="row">{{ $user['id'] }}</th>
                             <td>{{ $user['username'] }}</td>
+                            <td>
+                                @if ($user['thumb'] != 'https://mod.go.ke/wp-content/uploads/2021/04/default-profile-pic.png')
+                                    <img src="{{ asset('storage/' .$user->thumb)}}" alt="{{ $user->name}}">
+                                @elseif ($user['thumb'])
+                                    <img src="https://mod.go.ke/wp-content/uploads/2021/04/default-profile-pic.png">
+                                @endif
+                            </td>
                             <td>
                                 @foreach ($user->categories as $category)
                                     @if ($category == $user->categories->last())

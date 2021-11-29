@@ -75,8 +75,8 @@ class RegisterController extends Controller
         // dd($slug_presente);
         $contatore = 1;
         while($slug_presente){
-            $slug_attule = $slug . '-' . $contatore;
-            $slug_presente = User::where('slug', $slug_attule)->first();
+            $slug_attuale = $slug . '-' . $contatore;
+            $slug_presente = User::where('slug', $slug_attuale)->first();
             $contatore++;
         }
 
@@ -84,13 +84,17 @@ class RegisterController extends Controller
             [
             'username' => $data['username'],
             'address' => $data['address'],
-            'slug'=> $slug_attule,
+            'slug'=> $slug_attuale,
             'PIVA' => $data['PIVA'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'thumb' => 'https://mod.go.ke/wp-content/uploads/2021/04/default-profile-pic.png'
         ]);
 
-        $new_user->categories()->attach($data['categories']);
+        if(isset($data['categories'])) {
+            $new_user->categories()->attach($data['categories']);
+        }
+
 
         return $new_user;
     }

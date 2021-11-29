@@ -115,17 +115,17 @@
                         <div class="form-group">
                             <p>Seleziona le categorie:</p>
                             @foreach ($categories as $category)
-                            <div class="form-check form-check-inline">
-                                @if($errors->any())
-                                <input
-                                value="{{ $category->id }}" id="{{ "category" . $category->id }}" type="checkbox" name="categories[]" class="form-check-input">
-                                <label for="{{ "category" . $category->id }}" class="form-check-label">{{ $category->name }}</label>
-                                @else
-                                <input
-                                value="{{ $category->id }}" id="{{ "category" . $category->id }}" type="checkbox" name="categories[]" class="form-check-input">
-                                <label for="{{ "category" . $category->id }}" class="form-check-label">{{ $category->name }}</label>
-                                @endif
-                            </div>
+                                <div class="form-check form-check-inline">
+                                    {{-- @if($errors->any()) --}}
+                                    <input
+                                    value="{{ $category->id }}" id="{{ "category" . $category->id }}" type="checkbox" name="categories[]" class="form-check-input">
+                                    <label for="{{ "category" . $category->id }}" class="form-check-label">{{ $category->name }}</label>
+                                    {{-- @else
+                                    <input
+                                    value="{{ $category->id }}" id="{{ "category" . $category->id }}" type="checkbox" name="categories[]" class="form-check-input">
+                                    <label for="{{ "category" . $category->id }}" class="form-check-label">{{ $category->name }}</label>
+                                    @endif --}}
+                                </div>
                             @endforeach
                         </div>
 
