@@ -53,8 +53,14 @@ class OrderController extends Controller
         $new_order->fill($data);
         $new_order->save();
 
-        
-        $new_order->foods()->attach($data['food'],['quantity'=> 2]);
+        if(isset($data['food'])){
+
+            foreach($data['food'] as $key => $food){
+                $data['foods'][$food] = [ 'quantity' => $data['quantity'][$key]];
+            }
+        }
+        // dd($data['foods']);
+        $new_order->foods()->attach($data['foods']);
         
 
         return redirect()->route('user.orders.index')->with('inserted', 'L\'Order è stato correttamente salvato');
@@ -99,29 +105,54 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
+        if($order->paymentStatus != 1 ){
 
-        $request->validate([
-            'total'=>'required',
-            'email'=> 'required|email', //tramite email fa' validascion da solo
-            'address'=>'required',
-            'fullName'=>'required',
-        ]);
-        
-        $data = $request->all();
-        if(!isset($data['paymentStatus'])){            
-            $data['paymentStatus'] = false;         
+            $request->validate([
+                'total'=>'required',
+                'email'=> 'required|email', //tramite email fa' validascion da solo
+                'address'=>'required',
+                'fullName'=>'required',
+            ]);
+            
+            $data = $request->all();
+            if(!isset($data['paymentStatus'])){            
+                $data['paymentStatus'] = false;         
+            }
+
+            $order->update($data);
+
+            $key = 0;
+
+            if(isset($data['quantity'])){
+                while(count($data['quantity']) != $key){
+                    if($data['quantity'][$key] == null ){
+                        array_splice($data['quantity'],$key,1);
+                    }
+                    else{
+                        $key++;
+                    }
+                }
+            }
+
+            if(isset($data['food'])){
+                
+                foreach($data['food'] as $key => $food){
+                    $data['foods'][$food] = [ 'quantity' => $data['quantity'][$key]];
+                }
+            }
+            
+
+            if(array_key_exists('foods', $data)){
+                $order->foods()->sync($data['foods']);
+            }
+            else{
+                $order->foods()->sync([]);
+            }
+
+
+            return redirect()->route('user.orders.index', $order['id'])->with('updated', 'Order correttamente aggiornato');
         }
-
-        $order->update($data);
-        if(array_key_exists('foods', $data)){
-            $order->foods()->sync($data['foods'],['quantity'=> 2]);
-        }
-        else{
-            $order->foods()->sync([]);
-        }
-
-
-        return redirect()->route('user.orders.index', $order['id'])->with('updated', 'Order correttamente aggiornato');
+        return redirect()->route('user.orders.index', $order['id'])->with('deleted', 'Order già pagato impossibile aggiornare l\'ordine');
     }
 
     /**

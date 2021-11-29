@@ -37,20 +37,21 @@
                     <div class="form-group">
                         <p>Seleziona i food:</p>
                         @foreach ($foods as $food)
-                                    <div class="form-check form-check-inline">
-                                        @if ($errors->any())
-                                            <input 
-                                            {{in_array($food->id,old('foods',[])) ? 'checked' : null}}
-                                            value="{{ $food->id }}" type="checkbox" name="foods[]" class="form-check-input" id="{{'food' . $food->id}}">
-                                            <label class="form-check-label" for="{{'food' . $food->id}}">{{ $food->name }}</label>
-                                        @else
-                                            <input 
-                                            {{$order->foods->contains($food) ? 'checked' : null}}
-                                            value="{{ $food->id }}" type="checkbox" name="foods[]" class="form-check-input" id="{{'food' . $food->id}}">
-                                            <label class="form-check-label" for="{{'food' . $food->id}}">{{ $food->name }}</label>
-                                        @endif
-                                        </div>   
-                                @endforeach
+                            <div class="form-check form-check-inline">
+                                @if ($errors->any())
+                                    <input 
+                                    {{in_array($food->id,old('food',[])) ? 'checked' : null}}
+                                    value="{{ $food->id }}" type="checkbox" name="food[]" class="form-check-input" id="{{'food' . $food->id}}">
+                                    <label class="form-check-label" for="{{'food' . $food->id}}">{{ $food->name }}</label>
+                                @else
+                                    <input 
+                                    {{$order->foods->contains($food) ? 'checked' : null}}
+                                    value="{{ $food->id }}" type="checkbox" name="food[]" class="form-check-input" id="{{'food' . $food->id}}">
+                                    <label class="form-check-label" for="{{'food' . $food->id}}">{{ $food->name }}</label>
+                                @endif
+                            </div>   
+                            <input type="number" name="quantity[]" id="{{'quantity' . $food->id }}" class="form-control">
+                        @endforeach
                     </div>
                     
                     <button type="submit" class="btn btn-success my-3">Submit</button>
