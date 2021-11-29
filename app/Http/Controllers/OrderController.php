@@ -135,8 +135,12 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        $order->foods()->detach($order->id);
-        $order->delete();
-        return redirect()->route('user.orders.index')->with('deleted', 'Order eliminato');
+        if($order->paymentStatus != 1){
+
+            $order->foods()->detach($order->id);
+            $order->delete();
+            return redirect()->route('user.orders.index')->with('deleted', 'Order eliminato');
+        } 
+        return redirect()->route('user.orders.index')->with('deleted', 'Order non è stato possibile eliminarlo');
     }
 }
