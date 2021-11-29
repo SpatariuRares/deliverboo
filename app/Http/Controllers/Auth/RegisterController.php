@@ -74,17 +74,22 @@ class RegisterController extends Controller
         $slug_presente = User::where('slug', $slug)->first();
         // dd($slug_presente);
         $contatore = 1;
-        while($slug_presente){
-            $slug_attule = $slug . '-' . $contatore;
-            $slug_presente = User::where('slug', $slug_attule)->first();
-            $contatore++;
+        if ($slug_presente){
+            while($slug_presente){
+                $slug_attuale = $slug . '-' . $contatore;
+                $slug_presente = User::where('slug', $slug_attuale)->first();
+                $contatore++;
+            }
+        } else {
+            $slug_attuale = $slug;
         }
+        
 
         $new_user = User::create(
             [
             'username' => $data['username'],
             'address' => $data['address'],
-            'slug'=> $slug_attule,
+            'slug'=> $slug_attuale,
             'PIVA' => $data['PIVA'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
