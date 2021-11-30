@@ -83,9 +83,10 @@ class FoodController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        $currentUser = Auth::user();
         $food = Food::where('id', $id)->first();
-        if(!$food){
+        if(!$food || $food->user_id != $currentUser->id){
             abort(404);
         }return view('user.foods.show', compact('food'));
     }
@@ -98,7 +99,8 @@ class FoodController extends Controller
      */
     public function edit(Food $food)
     {
-        if(!$food){
+        $currentUser = Auth::user();
+        if(!$food || $food->user_id != $currentUser->id){
             abort(404);
         } 
         return view('user.foods.edit',compact('food'));
@@ -160,7 +162,11 @@ class FoodController extends Controller
      */
     public function destroy(Food $food)
     {
-        $food->delete();
+        $currentUser = Auth::user();
+        if(!$food || $food->user_id != $currentUser->id){
+            abort(404);
+        } 
+        $food->null();
         return redirect()->route('user.foods.index')->with('deleted', 'food eliminato');
     }
 }

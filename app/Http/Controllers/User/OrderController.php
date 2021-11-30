@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
 use App\Order;
 use App\Food;
 
@@ -16,10 +17,18 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
+        $currentUser = Auth::user();
+        $foods = Food::where('user_id', '=', $currentUser->id)->get();
+        $orders=[];
+        foreach ($foods as $food){
+            if($food->orders!=null){
+                foreach ($food->orders as $order){
+                    $orders[]=$order;
+                }
+            }
+        }
         return view('user.orders.index', compact('orders'));
     }
-
     /**
      * Show the form for creating a new resource.
      *

@@ -45,34 +45,35 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($orders as $order)
-                            
-                            <tr>
-                                <th scope="row">{{ $order['id'] }}</th>
-                                <td>{{ $order['total'] }}</td>
-                                <td>{{ $order['email'] }}</td>
-                                <td>{{ $order['address'] }}</td>
-                                <td>{{ $order['fullName'] }}</td>
-                                <td>{{ $order['paymentStatus'] }}</td>
-                                <td>
-                                    @if ($order->foods)
-                                        @foreach ($order->foods as $food)
-                                            @if ($food->last)
-                                                {{$food->id}}
-                                            @else
-                                                {{$food->id.', '}}
+                        @if(count($orders)!=0)
+                            @foreach ($orders as $order)
+                                    <tr>
+                                        <th scope="row">{{ $order['id'] }}</th>
+                                        <td>{{ $order['total'] }}</td>
+                                        <td>{{ $order['email'] }}</td>
+                                        <td>{{ $order['address'] }}</td>
+                                        <td>{{ $order['fullName'] }}</td>
+                                        <td>{{ $order['paymentStatus'] }}</td>
+                                        <td>
+                                            @if ($order->foods)
+                                                @foreach ($order->foods as $food)
+                                                    @if ($food->last)
+                                                        {{$food->id}}
+                                                    @else
+                                                        {{$food->id.', '}}
+                                                    @endif
+                                                @endforeach
                                             @endif
-                                        @endforeach
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="{{ route('user.orders.show', $order['id']) }}"
-                                        class="btn btn-info">
-                                        Details
-                                    </a>
-                                </td>
-                            </tr>
-                        @endforeach
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('user.orders.show', $order['id']) }}"
+                                                class="btn btn-info">
+                                                Details
+                                            </a>
+                                        </td>
+                                    </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
