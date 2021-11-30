@@ -26,7 +26,6 @@ class OrderController extends Controller
         $new_order->save();
 
         if(isset($data['food'])){
-
             foreach($data['food'] as $key => $food){
                 $data['foods'][$food] = [ 'quantity' => $data['quantity'][$key]];
             }
@@ -56,7 +55,7 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    /*public function edit(Order $order)
     {
 
         $foods = Food::all();
@@ -75,7 +74,7 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    /*public function update(Request $request, Order $order)
     {
         if($order->paymentStatus != 1 ){
 
@@ -133,7 +132,7 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    /*public function destroy(Order $order)
     {
         if($order->paymentStatus != 1){
 
@@ -143,5 +142,5 @@ class OrderController extends Controller
         } 
         return redirect()->route('user.orders.index')->with('deleted', 'Order non è stato possibile eliminarlo');
     }
-
+*/
 }
