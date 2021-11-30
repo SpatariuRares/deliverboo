@@ -22,9 +22,6 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        if(!$category) {
-            abort(404);
-        }
         return view("guest.categories.show", compact("category"));
     }
 }

@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         $user = Auth::user();        // PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
         // dd($user->categories);
-        return view("user.user.index", compact("user"));
+        return view("user.restaurant.index", compact("user"));
     }
 
     /**
@@ -66,12 +66,9 @@ class UserController extends Controller
     {
         $categories = Category::all();
 
-        // dd($user);
-        if(!$user) {
-            abort(404);
-        }
+        dd($user);
 
-        return view("user.user.edit", compact("user", "categories"));
+        return view("user.restaurant.edit", compact("user", "categories"));
     }
 
     /**
@@ -124,7 +121,7 @@ class UserController extends Controller
         $user->update($form_data);
         // dd($form_data);
         
-        return redirect()->route("user.user.index")->with("updated", "Dati Utente correttamente aggiornati");
+        return redirect()->route("user.restaurant.index")->with("updated", "Dati Utente correttamente aggiornati");
     }
 
     /**
