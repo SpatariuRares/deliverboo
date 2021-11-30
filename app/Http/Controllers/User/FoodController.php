@@ -99,7 +99,8 @@ class FoodController extends Controller
      */
     public function edit(Food $food)
     {
-        if(!$food){
+        $currentUser = Auth::user();
+        if(!$food || $food->user_id != $currentUser->id){
             abort(404);
         } 
         return view('user.foods.edit',compact('food'));
@@ -161,7 +162,11 @@ class FoodController extends Controller
      */
     public function destroy(Food $food)
     {
-        $food->delete();
+        $currentUser = Auth::user();
+        if(!$food || $food->user_id != $currentUser->id){
+            abort(404);
+        } 
+        $food->null();
         return redirect()->route('user.foods.index')->with('deleted', 'food eliminato');
     }
 }
