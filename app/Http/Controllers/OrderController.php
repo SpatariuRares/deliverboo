@@ -143,4 +143,5 @@ class OrderController extends Controller
         } 
         return redirect()->route('user.orders.index')->with('deleted', 'Order non è stato possibile eliminarlo');
     }
+
 }

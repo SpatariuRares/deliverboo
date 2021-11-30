@@ -35,5 +35,7 @@ Route::resource('/orders', 'OrderController');
 Route::get('/', 'UserController@index')->name('index');
 Route::get('/{slug}', 'UserController@show')->name('show');
 
+
+
 /*Route::get('/', 'UserController@index')->name('index');
 Route::get('/{slug}', 'UserController@show')->name('show');*/
