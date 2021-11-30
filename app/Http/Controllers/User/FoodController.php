@@ -83,9 +83,10 @@ class FoodController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        $currentUser = Auth::user();
         $food = Food::where('id', $id)->first();
-        if(!$food){
+        if(!$food || $food->user_id != $currentUser->id){
             abort(404);
         }return view('user.foods.show', compact('food'));
     }
