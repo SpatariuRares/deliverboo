@@ -19,7 +19,7 @@ Auth::routes();
 // Rotta che gestirà la vista delle categories dell'utente generico
 //Route::resource("/categories", "CategoryController");
 
-Route::middleware('auth')->namespace('user')->prefix('user')->name('restaurant.')
+Route::middleware('auth')->namespace('user')->prefix('user')->name('user.')
 ->group(function(){
     //pagina di atterraggio dopo il login (con il prefix, l'url è /admin)
     Route::resource('/orders', 'OrderController');

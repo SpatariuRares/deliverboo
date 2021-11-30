@@ -62,12 +62,13 @@ class UserController extends Controller
      * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($slug)
     {
         $categories = Category::all();
-
-        dd($user);
-
+        $user = User::where('slug', $slug)->first();
+        if(!$user){
+            abort(404);
+        }
         return view("user.restaurant.edit", compact("user", "categories"));
     }
 

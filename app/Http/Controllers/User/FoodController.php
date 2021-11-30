@@ -88,7 +88,8 @@ class FoodController extends Controller
         $food = Food::where('id', $id)->first();
         if(!$food || $food->user_id != $currentUser->id){
             abort(404);
-        }return view('user.foods.show', compact('food'));
+        }
+        return view('user.foods.show', compact('food'));
     }
 
     /**
