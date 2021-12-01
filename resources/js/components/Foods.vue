@@ -38,6 +38,7 @@ export default {
     created() {
       this.getFoods();
     },
+    
     methods: {
       getFoods(){
         axios.get(this.url + this.users + "/foods").
