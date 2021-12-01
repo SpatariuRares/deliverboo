@@ -1,3 +1,15 @@
+<p>in <code>vendor\laravel\ui\auth-backend\RegistersUsers.php</code> change showRegistrationForm in</p>
+<p>
+    <code>
+        public function showRegistrationForm()
+        {
+            $categories = Category::all();
+            return view('auth.register',compact('categories'));
+        }
+    </code>
+</p>
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
