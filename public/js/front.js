@@ -1947,6 +1947,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Header",
   data: function data() {
@@ -1967,6 +1969,92 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3184,49 +3272,53 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "body" }, [
-      _c("div", { staticClass: "Cart-Container" }, [
+    return _c("div", {}, [
+      _c("div", { staticClass: "border rounded p-5" }, [
         _c("div", { staticClass: "Header" }, [
           _c("h3", { staticClass: "Heading" }, [_vm._v("Shopping Cart")]),
           _vm._v(" "),
           _c("h5", { staticClass: "Action" }, [_vm._v("Remove all")]),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "Cart-Items" }, [
-          _c("div", { staticClass: "image-box" }, [
-            _c("img", {
-              attrs: {
-                src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp-HDTllTjRKs7e9luW7TKTXiuW3vyuHAwiA&usqp=CAU",
-              },
-            }),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "about" }, [
-            _c("h1", { staticClass: "title" }, [_vm._v("Pizza")]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "counter" }, [
-            _c("div", { staticClass: "btn" }, [_vm._v("+")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "count" }, [_vm._v("2")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "btn" }, [_vm._v("-")]),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "prices" }, [
-            _c("div", { staticClass: "amount" }, [_vm._v("$2.99")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "save" }, [
-              _c("u", [_vm._v("Save for later")]),
+        _c(
+          "div",
+          { staticClass: "d-flex justify-content-between align-items-center" },
+          [
+            _c("div", { staticClass: "image-box" }, [
+              _c("img", {
+                attrs: {
+                  src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp-HDTllTjRKs7e9luW7TKTXiuW3vyuHAwiA&usqp=CAU",
+                },
+              }),
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "remove" }, [_c("u", [_vm._v("Remove")])]),
-          ]),
-        ]),
+            _c("div", { staticClass: "about" }, [_c("h2", [_vm._v("Pizza")])]),
+            _vm._v(" "),
+            _c("div", { staticClass: "counter" }, [
+              _c("div", { staticClass: "btn" }, [_vm._v("+")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "count" }, [_vm._v("2")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "btn" }, [_vm._v("-")]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "prices" }, [
+              _c("div", { staticClass: "amount" }, [_vm._v("$2.99")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "save" }, [
+                _c("u", [_vm._v("Save for later")]),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "remove" }, [
+                _c("u", [_vm._v("Remove")]),
+              ]),
+            ]),
+          ]
+        ),
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
-        _c("div", { staticClass: "checkout" }, [
+        _c("div", {}, [
           _c("div", { staticClass: "total" }, [
             _c("div", [
               _c("div", { staticClass: "Subtotal" }, [_vm._v("Sub-Total")]),
@@ -3271,7 +3363,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
+    return _c("div", { staticClass: "container-fluid" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-12 col-sm-8 col-md-6 col-lg-4" }, [
           _c("div", { staticClass: "card" }, [
@@ -3304,31 +3396,7 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "card-text" }, [
-                _vm._v(
-                  "\r\n                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet, explicabo cum tenetur alias quaerat quos impedit dolorem, iure doloribus possimus laboriosam consequatur corporis eos. Voluptas cumque dolor inventore magni fuga!\r\n            "
-                ),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "options d-flex flex-fill" }, [
-                _c("select", { staticClass: "custom-select mr-1" }, [
-                  _c("option", { attrs: { selected: "" } }, [_vm._v("Color")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "1" } }, [_vm._v("Green")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "2" } }, [_vm._v("Blue")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "3" } }, [_vm._v("Red")]),
-                ]),
-                _vm._v(" "),
-                _c("select", { staticClass: "custom-select ml-1" }, [
-                  _c("option", { attrs: { selected: "" } }, [_vm._v("Size")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "1" } }, [_vm._v("41")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "2" } }, [_vm._v("42")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "3" } }, [_vm._v("43")]),
-                ]),
+                _vm._v("\r\n                ingredients\r\n            "),
               ]),
               _vm._v(" "),
               _c(
@@ -3339,14 +3407,324 @@ var staticRenderFns = [
                 },
                 [
                   _c("div", { staticClass: "price text-success" }, [
-                    _c("h5", { staticClass: "mt-4" }, [_vm._v("$125")]),
+                    _c("h5", { staticClass: "mt-4" }, [_vm._v("€125")]),
                   ]),
                   _vm._v(" "),
                   _c(
-                    "a",
+                    "button",
                     {
-                      staticClass: "btn btn-danger mt-3",
-                      attrs: { href: "#" },
+                      staticClass: "btn btn-success mt-3",
+                      attrs: { href: "#", type: "submit" },
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-shopping-cart" }),
+                      _vm._v(" Add to Cart"),
+                    ]
+                  ),
+                ]
+              ),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 col-sm-8 col-md-6 col-lg-4" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("img", {
+              staticClass: "card-img",
+              attrs: {
+                src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp-HDTllTjRKs7e9luW7TKTXiuW3vyuHAwiA&usqp=CAU",
+                alt: "Vans",
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "card-img-overlay d-flex justify-content-end" },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "card-link text-danger like",
+                    attrs: { href: "#" },
+                  },
+                  [_c("i", { staticClass: "fas fa-heart" })]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h4", { staticClass: "card-title" }, [
+                _vm._v("Pizza Margherita"),
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v("\r\n                ingredients\r\n            "),
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "buy d-flex justify-content-between align-items-center",
+                },
+                [
+                  _c("div", { staticClass: "price text-success" }, [
+                    _c("h5", { staticClass: "mt-4" }, [_vm._v("€125")]),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success mt-3",
+                      attrs: { href: "#", type: "submit" },
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-shopping-cart" }),
+                      _vm._v(" Add to Cart"),
+                    ]
+                  ),
+                ]
+              ),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 col-sm-8 col-md-6 col-lg-4" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("img", {
+              staticClass: "card-img",
+              attrs: {
+                src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp-HDTllTjRKs7e9luW7TKTXiuW3vyuHAwiA&usqp=CAU",
+                alt: "Vans",
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "card-img-overlay d-flex justify-content-end" },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "card-link text-danger like",
+                    attrs: { href: "#" },
+                  },
+                  [_c("i", { staticClass: "fas fa-heart" })]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h4", { staticClass: "card-title" }, [
+                _vm._v("Pizza Margherita"),
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v("\r\n                ingredients\r\n            "),
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "buy d-flex justify-content-between align-items-center",
+                },
+                [
+                  _c("div", { staticClass: "price text-success" }, [
+                    _c("h5", { staticClass: "mt-4" }, [_vm._v("€125")]),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success mt-3",
+                      attrs: { href: "#", type: "submit" },
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-shopping-cart" }),
+                      _vm._v(" Add to Cart"),
+                    ]
+                  ),
+                ]
+              ),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 col-sm-8 col-md-6 col-lg-4" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("img", {
+              staticClass: "card-img",
+              attrs: {
+                src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp-HDTllTjRKs7e9luW7TKTXiuW3vyuHAwiA&usqp=CAU",
+                alt: "Vans",
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "card-img-overlay d-flex justify-content-end" },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "card-link text-danger like",
+                    attrs: { href: "#" },
+                  },
+                  [_c("i", { staticClass: "fas fa-heart" })]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h4", { staticClass: "card-title" }, [
+                _vm._v("Pizza Margherita"),
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v("\r\n                ingredients\r\n            "),
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "buy d-flex justify-content-between align-items-center",
+                },
+                [
+                  _c("div", { staticClass: "price text-success" }, [
+                    _c("h5", { staticClass: "mt-4" }, [_vm._v("€125")]),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success mt-3",
+                      attrs: { href: "#", type: "submit" },
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-shopping-cart" }),
+                      _vm._v(" Add to Cart"),
+                    ]
+                  ),
+                ]
+              ),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 col-sm-8 col-md-6 col-lg-4" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("img", {
+              staticClass: "card-img",
+              attrs: {
+                src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp-HDTllTjRKs7e9luW7TKTXiuW3vyuHAwiA&usqp=CAU",
+                alt: "Vans",
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "card-img-overlay d-flex justify-content-end" },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "card-link text-danger like",
+                    attrs: { href: "#" },
+                  },
+                  [_c("i", { staticClass: "fas fa-heart" })]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h4", { staticClass: "card-title" }, [
+                _vm._v("Pizza Margherita"),
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v("\r\n                ingredients\r\n            "),
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "buy d-flex justify-content-between align-items-center",
+                },
+                [
+                  _c("div", { staticClass: "price text-success" }, [
+                    _c("h5", { staticClass: "mt-4" }, [_vm._v("€125")]),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success mt-3",
+                      attrs: { href: "#", type: "submit" },
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-shopping-cart" }),
+                      _vm._v(" Add to Cart"),
+                    ]
+                  ),
+                ]
+              ),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-12 col-sm-8 col-md-6 col-lg-4" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("img", {
+              staticClass: "card-img",
+              attrs: {
+                src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp-HDTllTjRKs7e9luW7TKTXiuW3vyuHAwiA&usqp=CAU",
+                alt: "Vans",
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "card-img-overlay d-flex justify-content-end" },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "card-link text-danger like",
+                    attrs: { href: "#" },
+                  },
+                  [_c("i", { staticClass: "fas fa-heart" })]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("h4", { staticClass: "card-title" }, [
+                _vm._v("Pizza Margherita"),
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v("\r\n                ingredients\r\n            "),
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "buy d-flex justify-content-between align-items-center",
+                },
+                [
+                  _c("div", { staticClass: "price text-success" }, [
+                    _c("h5", { staticClass: "mt-4" }, [_vm._v("€125")]),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success mt-3",
+                      attrs: { href: "#", type: "submit" },
                     },
                     [
                       _c("i", { staticClass: "fas fa-shopping-cart" }),
@@ -15835,7 +16213,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\sonni\Desktop\lezioni\Laravel\Pogetto-Finale\deliverboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\sb270\Desktop\deliverboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
