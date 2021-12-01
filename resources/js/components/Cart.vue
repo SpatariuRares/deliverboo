@@ -41,7 +41,7 @@
 
 <script>
 export default {
-    name: "Header",
+    name: "Cart",
     data() {
         return {};
     },

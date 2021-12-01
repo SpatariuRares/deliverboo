@@ -1,18 +1,18 @@
 <template>
   <div class="container">
-    <Header />
-    <Main />
+    <Cart />
+    <Foods />
   </div>
 </template>
 
 <script>
-import Header from "../components/Header.vue";
-import Main from "../components/Main.vue";
+import Cart from "../components/Cart.vue";
+import Foods from "../components/Foods.vue";
 export default {
-  name: "App",
+  name: "Menu",
   components: {
-    Header,
-    Main,
+    Cart,
+    Foods,
   },
 };
 </script>
