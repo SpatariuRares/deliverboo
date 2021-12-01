@@ -36,18 +36,16 @@ export default {
     },
     created() {
       this.getFoods();
-      this.links();
     },
+    
     methods: {
       getFoods(){
-        axios.get(this.url + "lorenzo" + "/foods").
+        axios.get(this.url + "sararares12-at-gmailcom" + "/foods").
           then((response)=> {
             this.foods = response.data.foods
+            console.log(this.foods)
           });
       },
-      links: function() {
-        console.log(this.$route) // should work
-      }
     }
 };
 </script>

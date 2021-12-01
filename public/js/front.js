@@ -2006,18 +2006,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.getFoods();
-    this.links();
   },
   methods: {
     getFoods: function getFoods() {
       var _this = this;
 
-      axios.get(this.url + "lorenzo" + "/foods").then(function (response) {
-        _this.foods = response.data.foods;
+      axios.get(this.url + "sararares12-at-gmailcom" + "/foods").then(function (response) {
+        this.foods = response.data.foods;
+        console.log(this.foods);
       });
-    },
-    links: function links() {
-      console.log(this.$route); // should work
     }
   }
 });
