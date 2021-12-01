@@ -2012,8 +2012,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get(this.url + "sararares12-at-gmailcom" + "/foods").then(function (response) {
-        this.foods = response.data.foods;
-        console.log(this.foods);
+        _this.foods = response.data.foods;
+        console.log(_this.foods);
       });
     }
   }
