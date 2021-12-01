@@ -44,7 +44,7 @@
 </head>
 <body>
 
-      <form id="payment-form" action="/route/on/your/server" method="post">
+      <form id="payment-form" action="{{route("checkout")}}" method="post">
         <!-- Putting the empty container you plan to pass to
           `braintree.dropin.create` inside a form will make layout and flow
           easier to manage -->

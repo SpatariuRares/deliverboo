@@ -32,6 +32,7 @@ Route::middleware('auth')->namespace('user')->prefix('user')->name('user.')
 
 Route::resource('/categories', 'CategoriesController');
 Route::get('/pay', "PayController@payment")->name('pay');
+Route::post('/checkout', "PayController@checkout")->name('checkout');
 
 
 Route::get('/', 'UserController@index')->name('index');
