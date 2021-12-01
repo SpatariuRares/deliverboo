@@ -25,15 +25,12 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar py-4">
-                <div class="sidebar-sticky">
+            <nav class="col-12 d-flex align-items-center justify-content-center bg-dark text-light p-3 mb-3">
+                <div class="">
                     @guest
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('categories.index')}}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
-                                    Categories
-                                </a>
+                                Hai voglia di qualcosa in particolare? Dai un occhio alla sezione <a class="text-success" href="{{route('categories.index')}}">categorie</a>
                             </li>
                         </ul>
                         @else
@@ -69,7 +66,7 @@
                 </div>
             </nav>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 py-4">
+            <main role="main" class="container-fluid">
                 @yield('content')
             </main>
         </div>
