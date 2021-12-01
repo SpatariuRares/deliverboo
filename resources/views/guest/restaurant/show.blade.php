@@ -26,14 +26,14 @@
     
         
     
-    <div class="container-fluid">
+    <div class="container-fluid" >
         <div class="row">
             <div class="col-12 mb-5">
                 <h2>Menù</h2>
             </div>
         </div>
-        <div class="row row-cols-3 g-3">
-            @foreach ($user->foods as $food)
+        <div class="row row-cols-3 g-3" id="app">
+            {{-- @foreach ($user->foods as $food)
                 <div class="col p-4 border d-flex justify-content-between align-items-center">
                     <div>
                         <h4>{{$food->name}}</h4>
@@ -46,7 +46,7 @@
                         @endif
                     </div>           
                 </div>
-            @endforeach
+            @endforeach --}}
         </div>
     </div>
 @endsection
