@@ -18,10 +18,11 @@ class paymentController extends Controller
     }
     
     public function makePayment(Request $request,Gateway $gateway){
+        $nonceFromTheClient = $_POST["payment_method_nonce"];
         $result=$gateway->transaction()->sale([
             'amount' => '10.00',
-            'paymentMethodNonce' => $request->token,
-            //'deviceData' => $deviceDataFromTheClient,
+            'paymentMethodNonce' => $nonceFromTheClient,
+            // 'deviceData' => $deviceDataFromTheClient,
             'options' => [
                 'submitForSettlement' => True
             ]

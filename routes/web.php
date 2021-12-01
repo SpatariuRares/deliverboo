@@ -34,6 +34,9 @@ Route::resource('/categories', 'CategoryController');
 Route::resource('/orders', 'OrderController');
 Route::get('/', 'UserController@index')->name('index');
 Route::get('/{slug}', 'UserController@show')->name('show');
+Route::get('/payCiao', function(){
+    return view("guest.payment");
+});
 
 
 
