@@ -1,40 +1,42 @@
 <template>
-    <div class="body">
-        <div class="Cart-Container">
-            <div class="Header">
-                <h3 class="Heading">Shopping Cart</h3>
-                <h5 class="Action">Remove all</h5>
-            </div>
-            <div class="Cart-Items">
-                <div class="image-box">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp-HDTllTjRKs7e9luW7TKTXiuW3vyuHAwiA&usqp=CAU"/>
-                </div>
-                <div class="about">
-                    <h1 class="title">Pizza</h1>
-                </div>
-                <div class="counter">
-                    <div class="btn">+</div>
-                    <div class="count">2</div>
-                    <div class="btn">-</div>
-                </div>
-                <div class="prices">
-                    <div class="amount">$2.99</div>
-                    <div class="save"><u>Save for later</u></div>
-                    <div class="remove"><u>Remove</u></div>
-                </div>
-            </div>
-            <hr> 
-            <div class="checkout">
-                <div class="total">
-                    <div>
-                        <div class="Subtotal">Sub-Total</div>
-                        <div class="items">2 items</div>
-                    </div>
-                    <div class="total-amount">$6.18</div>
-                </div>
-                <button class="button">Checkout</button></div>
-        </div> 
-    </div>
+	<div class="">
+		<div class="border rounded p-5">
+			<div class="Header">
+				<h3 class="Heading">Shopping Cart</h3>
+				<h5 class="Action">Remove all</h5>
+			</div>
+			<div class="d-flex justify-content-between align-items-center">
+				<div class="image-box">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp-HDTllTjRKs7e9luW7TKTXiuW3vyuHAwiA&usqp=CAU"/>
+				</div>
+				<div class="about">
+					<h2>Pizza</h2>
+				</div>
+				<div class="counter">
+					<div class="btn">+</div>
+					<div class="count">2</div>
+					<div class="btn">-</div>
+				</div>
+				<div class="prices">
+					<div class="amount">$2.99</div>
+					<div class="save"><u>Save for later</u></div>
+					<div class="remove"><u>Remove</u></div>
+				</div>
+			</div>
+			<hr> 
+			<div class="">
+				<div class="total">
+					<div>
+						<div class="Subtotal">Sub-Total</div>
+						<div class="items">2 items</div>
+					</div>
+					<div class="total-amount">$6.18</div>
+				</div>
+				<button class="button">Checkout</button>
+			</div>
+		</div>
+	</div>
+	
 </template>
 
 <script>
