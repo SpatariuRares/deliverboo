@@ -30,15 +30,13 @@ Route::middleware('auth')->namespace('user')->prefix('user')->name('user.')
 
 // Route::get('/', 'HomeController@index')->name('home');
 
-Route::resource('/categories', 'CategoryController');
-Route::resource('/orders', 'OrderController');
+Route::resource('/categories', 'CategoriesController');
+Route::get('/pay', "PayController@payment")->name('pay');
 
 
 Route::get('/', 'UserController@index')->name('index');
 Route::get('/{slug}', 'UserController@show')->name('show');
-Route::get('/payCiao', function(){
-    return view("guest.payment");
-});
+
 
 
 

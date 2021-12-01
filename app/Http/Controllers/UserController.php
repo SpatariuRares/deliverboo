@@ -30,4 +30,6 @@ class UserController extends Controller
             abort(404);
         }return view('guest.restaurant.show', compact('user'));
     }
+
+    
 }

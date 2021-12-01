@@ -44,22 +44,41 @@
 </head>
 <body>
 
-    <div id="dropin-container"></div>
+      <form id="payment-form" action="/route/on/your/server" method="post">
+        <!-- Putting the empty container you plan to pass to
+          `braintree.dropin.create` inside a form will make layout and flow
+          easier to manage -->
+        <div id="dropin-container"></div>
+        <input type="submit" />
+        <input type="hidden" id="nonce" name="payment_method_nonce"/>
+      </form>
 
-    <button id="submit-button" class="button button--small button--green">Purchase</button>
     <script>
         var button = document.querySelector('#submit-button');
+        const form = document.getElementById('payment-form');
 
         braintree.dropin.create({
             authorization: 'sandbox_g42y39zw_348pk9cgf3bgyw2b',
-            selector: '#dropin-container'
-            }, function (err, instance) {
-            button.addEventListener('click', function () {
-                instance.requestPaymentMethod(function (err, payload) {
-                // Submit payload.nonce to your server
-                });
-            })
+            container: '#dropin-container'
+            }, function (error, dropinInstance) {
+              if (error) console.error(error);
+
+              form.addEventListener('submit', event => {
+              event.preventDefault();
+
+              dropinInstance.requestPaymentMethod((error, payload) => {
+                if (error) console.error(error);
+                
+                // Step four: when the user is ready to complete their
+                //   transaction, use the dropinInstance to get a payment
+                //   method nonce for the user's selected payment method, then add
+                //   it a the hidden field before submitting the complete form to
+                //   a server-side integration
+                document.getElementById('nonce').value = payload.nonce;
+                form.submit();
+              });
             });
+          });
     </script>
 </body>
 </html>
