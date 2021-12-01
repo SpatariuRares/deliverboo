@@ -22,7 +22,7 @@ class FoodController extends Controller
         // $food = Food::all();
         $data = [
             "success" => true,
-            "foods" => $food
+            "foods" => $food,
         ];
         return response()->json($data);
     }

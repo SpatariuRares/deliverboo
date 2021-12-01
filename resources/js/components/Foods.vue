@@ -30,8 +30,9 @@ export default {
     name: "Foods",
     data() {
         return {
-          url: "http://127.0.0.1:8000/api/",
+          url: "http://127.0.0.1:8000/api",
           foods: [],
+          users: window.location.pathname // fatto da marco non rubare
         };
     },
     created() {
@@ -40,12 +41,13 @@ export default {
     
     methods: {
       getFoods(){
-        axios.get(this.url + "sararares12-at-gmailcom" + "/foods").
+        axios.get(this.url + this.users + "/foods").
           then((response)=> {
-            this.foods = response.data.foods
-            console.log(this.foods)
+            this.foods = response.data.foods;
           });
       },
+      
     }
 };
+
 </script>
