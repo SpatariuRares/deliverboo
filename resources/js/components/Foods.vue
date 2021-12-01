@@ -30,24 +30,23 @@ export default {
     name: "Foods",
     data() {
         return {
-          url: "http://127.0.0.1:8000/api/",
+          url: "http://127.0.0.1:8000/api",
           foods: [],
+          users: window.location.pathname // fatto da marco non rubare
         };
     },
     created() {
       this.getFoods();
-      this.links();
     },
     methods: {
       getFoods(){
-        axios.get(this.url + "lorenzo" + "/foods").
+        axios.get(this.url + this.users + "/foods").
           then((response)=> {
-            this.foods = response.data.foods
+            this.foods = response.data.foods;
           });
       },
-      links: function() {
-        console.log(this.$route) // should work
-      }
+      
     }
 };
+
 </script>

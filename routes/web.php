@@ -32,6 +32,8 @@ Route::middleware('auth')->namespace('user')->prefix('user')->name('user.')
 
 Route::resource('/categories', 'CategoryController');
 Route::resource('/orders', 'OrderController');
+
+
 Route::get('/', 'UserController@index')->name('index');
 Route::get('/{slug}', 'UserController@show')->name('show');
 

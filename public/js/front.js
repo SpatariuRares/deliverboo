@@ -2000,24 +2000,22 @@ __webpack_require__.r(__webpack_exports__);
   name: "Foods",
   data: function data() {
     return {
-      url: "http://127.0.0.1:8000/api/",
-      foods: []
+      url: "http://127.0.0.1:8000/api",
+      foods: [],
+      users: window.location.pathname // fatto da marco non rubare
+
     };
   },
   created: function created() {
     this.getFoods();
-    this.links();
   },
   methods: {
     getFoods: function getFoods() {
       var _this = this;
 
-      axios.get(this.url + "lorenzo" + "/foods").then(function (response) {
+      axios.get(this.url + this.users + "/foods").then(function (response) {
         _this.foods = response.data.foods;
       });
-    },
-    links: function links() {
-      console.log(this.$route); // should work
     }
   }
 });
@@ -15827,7 +15825,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\spata\Documents\roba\corso boolean\progetto finale super power\deliverboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\sonni\Desktop\lezioni\Laravel\Pogetto-Finale\deliverboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
