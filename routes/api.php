@@ -23,4 +23,4 @@ Route::get('/generate', 'Api\paymentController@generate')->name('generate');
 Route::post('/makepayment', 'Api\paymentController@makePayment')->name('makepayment');
 Route::post('/makepayment', 'Api\OrderController@payment')->name('payment');
 
-Route::post('/foods', 'Api\FoodController@CardFood')->name('foods');
+Route::get('/{slug}/foods', 'Api\FoodController@index');

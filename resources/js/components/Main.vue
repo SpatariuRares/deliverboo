@@ -9,8 +9,8 @@
             <i class="fas fa-heart"></i>
           </a>
         </div>
-        <div class="card-body">
-          <h4 class="card-title">Pizza Margherita</h4>
+        <div class="card-body" v-for="(food,index) in foods" :key="index">
+          <h4 class="card-title">{{ food.name }}</h4>
             <p class="card-text">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet, explicabo cum tenetur alias quaerat quos impedit dolorem, iure doloribus possimus laboriosam consequatur corporis eos. Voluptas cumque dolor inventore magni fuga!
             </p>
@@ -43,9 +43,21 @@
 export default {
     name: "Main",
     data() {
-        return {};
+        return {
+          url: "http://127.0.0.1:8000/api/",
+          foods: [],
+        };
     },
-    created() {},
-    methods: {},
+    created() {
+      this.getFoods();
+    },
+    methods: {
+      getFoods(){
+        axios.get(this.url + "lorenzo" + "/foods").
+          then((response)=> {
+            this.foods = response.data.foods
+          });
+      }
+    },
 };
 </script>
