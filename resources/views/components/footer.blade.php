@@ -1,5 +1,5 @@
 <footer>
-    <div class="container-fluid bg-gray">
+    <div class="container-fluid bg-gray fixed-bottom bg-success">
         <div class="container p-4">
             <!-- row cards -->
             <div class="row row-cols-4 gx-2">
