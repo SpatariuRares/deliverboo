@@ -8,23 +8,26 @@ use Illuminate\Http\Request;
 use Braintree\Gateway;
 class paymentController extends Controller
 {
-    public function generate(Gateway $gateway){
-        $gateway = new Braintree\Gateway([
-            'environment' => 'sandbox',
-            'merchantId' => 'use_your_merchant_id',
-            'publicKey' => 'use_your_public_key',
-            'privateKey' => 'use_your_private_key'
-        ]);
-        echo($clientToken = $gateway->clientToken()->generate());
+
+    public $gateway;
+
+    public function __construct() {
+        $config = [
+            'environment' => env('BRAINTREE_ENVIRONMENT', 'sandbox'),
+            'merchantId' => env('BRAINTREE_MERCHANT_ID', 'gs5pvzp7fw34msdt'),
+            'publicKey' => env('BRAINTREE_PUBLIC_KEY', '7kzntb2kcwfvwdbc'),
+            'privateKey' => env('BRAINTREE_PRIVATE_KEY', 'b88ad25dbe8c172ca9635ea7726f1750')
+        ];
+
+        $this->gateway = new Braintree\Gateway($config);
+    }
+
+    public function generate(){
+        $token = $this->gateway->ClientToken()->generate();
+        return response()->json(['token' => $token]);
     }
     
     public function makePayment(Request $request,Gateway $gateway){
-        $gateway = new Braintree\Gateway([
-            'environment' => 'sandbox',
-            'merchantId' => 'ggkpsthsy2pmfyk2',
-            'publicKey' => 'c36dy8kbvswvkckk',
-            'privateKey' => '982379b23c8bd93288013c530896c814'
-        ]);
         $nonceFromTheClient = $_POST["payment_method_nonce"];
         $result=$gateway->transaction()->sale([
             'amount' => '10.00',
@@ -43,9 +46,9 @@ class paymentController extends Controller
         }
         else{
             $data=[
-            "success" => false,
-            "message"=>"Transazione fallita", 
-        ];
+                "success" => false,
+                "message"=>"Transazione fallita", 
+            ];
             return response()->json($data,404);
         }
         return "MakePayment";
