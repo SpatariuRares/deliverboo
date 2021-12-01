@@ -13,7 +13,7 @@
 </style>
 
 
-<div class="container-fluid">
+<div class="container">
     <div class="row row-cols-4 g-3 d-flex">
             @foreach ($users as $user)
                 @if($user["slug"] != null)

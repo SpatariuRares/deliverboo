@@ -27,26 +27,30 @@
         
     
     <div class="container-fluid">
+        <h2 class="text-success my-5">Menù</h2>
+
         <div class="row">
-            <div class="col-12 mb-5">
-                <h2>Menù</h2>
-            </div>
-        </div>
-        <div class="row row-cols-3 g-3">
-            @foreach ($user->foods as $food)
-                <div class="col p-4 border d-flex justify-content-between align-items-center">
-                    <div>
-                        <h4>{{$food->name}}</h4>
-                        <p>{{$food->ingrediends}}</p>
-                        <p>{{$food->price}}</p>
-                    </div>
-                    <div class="test">
-                        @if($food->thumb)
-                            <img src="{{ asset('storage/'.$food->thumb)}}" alt="{{ $food->name}}">
-                        @endif
-                    </div>           
+            <div class="col-8">
+                <div class="row row-cols-2">
+                    @foreach ($user->foods as $food)
+                        <div class="col border p-4">
+                            <div>
+                                <h4>{{$food->name}}</h4>
+                                <p>{{$food->ingrediends}}</p>
+                                <p>{{$food->price}}</p>
+                            </div>
+                            <div class="">
+                                @if($food->thumb)
+                                    <img src="{{ asset('storage/'.$food->thumb)}}" alt="{{ $food->name}}">
+                                @endif
+                            </div>           
+                        </div>
+                    @endforeach
                 </div>
-            @endforeach
+            </div>
+            <div class="col-4">
+                <h3>Questa sarà la sezione del carrello</h3>
+            </div>
         </div>
     </div>
 @endsection
