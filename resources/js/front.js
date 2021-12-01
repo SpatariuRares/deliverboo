@@ -1,7 +1,7 @@
 window.Vue = require('vue');
 window.axios = require('axios');
 
-import App from './views/App';
+import App from './views/Menu';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -9,6 +9,6 @@ import App from './views/App';
  */
 
 const app = new Vue({
-    el: '#app',
+    el: '#menu',
     render: h =>h(App)
 });
