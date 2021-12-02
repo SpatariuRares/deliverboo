@@ -30,9 +30,14 @@ Route::middleware('auth')->namespace('user')->prefix('user')->name('user.')
 
 // Route::get('/', 'HomeController@index')->name('home');
 
+<<<<<<< HEAD
 Route::resource('/categories', 'CategoryController'); 
+=======
+Route::resource('/categories', 'CategoryController');
+>>>>>>> 022e1b493029641dfcc45198276f819efd34ade3
 Route::get('/pay', "PayController@payment")->name('pay');
-
+Route::get('/checkout', "PayController@checkout")->name('checkout');
+//Route::get('/{any}', 'HomeController@index')->where('any', '.*');
 
 Route::get('/', 'UserController@index')->name('index');
 Route::get('/{slug}', 'UserController@show')->name('show');

@@ -28,7 +28,8 @@ class UserController extends Controller
         $user = User::where('slug', $slug)->first();
         if(!$user){
             abort(404);
-        }return view('guest.restaurant.show', compact('user'));
+        }
+        return view('guest.restaurant.show', compact('user'));
     }
 
     

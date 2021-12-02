@@ -9,4 +9,9 @@ class PayController extends Controller
     public function payment(){
         return view('guest.payment');
     }
+    public function checkout(){
+        return view('guest.checkout');
+    }
 }
+
+
