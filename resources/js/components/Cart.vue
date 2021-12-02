@@ -53,6 +53,7 @@ export default {
 			brain:false,
 			form: {
 				token:"",
+				food:[],
 			}
 		};
     },

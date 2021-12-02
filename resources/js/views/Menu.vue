@@ -1,7 +1,6 @@
 <template>
   <div class="container" id="ciao">
     <div class="row">
-      <Router-view/>
       <Foods class="col-8"/>
       <Cart class="col-4"/>
     </div>

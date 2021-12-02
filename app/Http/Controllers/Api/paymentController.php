@@ -36,7 +36,7 @@ class paymentController extends Controller
         //$nonceFromTheClient = $_POST["payment_method_nonce"];
         //return response()->json($request);;
         $result=$gateway->transaction()->sale([
-            'amount' => '1000.00',
+            'amount' => '10.00',
             'paymentMethodNonce' =>$request->token,
             // 'deviceData' => $deviceDataFromTheClient,
             'options' => [
