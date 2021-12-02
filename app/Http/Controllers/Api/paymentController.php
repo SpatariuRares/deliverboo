@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Braintree\Gateway;
+
 class paymentController extends Controller
 {
 
@@ -19,19 +20,23 @@ class paymentController extends Controller
             'privateKey' => env('BRAINTREE_PRIVATE_KEY', 'b88ad25dbe8c172ca9635ea7726f1750')
         ];
 
-        $this->gateway = new Braintree\Gateway($config);
+        $this->gateway = new Gateway($config);
     }
 
-    public function generate(){
-        $token = $this->gateway->ClientToken()->generate();
-        return response()->json(['token' => $token]);
+    public function generate(Gateway $gateway){
+        $token=$gateway->clientToken()->generate();
+        $data=[
+            "success" => true,
+            "token"=>$token, 
+        ];
+        return response()->json($data,200);
     }
     
     public function makePayment(Request $request,Gateway $gateway){
-        $nonceFromTheClient = $_POST["payment_method_nonce"];
+        //$nonceFromTheClient = $_POST["payment_method_nonce"];
         $result=$gateway->transaction()->sale([
             'amount' => '10.00',
-            'paymentMethodNonce' => $nonceFromTheClient,
+            'paymentMethodNonce' => "fake-valid-nonce",
             // 'deviceData' => $deviceDataFromTheClient,
             'options' => [
                 'submitForSettlement' => True

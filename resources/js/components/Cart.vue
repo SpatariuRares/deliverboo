@@ -1,6 +1,6 @@
 <template>
 	<div class="">
-		<div class="border rounded p-5">
+		<!-- <div class="border rounded p-5">
 			<div class="Header">
 				<h3 class="Heading">Shopping Cart</h3>
 				<h5 class="Action">Remove all</h5>
@@ -34,20 +34,49 @@
 				</div>
 				<button class="button">Checkout</button>
 			</div>
-		</div>
+		</div> -->
+		{{form}}
+	<Payment @onSuccess="paymentOnSuccess"/>
+		
 	</div>
 	
 </template>
 
 <script>
+import Payment from "../components/Payment.vue";
 export default {
     name: "Cart",
-    data() {
-        return {};
+	components: {
+    	Payment,
+	},
+    data(){
+        return {
+			token: '',
+			form: {
+				token:"",
+			}
+		};
     },
-    created() {},
-    methods: {},
-};
+	created(){
+		this.getToken();
+	},
+    methods: {
+		getToken(){
+			axios.get("http://127.0.0.1:8000/api/generate").then((response) => {
+				this.token = response.data.token
+			})
+		},
+		paymentOnSuccess(nonce){
+			this.form.token=nonce
+			this.buy	
+		},
+		buy () {
+			axios.post("http://127.0.0.1:8000/api/makePayment").then((response) => {
+				this.token = response.data.token
+			})
+    	}
+	}
+}
 </script>
 
 <style lang="scss" scoped>

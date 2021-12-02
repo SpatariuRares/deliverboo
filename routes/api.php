@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/generate', 'Api\paymentController@generate')->name('generate');
 
+//Route::get('/makepayment', 'Api\paymentController@makePayment')->name('makepayment');
 Route::post('/makepayment', 'Api\paymentController@makePayment')->name('makepayment');
-Route::post('/makepayment', 'Api\OrderController@payment')->name('payment');
 
 Route::get('/{slug}/foods', 'Api\FoodController@index');
