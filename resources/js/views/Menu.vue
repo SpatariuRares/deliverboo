@@ -21,9 +21,6 @@ export default {
         cart:[],
     };
   },
-  mounted() {
-    console.log(this.studies); 
-  },
   methods: {
     updateCart(id){
       this.cart.push(id);

@@ -39,7 +39,7 @@
                                 @csrf
                             </form> 
                         </ul>
-                    </div>           
+                    </div>
                 @endguest 
             </div>
         </div>

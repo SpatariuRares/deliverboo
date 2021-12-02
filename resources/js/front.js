@@ -14,7 +14,7 @@ Vue.use(BootstrapVue)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const Menu= new Vue({
+const menu= new Vue({
     el: '#menu',
     render: h =>h(Menu),
 });
@@ -26,7 +26,7 @@ import Restaurant from './views/Restaurant';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const Restaurant = new Vue({
+const restaurant = new Vue({
     el: '#restaurant',
     render: h =>h(Restaurant)
 });
