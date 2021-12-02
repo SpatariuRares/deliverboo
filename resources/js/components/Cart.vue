@@ -74,11 +74,9 @@ export default {
 		buy () {
 			axios.post("http://127.0.0.1:8000/api/makepayment", { ...this.form }).then((response) => {
 				console.log(response)
-				this.$router.push({ path: '/checkout/thankyou' })
+				window.location.pathname="/checkout"
 			})
 			
-
-
     	}
 	}
 }

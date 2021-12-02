@@ -2,9 +2,12 @@ window.Vue = require('vue');
 window.axios = require('axios');
 
 import vueBraintree from 'vue-braintree'
+import BootstrapVue from 'bootstrap-vue' //Importing
+
 
 import Menu from './views/Menu';
 Vue.use(vueBraintree)
+Vue.use(BootstrapVue)
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -13,5 +16,5 @@ Vue.use(vueBraintree)
 
 const app = new Vue({
     el: '#menu',
-    render: h =>h(Menu)
+    render: h =>h(Menu),
 });
