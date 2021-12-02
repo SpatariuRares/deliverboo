@@ -16,7 +16,7 @@ import Payment from "../components/Payment.vue";
 export default {
     name: "Cart",
 	components: {
-    	Payment,
+		Payment,
 	},
 	props:['cart'],
     data(){
@@ -55,7 +55,7 @@ export default {
 		},
 		buy () {
 			axios.post("http://127.0.0.1:8000/api/makepayment", { ...this.form }).then((response) => {
-				console.log(response.data)
+				// console.log(response.data)
 				window.location.pathname="/checkout"
 			})
 		},
