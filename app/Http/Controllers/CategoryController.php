@@ -11,6 +11,7 @@ class CategoryController extends Controller
     public function index()
     {
         $Categories = Category::all();
+        // $user = $Categories->users
         return view('guest.categories.index', compact('Categories'));
     }
 

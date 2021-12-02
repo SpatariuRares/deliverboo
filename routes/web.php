@@ -30,7 +30,7 @@ Route::middleware('auth')->namespace('user')->prefix('user')->name('user.')
 
 // Route::get('/', 'HomeController@index')->name('home');
 
-Route::resource('/categories', 'CategoriesController');
+Route::resource('/categories', 'CategoryController'); 
 Route::get('/pay', "PayController@payment")->name('pay');
 
 

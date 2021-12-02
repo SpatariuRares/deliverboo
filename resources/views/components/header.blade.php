@@ -4,12 +4,12 @@
             <div class="col-3 d-flex justify-content-center">
                 <a href="{{ route('index') }}"> logo</a>
             </div>
-            <div class="col">
+            {{-- <div class="col">
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-            </div>
+            </div> --}}
             @guest
                 <div class="col-3 d-flex justify-content-center">
                     <a class="btn btn-success mx-3" href="{{ route('login') }}">Accedi</a>

@@ -79,8 +79,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
-    {
+    public function update(Request $request)
+    { 
+
+        $user = Auth::user(); 
         //VALIDO I DATI
         $request->validate([
             "username" => "required | max:30",
@@ -113,6 +115,7 @@ class UserController extends Controller
         
         
         if(array_key_exists("categories", $form_data)) {
+            // dd($user, $form_data["categories"]);
             $user->categories()->sync($form_data["categories"]);
         }
         else {

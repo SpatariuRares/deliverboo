@@ -28,11 +28,11 @@
             <nav class="col-12 d-flex align-items-center justify-content-center bg-dark text-light p-3 mb-3">
                 <div class="">
                     @guest
-                        <ul class="nav flex-column">
+                        {{-- <ul class="nav flex-column">
                             <li class="nav-item">
                                 Hai voglia di qualcosa in particolare? Dai un occhio alla sezione <a class="text-success" href="{{route('categories.index')}}">categorie</a>
                             </li>
-                        </ul>
+                        </ul> --}}
                         @else
                         <ul class="nav flex-column">
                             <li class="nav-item">
