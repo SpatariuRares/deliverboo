@@ -1,8 +1,8 @@
 <template>
   <div class="container" id="ciao">
     <div class="row">
-      <Foods class="col-8"/>
-      <Cart class="col-4"/>
+      <Foods class="col-8" @updateCart="updateCart"/>
+      <Cart class="col-4" :cart="cart"/>
     </div>
   </div>
 </template>
@@ -16,6 +16,19 @@ export default {
     Cart,
     Foods,
   },
+  data(){
+      return {
+        cart:[],
+    };
+  },
+  mounted() {
+    console.log(this.studies); 
+  },
+  methods: {
+    updateCart(id){
+      this.cart.push(id);
+    }
+  }
 };
 </script>
 

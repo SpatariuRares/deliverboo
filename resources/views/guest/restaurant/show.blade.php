@@ -9,6 +9,9 @@
                 </div>
             </div>
             <div class="col">
+                @if($user->thumb)
+                    <img src="{{ asset('storage/'.$user->thumb)}}" alt="{{ $user->name}}">
+                @endif
                 <h1>{{$user->username}}</h1>
                 <h4>
                     @foreach ($user->categories as $category)
@@ -22,11 +25,7 @@
             </div>
         </div>
     </div>
-
-    
-        
-    
-    <div class="container-fluid" >
+    <div class="container" >
         <div class="row">
             <div class="col-12 mb-5">
                 <h2>Menù</h2>

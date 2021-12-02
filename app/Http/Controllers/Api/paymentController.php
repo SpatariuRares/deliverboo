@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Braintree\Gateway;
-
+use App\Food;
 class paymentController extends Controller
 {
 
@@ -33,22 +33,24 @@ class paymentController extends Controller
     }
     
     public function makePayment(Request $request,Gateway $gateway){
-        //$nonceFromTheClient = $_POST["payment_method_nonce"];
-        //return response()->json($request);;
+        $amount=0;
+        foreach($request->food as $id){
+            $food=Food::where('id', $id)->first();
+            $amount+=$food->price;
+        }
         $result=$gateway->transaction()->sale([
-            'amount' => '10.00',
+            'amount' => $amount,
             'paymentMethodNonce' =>$request->token,
             // 'deviceData' => $deviceDataFromTheClient,
             'options' => [
                 'submitForSettlement' => True
             ]
         ]);
-        return response()->json($result);
         if($result->success){
             $data=[
-            "success" => true, 
-            "message"=>"Transazione effetuata", 
-        ];
+                "success" => true, 
+                "message"=>"Transazione effetuata", 
+            ];
             return response()->json($data,200);
         }
         else{
@@ -58,5 +60,17 @@ class paymentController extends Controller
             ];
             return response()->json($data,404);
         }
+    }
+
+    public function foodOrder(Request $request){
+        $cart=[];
+        foreach($request->food as $food ){
+            $cart[] = Food::where('id', $food)->first();
+        }
+        $data=[
+            "success" => true,
+            "cart"=>$cart, 
+        ];
+        return response()->json($data,200);
     }
 }

@@ -1,40 +1,11 @@
 <template>
 	<div class="">
-		<!-- <div class="border rounded p-5">
-			<div class="Header">
-				<h3 class="Heading">Shopping Cart</h3>
-				<h5 class="Action">Remove all</h5>
-			</div>
-			<div class="d-flex justify-content-between align-items-center">
-				<div class="image-box">
-					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp-HDTllTjRKs7e9luW7TKTXiuW3vyuHAwiA&usqp=CAU"/>
-				</div>
-				<div class="about">
-					<h2>Pizza</h2>
-				</div>
-				<div class="counter">
-					<div class="btn">+</div>
-					<div class="count">2</div>
-					<div class="btn">-</div>
-				</div>
-				<div class="prices">
-					<div class="amount">$2.99</div>
-					<div class="save"><u>Save for later</u></div>
-					<div class="remove"><u>Remove</u></div>
-				</div>
-			</div>
-			<hr> 
-			<div class="">
-				<div class="total">
-					<div>
-						<div class="Subtotal">Sub-Total</div>
-						<div class="items">2 items</div>
-					</div>
-					<div class="total-amount">$6.18</div>
-				</div>
-				<button class="button">Checkout</button>
-			</div>
-		</div> -->
+		<div v-if="showOrder.length!=0">
+			<div v-for="food in showOrder" :key="food.id">
+				<div>{{food.name}} at price: {{food.price}}</div>
+				<!-- <button @click="minus(food.id)">-</button>{{numerize[food.id]}}<button @click="plus(food.id)">-</button> -->
+			</div>	
+		</div>
 		<Payment v-if="brain" :authorization="token" @onSuccess="paymentOnSuccess"/>
 	</div>
 	
@@ -47,10 +18,12 @@ export default {
 	components: {
     	Payment,
 	},
+	props:['cart'],
     data(){
         return {
 			token: '',
 			brain:false,
+			showOrder:[],
 			form: {
 				token:"",
 				food:[],
@@ -59,6 +32,14 @@ export default {
     },
 	created(){
 		this.getToken();
+	},
+	watch: { 
+      	cart: function() { // watch it
+			this.form.food = this.cart;
+			axios.post("http://127.0.0.1:8000/api/food/cart",{ ...this.form }).then((response) => {
+				this.showOrder=response.data.cart
+			})
+        }
 	},
     methods: {
 		getToken(){
@@ -74,11 +55,13 @@ export default {
 		},
 		buy () {
 			axios.post("http://127.0.0.1:8000/api/makepayment", { ...this.form }).then((response) => {
-				console.log(response)
+				console.log(response.data)
 				window.location.pathname="/checkout"
 			})
-			
-    	}
+		},
+		// minus(id){
+
+		// }
 	}
 }
 </script>

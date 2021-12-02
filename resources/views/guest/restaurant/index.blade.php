@@ -19,9 +19,12 @@
                 @if($user["slug"] != null)
                     <div class="col">
                         <div class="img bg-dark rounded">
-                            <img src="" alt="">
+                            @if($user->thumb)
+                                <img src="{{ asset('storage/'.$user->thumb)}}" alt="{{ $user->name}}">
+                            @endif
                         </div>
                         <div class="description py-2">
+                            
                             @dump($user['slug'])
                             <a href="{{ route('show', $user['slug']) }}">
                                 <h4>{{ $user['username'] }}</h4>
