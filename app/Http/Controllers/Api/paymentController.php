@@ -34,14 +34,16 @@ class paymentController extends Controller
     
     public function makePayment(Request $request,Gateway $gateway){
         //$nonceFromTheClient = $_POST["payment_method_nonce"];
+        //return response()->json($request);;
         $result=$gateway->transaction()->sale([
-            'amount' => '10.00',
-            'paymentMethodNonce' => "fake-valid-nonce",
+            'amount' => '1000.00',
+            'paymentMethodNonce' =>$request->token,
             // 'deviceData' => $deviceDataFromTheClient,
             'options' => [
                 'submitForSettlement' => True
             ]
         ]);
+        return response()->json($result);
         if($result->success){
             $data=[
             "success" => true, 
@@ -56,6 +58,5 @@ class paymentController extends Controller
             ];
             return response()->json($data,404);
         }
-        return "MakePayment";
     }
 }

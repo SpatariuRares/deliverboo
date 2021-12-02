@@ -35,9 +35,7 @@
 				<button class="button">Checkout</button>
 			</div>
 		</div> -->
-		{{form}}
-	<Payment @onSuccess="paymentOnSuccess"/>
-		
+		<Payment v-if="brain" :authorization="token" @onSuccess="paymentOnSuccess"/>
 	</div>
 	
 </template>
@@ -52,6 +50,7 @@ export default {
     data(){
         return {
 			token: '',
+			brain:false,
 			form: {
 				token:"",
 			}
@@ -64,16 +63,22 @@ export default {
 		getToken(){
 			axios.get("http://127.0.0.1:8000/api/generate").then((response) => {
 				this.token = response.data.token
+				//console.log("token: " + response.data.token)
+				this.brain=true;
 			})
 		},
 		paymentOnSuccess(nonce){
 			this.form.token=nonce
-			this.buy	
+			this.buy()
 		},
 		buy () {
-			axios.post("http://127.0.0.1:8000/api/makePayment").then((response) => {
-				this.token = response.data.token
+			axios.post("http://127.0.0.1:8000/api/makepayment", { ...this.form }).then((response) => {
+				console.log(response)
+				this.$router.push({ path: '/checkout/thankyou' })
 			})
+			
+
+
     	}
 	}
 }

@@ -1,6 +1,6 @@
 <template>
     <v-braintree
-        authorization = "sandbox_g42y39zw_348pk9cgf3bgyw2b"
+        :authorization = "authorization"
         @success="onSuccess"
         @error="onError"
         @load="onLoad"
@@ -10,20 +10,18 @@
 <script>
 export default {
 name: "Payment",
-props:{
-    //authorization
-},
+props:["authorization"],
 methods:{
     onLoad (){
         this.$emit("loading")
     },
     onSuccess (payload) {
-        let nonce = payload.nonce;
-        this.$emit("onSuccess",nonce)
+            let nonce = payload.nonce;
+            this.$emit("onSuccess",nonce)
         },
     onError (error) {
         let message = error.message;
-         console.log(message)
+            console.log(message)
         // Whoops, an error has occured while trying to get the nonce
         }
     }
