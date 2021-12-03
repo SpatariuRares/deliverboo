@@ -1,8 +1,8 @@
 <template>
   <div class="container" id="ciao">
     <div class="row">
-      <Foods class="col-8" @updateCart="updateCart"/>
-      <Cart class="col-4" :cart="cart"/>
+      <Foods class="col-8" @updateCart="updateCart" :cart="cart"/>
+      <Cart class="col-4" @deleteCartItem="deleteCartItem" :cart="cart"/>
     </div>
   </div>
 </template>
@@ -24,6 +24,9 @@ export default {
   methods: {
     updateCart(id){
       this.cart.push(id);
+    },
+    deleteCartItem(index){
+      this.cart.slice(index,1)
     }
   }
 };

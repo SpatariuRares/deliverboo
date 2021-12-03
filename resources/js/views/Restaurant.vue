@@ -20,7 +20,6 @@ export default {
   },
   created() {
     this.getRestaurant();
-    this.getCategories();
   },
   methods: {
     search(text) {
@@ -32,17 +31,7 @@ export default {
           .then(response => {
             // console.log(response);
             this.restaurants = response.data.users;
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-    },
-    getCategories() {
-      axios
-          .get(this.url)
-          .then(response => {
-            console.log(response);
-            this.categories = response.data.categories;
+            this.categories = response.data.categories;  
           })
           .catch((error) => {
             console.log(error);

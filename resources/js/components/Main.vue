@@ -60,14 +60,14 @@ export default {
         },
     methods: {
         
-            input(e) {
-                console.log(e);
-            },
-            getSearch() {
-                this.textSearch.forEach
-            },
+        input(e) {
+            console.log(e);
         },
-    };
+        getSearch() {
+            this.textSearch.forEach
+        },
+    },
+};
 
 </script>
 

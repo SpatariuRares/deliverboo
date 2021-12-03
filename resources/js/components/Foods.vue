@@ -25,14 +25,19 @@ export default {
         return {
           url: "http://127.0.0.1:8000/api",
           foods: [],
-          cart: [],
-          users: window.location.pathname, // fatto da marco non rubare
+          users: window.location.pathname, 
         };
     },
+    props:['cart'],
     created() {
       this.getFoods();
     },
-    
+    watch: { 
+      	// carts: function() { // watch it
+        //   console.log(this.carts,this.cart);
+        //   this.cart=this.carts
+        // }
+    },
     methods: {
       getFoods(){
         axios.get(this.url + this.users + "/foods").
@@ -41,7 +46,6 @@ export default {
           });
       },
       addToCart(id){
-        this.cart.push(id);
         this.$emit('updateCart', id)
       }
     }

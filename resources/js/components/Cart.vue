@@ -1,11 +1,12 @@
 <template>
 	<div class="">
-		<div v-if="showOrder.length!=0">
-			<div v-for="food in showOrder" :key="food.id">
+		<div v-if="cart.length!=0">
+			<div v-for="(food,index) in showOrder" :key="food.id">
 				<div>{{food.name}} at price: {{food.price}}</div>
-				<!-- <button @click="minus(food.id)">-</button>{{numerize[food.id]}}<button @click="plus(food.id)">-</button> -->
+				<button @click="minus(index)">-</button>{{form.quantity[index]}}<button @click="plus(index)">+</button>
 			</div>	
 		</div>
+		<FormClient @formData="FormData"/>
 		<Payment v-if="brain" :authorization="token" @onSuccess="paymentOnSuccess"/>
 	</div>
 	
@@ -13,9 +14,11 @@
 
 <script>
 import Payment from "../components/Payment.vue";
+import FormClient from "../components/FormClient.vue";
 export default {
     name: "Cart",
 	components: {
+		FormClient,
 		Payment,
 	},
 	props:['cart'],
@@ -23,8 +26,11 @@ export default {
         return {
 			token: '',
 			brain:false,
+			oldLength:0,
 			showOrder:[],
 			form: {
+				dataClient:[],
+				quantity:[],
 				token:"",
 				food:[],
 			}
@@ -37,15 +43,17 @@ export default {
       	cart: function() { // watch it
 			this.form.food = this.cart;
 			axios.post("http://127.0.0.1:8000/api/food/cart",{ ...this.form }).then((response) => {
-				this.showOrder=response.data.cart
+				this.showOrder=response.data.cart;
 			})
+			if(this.oldLength<this.cart.length){
+				this.form.quantity.push(1);
+			}
         }
 	},
     methods: {
 		getToken(){
 			axios.get("http://127.0.0.1:8000/api/generate").then((response) => {
 				this.token = response.data.token
-				//console.log("token: " + response.data.token)
 				this.brain=true;
 			})
 		},
@@ -55,13 +63,26 @@ export default {
 		},
 		buy () {
 			axios.post("http://127.0.0.1:8000/api/makepayment", { ...this.form }).then((response) => {
-				// console.log(response.data)
 				window.location.pathname="/checkout"
 			})
 		},
-		// minus(id){
-
-		// }
+		minus(index){
+			this.form.quantity[index]-=1;
+			if(this.form.quantity[index]<1){
+				this.form.quantity.splice(index,1)
+				this.form.food.splice(index,1)
+				this.showOrder.splice(index,1)
+				this.$emit('deleteCartItem', index)
+			}
+			this.$forceUpdate();
+		},
+		plus(index){
+			this.form.quantity[index]+=1;
+			this.$forceUpdate();
+		},
+		FormData(form){
+			this.data.FormClient=form
+		}
 	}
 }
 </script>
