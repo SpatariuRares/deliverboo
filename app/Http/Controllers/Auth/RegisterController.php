@@ -92,7 +92,7 @@ class RegisterController extends Controller
             'PIVA' => $data['PIVA'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'thumb' => 'https://mod.go.ke/wp-content/uploads/2021/04/default-profile-pic.png'
+            // 'thumb' => 'https://mod.go.ke/wp-content/uploads/2021/04/default-profile-pic.png'
         ]);
 
         if(isset($data['categories'])) {

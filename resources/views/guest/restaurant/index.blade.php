@@ -2,18 +2,7 @@
 
 
 @section('content')
-<style>
-    a {
-        color: black;
-    }
-
-    a:hover {
-        color: grey;
-    }
-</style>
-
-
-<div class="container">
+<div>
     <div class="row row-cols-4 g-3 d-flex"  id="restaurant">
         {{-- @foreach ($users as $user)
             @if($user["slug"] != null)
