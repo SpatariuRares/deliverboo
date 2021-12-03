@@ -19,9 +19,12 @@
 
     </div> -->
     <div class="categories">
-        <ul v-for="category in dataApi.categories" :key="category.id">
-            <li @click="getRestaurantCat(category.id)">
-                <a class="btn btn-success m-2 text-white" href="#">{{ category.name }}</a>
+        <ul class="d-flex">
+             <li @click="getData()">
+                <p class="btn btn-success m-2 text-white">Tutte</p>
+            </li>
+            <li v-for="category in dataApi.categories" :key="category.id" @click="getRestaurantCat(category.id)">
+                <p class="btn btn-success m-2 text-white">{{ category.name }}</p>
             </li>
         </ul>
     </div>
@@ -35,7 +38,7 @@
             <div class="card__body">
                 <a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a>
                 <p class="address">{{ restaurant.address }}</p>
-                <p>Italiana</p>
+                <p>{{  }}</p>
             </div>
         </div>
     </div>
@@ -51,9 +54,10 @@ export default {
         return {
             dataApi: [],
             url: "http://127.0.0.1:8000/api/restaurant",
-            form : {
-				id : 1,
-			}
+            // form : {
+			// 	id : "",
+			// }
+            // categoryFilter: [],
         }
     },
     created() {
@@ -61,10 +65,13 @@ export default {
     },
     methods: {
         getRestaurantCat(id) {
-            this.form.id = id;
-            console.log(this.form.id);
-            axios.get("http://127.0.0.1:8000/api/categoryShow", { ...this.form.id }).then((response) => {
+            // console.log(id);
+            // this.form.id = id;
+            // console.log(this.form.id);
+            axios.get("http://127.0.0.1:8000/api/categoryShow/" + id).then((response) => {
 				console.log(response)
+                this.dataApi.users = response.data.users;
+                console.log(response.data.users);
 			})
         },
         getData() {
