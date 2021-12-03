@@ -1,7 +1,7 @@
 <template>
-	<div class="bg-success p-3" style="height= 100px">
-		<FormClient @formData="FormData"/>
-		<Payment v-if="brain" :authorization="token" @onSuccess="paymentOnSuccess"/>
+	<div class="bg-success p-3">
+		<FormClient v-if="dataForm" @updateForm="FormData"/>
+		<Payment v-if="brain && !dataForm" :authorization="token" @onSuccess="paymentOnSuccess"/>
 		<h3 class="text-white my-2">Ecco il tuo ordine:</h3>
 		<div v-if="showOrder.length!=0">
 			<div v-for="(food,index) in showOrder" :key="food.id" class="d-flex justify-content-between">
@@ -32,6 +32,7 @@ export default {
         return {
 			token: '',
 			brain:false,
+			dataForm:true,
 			oldLength:0,
 			showOrder:[],
 			form: {
@@ -87,7 +88,8 @@ export default {
 			this.$forceUpdate();
 		},
 		FormData(form){
-			this.data.FormClient=form
+			this.form.dataClient=form
+			this.dataForm=false
 		}
 	}
 }

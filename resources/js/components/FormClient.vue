@@ -1,19 +1,19 @@
 <template>
-	<form action="" method="post">
+	<div>
         <div class="form-group">
             <label for="email">email</label>
-            <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+            <input type="email" v-model="form.email" name="email" class="form-control" id="email" required placeholder="Enter email">
         </div>
         <div class="form-group">
             <label for="address">Address</label>
-            <input type="text" name="address" class="form-control" id="address" placeholder="Enter address">
+            <input type="text" v-model="form.address" name="address" class="form-control" id="address" required placeholder="Enter address">
         </div>
         <div class="form-group">
             <label for="fullName">FullName</label>
-            <input type="text" name="fullName" class="form-control" id="fullName" placeholder="Enter fullName">
+            <input type="text" v-model="form.fullName" name="fullName" class="form-control" id="fullName" required placeholder="Enter fullName">
         </div>
-        <button type="submit" class="btn btn-success my-3">Submit</button>
-    </form>
+        <button @click="checkform()" type="submit" class="btn btn-success my-3">Submit</button>
+    </div>
 </template>
 
 <script>
@@ -21,9 +21,23 @@ export default {
     name: "Formdata",
     data(){
         return {
-            
+            form: {
+                email: "",
+                fullName: "",
+                address: "",
+            }
 		};
     },
+    methods: {
+        checkform(){
+            if(this.form.email.includes("@") && this.form.email.includes(".") && this.form.email.indexOf("@")<this.form.email.indexOf(".")){
+                this.updateForm();
+            }
+        },
+        updateForm(){
+            this.$emit('updateForm', this.form)
+        }
+    }
 }
 </script>
 
