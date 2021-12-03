@@ -12,7 +12,7 @@
             <label for="fullName">FullName</label>
             <input type="text" name="fullName" class="form-control" id="fullName" placeholder="Enter fullName">
         </div>
-        <button type="submit" class="btn btn-success my-3">Submit</button>
+        <button type="submit" class="btn btn-outline-secondary my-3">Submit</button>
     </form>
 </template>
 

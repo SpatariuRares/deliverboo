@@ -1,18 +1,21 @@
 <template>
-	<div class="bg-success p-3" style="height= 100px">
+	<div class="p-3" style="height= 100px">
 		<FormClient @formData="FormData"/>
 		<Payment v-if="brain" :authorization="token" @onSuccess="paymentOnSuccess"/>
-		<h3 class="text-white my-2">Ecco il tuo ordine:</h3>
-		<div v-if="showOrder.length!=0">
-			<div v-for="(food,index) in showOrder" :key="food.id" class="d-flex justify-content-between">
-				<div class="text-white">
-					{{food.name}}
-				</div>
-				<button @click="minus(index)">-</button>{{form.quantity[index]}}<button @click="plus(index)">+</button>
-				<div class="text-white">
-					€{{food.price}}	
-				</div>
-			</div>	
+		<div class="text-white p-3 bg-dark mt-3">
+			<h3>Ecco il tuo ordine:</h3>
+		
+			<div v-if="showOrder.length!=0">
+				<div v-for="(food,index) in showOrder" :key="food.id" class="d-flex justify-content-between my-2">
+					<div class="text-white">
+						{{food.name}}
+					</div>
+					<button class="btn circle btn-success" @click="minus(index)">-</button>{{form.quantity[index]}}<button class="btn circle btn-success" @click="plus(index)">+</button>
+					<div class="text-white">
+						€{{food.price}}	
+					</div>
+				</div>	
+			</div>
 		</div>
 	</div>
 </template>
