@@ -1,5 +1,5 @@
 <template>
-<div class="wrapper">
+<div>
     <!-- <div class="col">
         <div class="row">
             <div>
@@ -18,7 +18,7 @@
         </div>
 
     </div> -->
-    <div class="categories">
+    <div class="categories d-flex justify-content-center">
         <ul v-for="category in dataApi.categories" :key="category.id">
             <li @click="getRestaurantCat(category.id)">
                 <a class="btn btn-success m-2 text-white" href="#">{{ category.name }}</a>
@@ -91,14 +91,6 @@ export default {
         box-sizing: border-box;
         padding: 0;
         margin: 0;
-    }
-
-    .wrapper {
-        background-color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
     }
 
     .container {

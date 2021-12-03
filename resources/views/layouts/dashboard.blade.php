@@ -24,7 +24,7 @@
     @include('components.header')
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row pb-5 bg-white">
             <main role="main" class="container-fluid mt-4">
                 @yield('content')
             </main>

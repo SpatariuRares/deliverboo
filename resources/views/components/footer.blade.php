@@ -1,5 +1,5 @@
 <footer>
-    <div class="container-fluid mt-5 bg-success position-absolute bottom-0">
+    <div class="container-fluid pt-2 bg-success position-absolute bottom-0">
         <div class="container p-4">
             <!-- row cards -->
             <div class="row row-cols-4 gx-2">
