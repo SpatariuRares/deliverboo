@@ -1,5 +1,5 @@
 <template>
-  <div class="container" id="ciao">
+  <div class="container-fluid" id="ciao">
     <div class="row">
       <Foods class="col-8" @updateCart="updateCart" :cart="cart"/>
       <Cart class="col-4" @deleteCartItem="deleteCartItem" :cart="cart"/>
