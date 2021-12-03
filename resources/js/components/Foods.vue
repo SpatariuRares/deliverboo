@@ -1,9 +1,9 @@
 <template>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-12 col-sm-8 col-md-6 col-lg-4" v-for="food in foods" :key="food.id">
-      <div class="card">
-        <img class="card-img" :src="`/storage/${food.thumb}`" alt="">
+  <div class="row row-cols-3">
+    <div class="col" v-for="food in foods" :key="food.id">
+      <div class="card p-4 mb-4">
+        <img class="card-img mb-4" :src="`/storage/${food.thumb}`" alt="">
           <h4 class="card-title">{{ food.name }}</h4>
             <p class="card-text">
                 {{ food.ingredients}}
