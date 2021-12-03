@@ -4,7 +4,7 @@
 		<Payment v-if="brain" :authorization="token" @onSuccess="paymentOnSuccess"/>
 		<h3 class="text-white my-2">Ecco il tuo ordine:</h3>
 		<div v-if="showOrder.length!=0">
-			<div v-for="food in showOrder" :key="food.id" class="d-flex justify-content-between">
+			<div v-for="(food,index) in showOrder" :key="food.id" class="d-flex justify-content-between">
 				<div class="text-white">
 					{{food.name}}
 				</div>
@@ -16,6 +16,7 @@
 		</div>
 	</div>
 </template>
+
 
 <script>
 import Payment from "../components/Payment.vue";

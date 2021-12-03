@@ -10,8 +10,8 @@
                     @endif
                 </div>
             </div>
-            <div class="col d-flex flex-column justify-content-center">
-                <h1 style="font-size: 100px">{{$user->username}}</h1>
+            <div class="col-6 d-flex flex-column justify-content-center">
+                <h1>{{$user->username}}</h1>
                 <h5 class="text-muted">
                     @foreach ($user->categories as $category)
                         @if ($category == $user->categories->last())
