@@ -24,10 +24,13 @@ class RestaurantController extends Controller
         ];
         return response()->json($data);
     }
-    public function show($id)
+
+    public function show(Request $request)
     {
-        $category = Category::where('id', $id)->first();
-        $users=$category->user;
+        return response()->json($request->id);
+
+        $category = Category::where("id", $id)->first();
+        $users = $category->user;
         $data = [
             "success" => true,
             "users" => $users,

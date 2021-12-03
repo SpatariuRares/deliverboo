@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="wrapper">
     <!-- <div class="col">
         <div class="row">
             <div>
@@ -19,22 +19,24 @@
 
     </div> -->
     <div class="categories">
-        <ul v-for="(category, index) in dataApi.categories" :key="index">
-            <a href="">
-                <li>{{ category.name }}</li>
-            </a>
+        <ul v-for="category in dataApi.categories" :key="category.id">
+            <li @click="getRestaurantCat(category.id)">
+                <a class="btn btn-success m-2 text-white" href="#">{{ category.name }}</a>
+            </li>
         </ul>
     </div>
 
-    <div class="card" v-for="(restaurant) in dataApi.users" :key="restaurant.id">
-        <div class="card__header">
-            <img v-if="restaurant.thumb" :src="`storage/${restaurant.thumb}`" class="card__image" width="600">
-            <img v-else src="http://www.portofinoselecta.com/images/joomlart/demo/default.jpg" alt="">
-        </div>
-        <div class="card__body">
-            <a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a>
-            <p class="address">{{ restaurant.address }}</p>
-            <p>Italiana</p>
+    <div class="container">
+        <div class="card" v-for="(restaurant) in dataApi.users" :key="restaurant.id">
+            <div class="card__header">
+                <img v-if="restaurant.thumb" :src="`storage/${restaurant.thumb}`" class="card__image" width="600">
+                <img v-else src="http://www.portofinoselecta.com/images/joomlart/demo/default.jpg" alt="">
+            </div>
+            <div class="card__body">
+                <a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a>
+                <p class="address">{{ restaurant.address }}</p>
+                <p>Italiana</p>
+            </div>
         </div>
     </div>
 
@@ -47,20 +49,30 @@ export default {
     name: "Main",
     data() {
         return {
-        dataApi: [],
-        url: "http://127.0.0.1:8000/api/restaurant",
+            dataApi: [],
+            url: "http://127.0.0.1:8000/api/restaurant",
+            form : {
+				id : 1,
+			}
         }
     },
     created() {
         this.getData();
     },
     methods: {
+        getRestaurantCat(id) {
+            this.form.id = id;
+            console.log(this.form.id);
+            axios.get("http://127.0.0.1:8000/api/categoryShow", { ...this.form.id }).then((response) => {
+				console.log(response)
+			})
+        },
         getData() {
         axios
             .get(this.url)
             .then(response => {
                 this.dataApi = response.data;
-                console.log(response.data);
+                // console.log(response.data);
             })
         },
     }
@@ -81,12 +93,29 @@ export default {
         margin: 0;
     }
 
+    .wrapper {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
     .container {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         max-width: 1200px;
         gap: 2rem;
+    }
+
+    .categories ul {
+        display: inline-block;
+    }
+
+    .categories ul li {
+        list-style: none;
+        text-transform: capitalize;
     }
 
     img {

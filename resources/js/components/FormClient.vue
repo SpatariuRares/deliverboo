@@ -12,7 +12,7 @@
             <label for="fullName">FullName</label>
             <input type="text" v-model="form.fullName" name="fullName" class="form-control" id="fullName" required placeholder="Enter fullName">
         </div>
-        <button @click="checkform()" type="submit" class="btn btn-success my-3">Submit</button>
+        <button @click="checkform()" type="submit" class="btn btn-outline-secondary my-3">Submit</button>
     </div>
 </template>
 

@@ -1,8 +1,8 @@
-<header>
+<header style="background-color: white">
     <div class="container">
         <div class="row p-2 justify-content-around">
-            <div class="d-inline-flex justify-content-center">
-                <a href="{{ route('index') }}"> logo</a>
+            <div class="d-inline-flex justify-content-center" style="height: 80px;">
+                <a href="{{ route('index') }}"><img class="h-100" src="{{asset('images/Logo_Deliveboo.PNG')}}" alt=""></a>
             </div>
             {{-- <div class="col">
                 <form class="d-flex">
@@ -11,12 +11,12 @@
                 </form>
             </div> --}}
             
-            <div>
+            <div class="d-inline-flex justify-content-center align-items-center">
                 @guest
-                    <div class=" d-inline-flex justify-content-center">
-                        <a class="btn btn-success mx-3" href="{{ route('login') }}">Accedi</a>
+                    <div class=" d-inline-flex justify-content-center align-items-center">
+                        <a class="btn btn-outline-secondary mx-3" href="{{ route('login') }}">Accedi</a>
                         @if (Route::has('register'))
-                            <a class="btn btn-success mx-3" href="{{ route('register') }}">Registrati</a>
+                            <a class="btn btn-outline-secondary mx-3" href="{{ route('register') }}">Registrati</a>
                         @endif
                     </div>
                     @else

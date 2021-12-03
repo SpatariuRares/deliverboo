@@ -1,20 +1,25 @@
 <template>
-	<div class="bg-success p-3">
+	<div class="p-3">
 		<FormClient v-if="dataForm" @updateForm="FormData"/>
 		<Payment v-if="brain && !dataForm" :authorization="token" @onSuccess="paymentOnSuccess"/>
-		<h3 class="text-white my-2">Ecco il tuo ordine:</h3>
-		<div v-if="showOrder.length!=0">
-			<div v-for="(food,index) in showOrder" :key="food.id" class="d-flex justify-content-between">
-				<div class="text-white">
-					{{food.name}}
-				</div>
-				<button @click="minus(index)">-</button>{{form.quantity[index]}}<button @click="plus(index)">+</button>
-				<div class="text-white">
-					€{{food.price}}	
-				</div>
-			</div>	
+		<div class="text-white p-3 bg-dark mt-3">
+			<h3>Ecco il tuo ordine:</h3>
+		
+			<div v-if="showOrder.length!=0">
+				<div v-for="(food,index) in showOrder" :key="food.id" class="row d-flex justify-content-between my-2">
+					<div class="col-3 text-white">
+						{{food.name}}
+					</div>
+					<div class="col-6 d-flex justify-content-between ">
+						<button class="btn btn-sm circle btn-success" @click="minus(index)">-</button>{{form.quantity[index]}}<button class=" btn btn-sm circle btn-success" @click="plus(index)">+</button>
+					</div>
+					<div class="col-3 text-white">
+						€{{food.price}}	
+					</div>
+				</div>	
+			</div>
 		</div>
-	</div>
+	</div>	
 </template>
 
 

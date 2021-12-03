@@ -25,7 +25,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <main role="main" class="container-fluid">
+            <main role="main" class="container-fluid mt-4">
                 @yield('content')
             </main>
         </div>
