@@ -1,12 +1,18 @@
 <template>
-	<div class="">
+	<div class="bg-success p-3" style="height= 100px">
+		<Payment v-if="brain" :authorization="token" @onSuccess="paymentOnSuccess"/>
+		<h3 class="text-white my-2">Ecco il tuo ordine:</h3>
 		<div v-if="showOrder.length!=0">
-			<div v-for="food in showOrder" :key="food.id">
-				<div>{{food.name}} at price: {{food.price}}</div>
+			<div v-for="food in showOrder" :key="food.id" class="d-flex justify-content-between">
+				<div class="text-white">
+					{{food.name}}
+				</div>
+				<div class="text-white">
+					€{{food.price}}	
+				</div>
 				<!-- <button @click="minus(food.id)">-</button>{{numerize[food.id]}}<button @click="plus(food.id)">-</button> -->
 			</div>	
 		</div>
-		<Payment v-if="brain" :authorization="token" @onSuccess="paymentOnSuccess"/>
 	</div>
 	
 </template>
