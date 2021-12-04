@@ -25,9 +25,9 @@ class RestaurantController extends Controller
         return response()->json($data);
     }
 
-    public function show(Request $request)
+    public function show($id)
     {
-        return response()->json($request->id);
+        // return response()->json($request->id);
 
         $category = Category::where("id", $id)->first();
         $users = $category->user;
