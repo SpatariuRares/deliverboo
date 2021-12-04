@@ -64,7 +64,7 @@ export default {
             this.form.id = id;
             console.log(this.form.id);
             axios.get("http://127.0.0.1:8000/api/categoryShow", { ...this.form.id }).then((response) => {
-				console.log(response)
+				// console.log(response)
 			})
         },
         getData() {

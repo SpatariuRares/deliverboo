@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Braintree\Gateway;
 use App\Food;
+use App\Order;
 class paymentController extends Controller
 {
 
@@ -32,20 +33,57 @@ class paymentController extends Controller
         return response()->json($data,200);
     }
     
-    public function makePayment(Request $request,Gateway $gateway){
-        $amount=0;
-        foreach($request->food as $id){
-            $food=Food::where('id', $id)->first();
-            $amount+=$food->price;
+    public function createOrder(Request $request){
+        $request["email"] = $request->dataClient["email"];
+        $request["address"]= $request->dataClient["address"];
+        $request["fullName"]= $request->dataClient["fullName"];
+        $request->validate([
+            'email'=> 'required|email', //tramite email fa' validascion da solo
+            'address'=>'required',
+            'fullName'=>'required',
+        ]);
+        $request["total"]=0;
+        $request["paymentStatus"]=false;
+        /* unset($request["dataClient"]);
+        unset($request["token"]);*/
+        $data = $request->all();
+        if(isset($data['food'])){
+            foreach($data['food'] as $key => $food){
+                $food = Food::where('id', $food)->first();
+                $data["total"]+=$food["price"]*$data['quantity'][$key];
+            }
         }
+        $new_order = new Order();
+        $new_order->fill($data);
+        $new_order->save();
+        if(isset($data['food'])){
+            foreach($data['food'] as $key => $food){
+                $data['foods'][$food] = [ 'quantity' => $data['quantity'][$key]];
+            }
+        }
+
+        
+
+        foreach($data['food'] as $key => $food){
+            $data['foods'][$food] = [ 'quantity' => $data['quantity'][$key]];
+        }
+        // dd($data['foods']);
+        if(isset($data['foods'])){
+            $new_order->foods()->attach($data['foods']);
+        }
+        return $new_order["total"];
+    }
+
+    public function makePayment(Request $request,Gateway $gateway){
+        $amount=$this->createOrder($request);
         $result=$gateway->transaction()->sale([
             'amount' => $amount,
             'paymentMethodNonce' =>$request->token,
-            // 'deviceData' => $deviceDataFromTheClient,
             'options' => [
                 'submitForSettlement' => True
             ]
         ]);
+        return response()->json($result);
         if($result->success){
             $data=[
                 "success" => true, 
@@ -61,6 +99,7 @@ class paymentController extends Controller
             return response()->json($data,404);
         }
     }
+    
 
     public function foodOrder(Request $request){
         $cart=[];

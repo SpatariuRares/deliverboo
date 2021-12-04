@@ -18,6 +18,7 @@
 					</div>
 				</div>	
 			</div>
+			<div>total:{{total}}€</div>
 		</div>
 	</div>	
 </template>
@@ -38,6 +39,7 @@ export default {
 			token: '',
 			brain:false,
 			dataForm:true,
+			total:0,
 			oldLength:0,
 			showOrder:[],
 			form: {
@@ -56,6 +58,9 @@ export default {
 			this.form.food = this.cart;
 			axios.post("http://127.0.0.1:8000/api/food/cart",{ ...this.form }).then((response) => {
 				this.showOrder=response.data.cart;
+				this.showOrder.map((food)=> {
+					this.total+=food.price
+				})
 			})
 			if(this.oldLength<this.cart.length){
 				this.form.quantity.push(1);
@@ -75,11 +80,13 @@ export default {
 		},
 		buy () {
 			axios.post("http://127.0.0.1:8000/api/makepayment", { ...this.form }).then((response) => {
+				//console.log(response)
 				window.location.pathname="/checkout"
 			})
 		},
 		minus(index){
 			this.form.quantity[index]-=1;
+			this.total -= this.showOrder[index]["price"];
 			if(this.form.quantity[index]<1){
 				this.form.quantity.splice(index,1)
 				this.form.food.splice(index,1)
@@ -90,6 +97,7 @@ export default {
 		},
 		plus(index){
 			this.form.quantity[index]+=1;
+			this.total += this.showOrder[index]["price"];
 			this.$forceUpdate();
 		},
 		FormData(form){
