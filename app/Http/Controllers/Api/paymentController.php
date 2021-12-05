@@ -102,10 +102,11 @@ class paymentController extends Controller
     
 
     public function foodOrder(Request $request){
-        $cart=[];
-        foreach($request->food as $food ){
-            $cart[] = Food::where('id', $food)->first();
-        }
+        // return response()->json($request,200);
+        $cart=null;
+        // foreach($request->food as $food ){
+        $cart = Food::where('id',$request->id)->first();
+        // }
         $data=[
             "success" => true,
             "cart"=>$cart, 

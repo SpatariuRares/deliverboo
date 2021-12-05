@@ -18,12 +18,31 @@ export default {
   },
   data(){
       return {
-        cart:[],
+      cart:[],
+      form: {
+        id:-1,
+      }
     };
   },
   methods: {
     updateCart(id){
-      this.cart.push(id);
+      this.form.id = id;
+      axios.post("http://127.0.0.1:8000/api/food/cart",{ ...this.form }).then((response) => {
+        if(this.cart.length > 0) {
+          if(response.data.cart["user_id"] == this.cart[0]["user_id"]){
+              this.cart.push(response.data.cart);
+            }
+            else{
+              // console.log("2",this.cart[0]["id"])
+              this.cart=[];
+              this.cart.push(response.data.cart);
+            }
+          }
+          else{
+            this.cart.push(response.data.cart);
+          }
+
+			})
     },
     deleteCartItem(index){
       this.cart.slice(index,1)

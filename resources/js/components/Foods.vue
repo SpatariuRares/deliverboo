@@ -10,7 +10,7 @@
             </p>
           <div class="buy d-flex justify-content-between align-items-center">
             <div class="price text-success"><h5 class="mt-4">€{{ food.price}}</h5></div>
-            <button @click="addToCart(food.id)" :disabled="cart.includes(food.id) ? '' : disabled" type="submit" class="btn btn-success mt-3"> Add to Cart</button>
+            <button @click="addToCart(food.id)" :disabled="id.includes(food.id) ? '' : disabled" type="submit" class="btn btn-success mt-3"> Add to Cart</button>
           </div>  
       </div>
     </div>
@@ -25,6 +25,7 @@ export default {
         return {
           url: "http://127.0.0.1:8000/api",
           foods: [],
+          id:[],
           users: window.location.pathname, 
         };
     },
@@ -33,10 +34,12 @@ export default {
       this.getFoods();
     },
     watch: { 
-      	// carts: function() { // watch it
-        //   console.log(this.carts,this.cart);
-        //   this.cart=this.carts
-        // }
+      	cart: function() { // watch it
+          // console.log(this.carts,this.cart);
+            this.cart.map((food)=> {
+              this.id.push(food.id)
+            })
+        }
     },
     methods: {
       getFoods(){

@@ -56,12 +56,10 @@ export default {
 	watch: { 
       	cart: function() { // watch it
 			this.form.food = this.cart;
-			axios.post("http://127.0.0.1:8000/api/food/cart",{ ...this.form }).then((response) => {
-				this.showOrder=response.data.cart;
-				this.showOrder.map((food)=> {
-					this.total+=food.price
-				})
+			this.cart.map((food)=> {
+				this.total+=food.price
 			})
+			this.showOrder=this.cart;
 			if(this.oldLength<this.cart.length){
 				this.form.quantity.push(1);
 			}
