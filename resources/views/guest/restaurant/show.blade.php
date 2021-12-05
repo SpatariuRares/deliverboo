@@ -31,7 +31,7 @@
                     <h2 class="ml-3">Menù</h2>
                 </div>
             </div>
-            <div class="row row-cols-3 p-5" id="menu">
+            <div class="row row-cols-3 p-5" id="restaurant">
                 {{-- @foreach ($user->foods as $food)
                     <div class="col p-4 border d-flex justify-content-between align-items-center">
                         <div>
