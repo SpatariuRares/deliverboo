@@ -53,8 +53,25 @@ export default {
 	created(){
 		this.getToken();
 	},
+	mounted() {
+		if (localStorage.getItem('cart')) {
+			try {
+				this.cart = JSON.parse(localStorage.getItem('cart'));
+			} catch(e) {
+				localStorage.removeItem('cart');
+			}
+		}
+		if (localStorage.getItem('quantity')) {
+			try {
+				this.form.quantity = JSON.parse(localStorage.getItem('quantity'));
+			} catch(e) {
+				localStorage.removeItem('quantity');
+			}
+		}
+	},
 	watch: { 
       	cart: function() { // watch it
+			// localStorage.cart = this.cart;
 			this.form.food = this.cart;
 			this.cart.map((food)=> {
 				this.total+=food.price
@@ -63,6 +80,7 @@ export default {
 			if(this.oldLength<this.cart.length){
 				this.form.quantity.push(1);
 			}
+			this.savecart();
         }
 	},
     methods: {
@@ -77,7 +95,7 @@ export default {
 			this.buy()
 		},
 		buy () {
-			axios.post("http://127.0.0.1:8000/api/makepayment", { ...this.form }).then((response) => {
+			axios.post("http://127.0.0.1:8000/api/makepayment", { ...this.form }).then(() => {
 				//console.log(response)
 				window.location.pathname="/checkout"
 			})
@@ -91,16 +109,24 @@ export default {
 				this.showOrder.splice(index,1)
 				this.$emit('deleteCartItem', index)
 			}
+			this.savecart();
 			this.$forceUpdate();
 		},
 		plus(index){
 			this.form.quantity[index]+=1;
 			this.total += this.showOrder[index]["price"];
+			this.savecart();
 			this.$forceUpdate();
 		},
 		FormData(form){
 			this.form.dataClient=form
 			this.dataForm=false
+		},
+		savecart(){
+			let cart = JSON.stringify(this.cart);
+			let quantity = JSON.stringify(this.form.quantity);
+			localStorage.setItem('cart', cart);
+			localStorage.setItem('quantity', quantity);
 		}
 	}
 }
