@@ -79,19 +79,22 @@ export default {
             .get(this.url)
             .then(response => {
                 this.dataApi = response.data;
-                console.log(this.dataApi);
+                console.log(this.dataApi.users);
                 // console.log(response.data);
-                // this.dataApi.users.map((restaurant)=>{
-                //     flag = 1;
-                //     console.log(flag);
-                //     this.dataApi.categories.map((category)=>{
-                //         if(restaurant.category_id != null && restaurant.category_id == category.id && flag) {
-                //             restaurant.category_id = category.name;
-                //             flag = 0;
-                //             // console.log(this.dataApi);
-                //         }
-                //     })
-                // })
+                this.dataApi.users.foreach((restaurant)=>{
+                    console.log(restaurant);
+                    // flag = 1;
+                    // console.log(flag);
+                    // restaurant.category_id.map((restaurantCategory)=>{
+                    //     this.dataApi.categories.map((category)=>{
+                    //         if(restaurantCategory != null && restaurantCategory == category.id) {
+                    //            restaurantCategory = category.name;
+                    //             // flag = 0;
+                    //             // console.log(this.dataApi);
+                    //         }
+                    //     })
+                    // })
+                })
             })
         },
     }
