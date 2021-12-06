@@ -33,7 +33,7 @@ export default {
 		FormClient,
 		Payment,
 	},
-	props:['cart'],
+	props:['cart',"reset"],
     data(){
         return {
 			token: '',
@@ -54,13 +54,6 @@ export default {
 		this.getToken();
 	},
 	mounted() {
-		if (localStorage.getItem('cart')) {
-			try {
-				this.cart = JSON.parse(localStorage.getItem('cart'));
-			} catch(e) {
-				localStorage.removeItem('cart');
-			}
-		}
 		if (localStorage.getItem('quantity')) {
 			try {
 				this.form.quantity = JSON.parse(localStorage.getItem('quantity'));
@@ -68,17 +61,38 @@ export default {
 				localStorage.removeItem('quantity');
 			}
 		}
+		if (localStorage.getItem('total')) {
+			try {
+				this.total = JSON.parse(localStorage.getItem('total'));
+			} catch(e) {
+				localStorage.removeItem('total');
+			}
+		}
+		if (localStorage.getItem('oldLength')) {
+			try {
+				this.oldLength = JSON.parse(localStorage.getItem('oldLength'));
+			} catch(e) {
+				localStorage.removeItem('oldLength');
+			}
+		}
 	},
 	watch: { 
       	cart: function() { // watch it
+			if(this.reset){
+				this.form.quantity=[];
+				this.total = 0;
+				this.oldLength=0
+			}
 			// localStorage.cart = this.cart;
 			this.form.food = this.cart;
-			this.cart.map((food)=> {
-				this.total+=food.price
-			})
 			this.showOrder=this.cart;
 			if(this.oldLength<this.cart.length){
+				this.cart.map((food)=> {
+					this.total+=food.price
+				})
 				this.form.quantity.push(1);
+				console.log(this.oldLength)
+				this.oldLength=this.cart.length
 			}
 			this.savecart();
         }
@@ -123,10 +137,12 @@ export default {
 			this.dataForm=false
 		},
 		savecart(){
-			let cart = JSON.stringify(this.cart);
 			let quantity = JSON.stringify(this.form.quantity);
-			localStorage.setItem('cart', cart);
 			localStorage.setItem('quantity', quantity);
+			let total = JSON.stringify(this.total);
+			localStorage.setItem('total', total);
+			let oldLength = JSON.stringify(this.oldLength);
+			localStorage.setItem('oldLength', oldLength);
 		}
 	}
 }
