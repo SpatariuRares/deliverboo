@@ -1,5 +1,5 @@
 <template>
-	<div class="p-3">
+	<div class="px-3">
 		<FormClient v-if="dataForm" @updateForm="FormData"/>
 		<Payment v-if="brain && !dataForm" :authorization="token" @onSuccess="paymentOnSuccess"/>
 		<div class="text-white p-3 bg-dark mt-3">
@@ -18,7 +18,7 @@
 					</div>
 				</div>	
 			</div>
-			<div>total:{{total}}€</div>
+			<div>Total: {{total}}€</div>
 		</div>
 	</div>	
 </template>
