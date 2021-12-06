@@ -2,10 +2,14 @@
 
 @section('content')
     <div class="container">
-        <h1>{{$detailOrder->total}}</h1>
-        <h2>{{$detailOrder->email}}</h2>
-        <h2>{{$detailOrder->address}}</h2>
-        <h2>{{$detailOrder->fullName}}</h2>
-        <h2>{{$detailOrder->paymentStatus}}</h2>
+        <canvas id="myChart" width="800" height="400"></canvas>
     </div>
+        
+
+
+<script>
+    let data = [12, 19, 3, 5, 2, 3];
+</script>
+    
+    
 @endsection

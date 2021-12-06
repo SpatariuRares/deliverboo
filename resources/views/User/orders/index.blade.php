@@ -58,9 +58,9 @@
                                             @if ($order->foods)
                                                 @foreach ($order->foods as $food)
                                                     @if ($food->last)
-                                                        {{$food->id}}
-                                                    @else
                                                         {{$food->id.', '}}
+                                                    @else
+                                                        {{$food->id}}
                                                     @endif
                                                 @endforeach
                                             @endif
