@@ -86,12 +86,12 @@ export default {
 			// localStorage.cart = this.cart;
 			this.form.food = this.cart;
 			this.showOrder=this.cart;
+			console.log(this.oldLength,this.cart.length)
 			if(this.oldLength < this.cart.length){
 				this.cart.map((food)=> {
 					this.total+=food.price
 				})
 				this.form.quantity.push(1);
-				console.log(this.oldLength)
 				this.oldLength=this.cart.length
 			}
 			this.savecart();
@@ -120,6 +120,7 @@ export default {
 			if(this.form.quantity[index]<1){
 				this.form.quantity.splice(index,1)
 				this.form.food.splice(index,1)
+				this.oldLength=this.cart.length
 				this.showOrder.splice(index,1)
 				this.$emit('deleteCartItem', index)
 			}
