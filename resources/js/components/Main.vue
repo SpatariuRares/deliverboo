@@ -38,7 +38,7 @@
             <div class="card__body">
                 <a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a>
                 <p class="address">{{ restaurant.address }}</p>
-                <p>{{  }}</p>
+                <p>{{ restaurant.category_id }}</p>
             </div>
         </div>
     </div>
@@ -69,9 +69,9 @@ export default {
             // this.form.id = id;
             // console.log(this.form.id);
             axios.get("http://127.0.0.1:8000/api/categoryShow/" + id).then((response) => {
-				console.log(response)
+				// console.log(response)
                 this.dataApi.users = response.data.users;
-                console.log(response.data.users);
+                // console.log(response.data.users);
 			})
         },
         getData() {
@@ -79,7 +79,19 @@ export default {
             .get(this.url)
             .then(response => {
                 this.dataApi = response.data;
+                console.log(this.dataApi);
                 // console.log(response.data);
+                // this.dataApi.users.map((restaurant)=>{
+                //     flag = 1;
+                //     console.log(flag);
+                //     this.dataApi.categories.map((category)=>{
+                //         if(restaurant.category_id != null && restaurant.category_id == category.id && flag) {
+                //             restaurant.category_id = category.name;
+                //             flag = 0;
+                //             // console.log(this.dataApi);
+                //         }
+                //     })
+                // })
             })
         },
     }

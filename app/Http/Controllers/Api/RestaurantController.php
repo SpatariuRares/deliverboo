@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\DB;
 class RestaurantController extends Controller
 {
     /**
@@ -15,8 +16,14 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
         $users = User::all();
+        // $users = DB::table('users')
+        //     ->leftJoin('category_user', 'users.id', '=', 'category_user.user_id')
+        //     ->get();
+        $categories = Category::all();
+        // $users = $category->user;
+
+        dd($users);
         $data = [
             "success" => true,
             "users" => $users,
