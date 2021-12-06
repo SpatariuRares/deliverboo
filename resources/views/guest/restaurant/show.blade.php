@@ -15,9 +15,9 @@
                 <h5 class="text-muted">
                     @foreach ($user->categories as $category)
                         @if ($category == $user->categories->last())
-                            <a class="text-reset" href="{{ route('categories.show', $category['id']) }}">{{ $category->name }}</a>
+                            <p class="text-reset">{{ $category->name }}</p>
                         @else
-                            <a class="text-reset" href="{{ route('categories.show', $category['id']) }}">{{$category->name.', '}}</a>
+                            <p class="text-reset">{{$category->name.', '}}</p>
                         @endif
                     @endforeach
                 </h5>

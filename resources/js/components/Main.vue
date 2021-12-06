@@ -80,8 +80,6 @@ export default {
             .then(response => {
                 this.dataApi = response.data;
                 let flag = true;
-                console.log(this.dataApi.users);
-                // console.log(response.data);
                 this.dataApi.users.map((restaurant)=>{
                     for(let i=0; i<restaurant.category_id.length; i++){
                         flag=true;
@@ -89,7 +87,6 @@ export default {
                             if(restaurant.category_id[i] != null && restaurant.category_id[i] == category.id && flag) {
                                 restaurant.category_id[i] = category.name;
                                 flag=false
-                                // console.log(this.dataApi);
                             }
                         })
                     }
