@@ -38,7 +38,7 @@
             <div class="card__body">
                 <a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a>
                 <p class="address">{{ restaurant.address }}</p>
-                <p>{{ restaurant.category_id }}</p>
+                <p v-for="category in restaurant.category_id" :key="category">{{ category }}</p>
             </div>
         </div>
     </div>
@@ -79,21 +79,20 @@ export default {
             .get(this.url)
             .then(response => {
                 this.dataApi = response.data;
+                let flag = true;
                 console.log(this.dataApi.users);
                 // console.log(response.data);
-                this.dataApi.users.foreach((restaurant)=>{
-                    console.log(restaurant);
-                    // flag = 1;
-                    // console.log(flag);
-                    // restaurant.category_id.map((restaurantCategory)=>{
-                    //     this.dataApi.categories.map((category)=>{
-                    //         if(restaurantCategory != null && restaurantCategory == category.id) {
-                    //            restaurantCategory = category.name;
-                    //             // flag = 0;
-                    //             // console.log(this.dataApi);
-                    //         }
-                    //     })
-                    // })
+                this.dataApi.users.map((restaurant)=>{
+                    for(let i=0; i<restaurant.category_id.length; i++){
+                        flag=true;
+                        this.dataApi.categories.map((category)=>{
+                            if(restaurant.category_id[i] != null && restaurant.category_id[i] == category.id && flag) {
+                                restaurant.category_id[i] = category.name;
+                                flag=false
+                                // console.log(this.dataApi);
+                            }
+                        })
+                    }
                 })
             })
         },
