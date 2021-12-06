@@ -35,6 +35,7 @@ export default {
     },
     watch: { 
       	cart: function() { // watch it
+          this.id=[]
           // console.log(this.carts,this.cart);
             this.cart.map((food)=> {
               this.id.push(food.id)

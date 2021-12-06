@@ -86,7 +86,7 @@ export default {
 			// localStorage.cart = this.cart;
 			this.form.food = this.cart;
 			this.showOrder=this.cart;
-			if(this.oldLength<this.cart.length){
+			if(this.oldLength < this.cart.length){
 				this.cart.map((food)=> {
 					this.total+=food.price
 				})

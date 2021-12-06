@@ -67,6 +67,7 @@ export default {
             }
           }
           else{
+            this.reset=true;
             this.cart.push(response.data.cart);
           }
         this.savecart();
