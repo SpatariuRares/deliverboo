@@ -80,6 +80,7 @@ export default {
             .then(response => {
                 this.dataApi = response.data;
                 let flag = true;
+                console.log(this.dataApi.users);
                 this.dataApi.users.map((restaurant)=>{
                     for(let i=0; i<restaurant.category_id.length; i++){
                         flag=true;

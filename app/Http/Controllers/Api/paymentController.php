@@ -47,6 +47,7 @@ class paymentController extends Controller
         /* unset($request["dataClient"]);
         unset($request["token"]);*/
         $data = $request->all();
+        
         if(isset($data['food'])){
             foreach($data['food'] as $key => $food){
                 $food = Food::where('id', $food)->first();
@@ -58,15 +59,10 @@ class paymentController extends Controller
         $new_order->save();
         if(isset($data['food'])){
             foreach($data['food'] as $key => $food){
-                $data['foods'][$food] = [ 'quantity' => $data['quantity'][$key]];
+                $data['foods'][$food["id"]] = [ 'quantity' => $data['quantity'][$key]];
             }
         }
-
         
-
-        foreach($data['food'] as $key => $food){
-            $data['foods'][$food] = [ 'quantity' => $data['quantity'][$key]];
-        }
         // dd($data['foods']);
         if(isset($data['foods'])){
             $new_order->foods()->attach($data['foods']);

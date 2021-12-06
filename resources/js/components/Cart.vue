@@ -111,8 +111,8 @@ export default {
 			this.buy()
 		},
 		buy () {
-			axios.post("http://127.0.0.1:8000/api/makepayment", { ...this.form }).then(() => {
-				//console.log(response)
+			axios.post("http://127.0.0.1:8000/api/makepayment", { ...this.form }).then((response) => {
+				// console.log(response)
 				window.location.pathname="/checkout"
 			})
 		},
