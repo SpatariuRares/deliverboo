@@ -1,7 +1,7 @@
 <template>
 	<div>
         <div class="form-group">
-            <label for="email">email</label>
+            <label for="email">Email</label>
             <input type="email" v-model="form.email" name="email" class="form-control" id="email" required placeholder="Enter email">
         </div>
         <div class="form-group">

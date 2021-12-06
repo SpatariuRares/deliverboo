@@ -19,7 +19,7 @@
 
     </div> -->
     <div class="categories">
-        <ul class="d-flex">
+        <ul class="d-flex justify-content-center bg-dark p-4">
              <li @click="getData()">
                 <p class="btn btn-success m-2 text-white">Tutte</p>
             </li>
