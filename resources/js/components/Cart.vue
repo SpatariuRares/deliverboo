@@ -86,14 +86,16 @@ export default {
 			// localStorage.cart = this.cart;
 			this.form.food = this.cart;
 			this.showOrder=this.cart;
-			console.log(this.oldLength,this.cart.length)
+			console.log(this.total)
 			if(this.oldLength < this.cart.length){
+				this.total = 0;
 				this.cart.map((food)=> {
 					this.total+=food.price
 				})
 				this.form.quantity.push(1);
 				this.oldLength=this.cart.length
 			}
+			console.log(this.total);
 			this.savecart();
         }
 	},
@@ -119,9 +121,8 @@ export default {
 			this.total -= this.showOrder[index]["price"];
 			if(this.form.quantity[index]<1){
 				this.form.quantity.splice(index,1)
-				this.form.food.splice(index,1)
-				this.oldLength=this.cart.length
-				this.showOrder.splice(index,1)
+				this.form.food.splice(index,1	)
+				// this.oldLength=this.cart.length
 				this.$emit('deleteCartItem', index)
 			}
 			this.savecart();
