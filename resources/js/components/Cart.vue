@@ -113,7 +113,14 @@ export default {
 		buy () {
 			axios.post("http://127.0.0.1:8000/api/makepayment", { ...this.form }).then((response) => {
 				// console.log(response)
-				window.location.pathname="/checkout"
+				localStorage.removeItem('cart');
+				localStorage.removeItem('total');
+				localStorage.removeItem('randid');
+				localStorage.removeItem('oldLength');
+				localStorage.removeItem('quantity');
+				while ((localStorage.getItem('cart') != null && localStorage.getItem('total') != null && localStorage.getItem('randid') != null && localStorage.getItem('oldLength') != null && localStorage.getItem('quantity') != null)) {}
+					console.log(localStorage.getItem('cart'));
+					window.location.pathname="/checkout"
 			})
 		},
 		minus(index){
