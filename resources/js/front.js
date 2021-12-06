@@ -17,6 +17,6 @@ Vue.use(BootstrapVue)
  */
 
 const restaurant = new Vue({
-    el: '#restaurant',
+    el: '#app',
     render: h =>h(Restaurant)
 });

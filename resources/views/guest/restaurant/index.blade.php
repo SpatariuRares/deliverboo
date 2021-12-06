@@ -3,7 +3,7 @@
 
 @section('content')
 <div>
-    <div class="row row-cols-4 g-3 d-flex"  id="restaurant">
+    <div class="row row-cols-4 g-3 d-flex"  id="app">
         {{-- @foreach ($users as $user)
             @if($user["slug"] != null)
                 <div class="col">
