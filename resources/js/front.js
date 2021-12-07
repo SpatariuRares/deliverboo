@@ -21,31 +21,95 @@ const restaurant = new Vue({
 
 import Chart from 'chart.js/auto';
 
-const ctx = document.getElementById('myChart');
+const ctx = document.getElementById('barChar').getContext('2d');
 
-const myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: 'guadagni giornaglieri',
-            data: data,
-            fill: true,
-            backgroundColor: [
-                'rgba(0,0, 0 )',
-            ],
-            borderColor: [
-                'blue',
-            ],
-            borderWidth: 5
-        }]
-    },
+const barData = {
+    labels: barLabels,
+    datasets: [{
+        label: 'guadagni giornaglieri',
+        data: barOrderData,
+        fill: true,
+        backgroundColor: [
+            'rgba(0,0, 0 ,0.2)',
+        ],
+        borderColor: [
+            'blue',
+        ],
+        borderWidth: 1,
+        tension:0.4,
+    }]
+}
+let delayed;
+const barConfig = {
+    type: 'bar',
+    data: barData,
     options: {
-        scales: {
-            y: {
-                beginAtZero: true
+        radius: 5,
+        hoverRadius:9,
+        responsive:true,
+        animation:{
+            onComplete:()=>{
+                delayed=true;
+            },
+            delay: (context)=>{
+                let delay = 0;
+                if(context.type==="data" && context.mode==="default" && !delayed){
+                    delay = context.dataIndex * 300 + context.datasetIndex * 100;
+                }
+                return delay;
             }
         },
-    },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    callback: function(value){
+                        return "€"+value;
+                    }
+                }
+            }
 
-});
+        }
+    }
+};
+
+const barCha = new Chart(ctx, barConfig);
+
+
+const dounuts = document.getElementById('doughnutChar').getContext('2d');
+const randomRGB =[]
+for(let i=0; i<donOrderData.length; i++){
+    const r = Math.floor(Math.random()*255); 
+    const g = Math.floor(Math.random()*255);
+    const b = Math.floor(Math.random()*255);
+    randomRGB.push('rgba('+r+','+g+','+b+'0.2)')
+}
+
+const donData = {
+    labels:donFoodLabels,
+    datasets: [{
+        data: donOrderData,
+        fill: true,
+        backgroundColor: randomRGB,
+        borderColor: randomRGB,
+    }]
+}
+console.log(donFoodLabels)
+const donConfig = {
+    type: 'doughnut',
+    data: donData,
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Cibi piu venduti'
+            }
+        }
+    },
+};
+
+const donChar = new Chart(dounuts, donConfig)

@@ -156,7 +156,24 @@ class OrderController extends Controller
                 $labels[$key] = $amount[$day];
             }
         }
-        return view('user.orders.show', compact('labels',"date"));;
+        $foods = Food::where('user_id', '=', $currentUser->id)->get();
+        $donData = [];
+        $donLabels=[];
+        foreach($foods as $key => $food){
+            if (!in_array($food->name, $donLabels)) {
+                $donLabels[] = $food->name;
+            }
+            foreach($food->orders as $order){
+                if (!array_key_exists($key, $donData)) {
+                    $donData[$key] = 1;
+                }
+                else{
+                    $donData[$key]++;
+                }
+            }
+        }
+        // dd($order,$food->name,$food->id,$donData);
+        return view('user.orders.show', compact('labels',"date","donData","donLabels"));;
     }
 
     // /**
