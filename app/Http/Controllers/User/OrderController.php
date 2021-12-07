@@ -112,10 +112,10 @@ class OrderController extends Controller
         //$lastWeekDay = $lastweek->subWeekday()->day;
         
         $currentDate = Carbon::now();
-        $currentday = $currentDate->day;
-        $date=[$currentday];
-        for($i=1;$i<=7;$i++){
-            $date[]=$currentDate->subDays(1)->day;
+        $currentmonth = $currentDate->month;
+        $date=[$currentmonth];
+        for($i=1;$i<=12;$i++){
+            $date[]=$currentDate->subDays(1)->month;
         }
         $date=array_reverse($date);
         $contatore = count($orders);
@@ -141,19 +141,19 @@ class OrderController extends Controller
         $amount=[];
         $labels=[];
         foreach($orders as $order){
-            $day = $order->updated_at->day;
-            if (!array_key_exists($day, $amount)) {
-                $amount[$day] = 0;
+            $month = $order->updated_at->month;
+            if (!array_key_exists($month, $amount)) {
+                $amount[$month] = 0;
             }
-            $amount[$day]+=$order->total;
+            $amount[$month]+=$order->total;
         }
 
-        foreach($date as $key => $day){
-            if (!array_key_exists($day, $amount)) {
+        foreach($date as $key => $month){
+            if (!array_key_exists($month, $amount)) {
                 $labels[$key] = 0;
             }
             else{
-                $labels[$key] = $amount[$day];
+                $labels[$key] = $amount[$month];
             }
         }
         $foods = Food::where('user_id', '=', $currentUser->id)->get();

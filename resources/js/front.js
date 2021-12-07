@@ -21,7 +21,7 @@ const restaurant = new Vue({
 
 import Chart from 'chart.js/auto';
 
-const ctx = document.getElementById('barChar').getContext('2d');
+const ctx = document.getElementById('barChar');
 
 const barData = {
     labels: barLabels,
@@ -76,7 +76,7 @@ const barConfig = {
 const barCha = new Chart(ctx, barConfig);
 
 
-const dounuts = document.getElementById('doughnutChar').getContext('2d');
+const dounuts = document.getElementById('doughnutChar');
 const randomRGB =[]
 for(let i=0; i<donOrderData.length; i++){
     const r = Math.floor(Math.random()*255); 

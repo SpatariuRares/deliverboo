@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Category;
 class UserController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();        // PER PUNTARE L'UTENTE ATTUALMENTE AUTENTICATO
-        return view("guest.restaurant.index", compact("users"));
+        $categories = Category::all(); // PER PUNTARE
+        return view("guest.restaurant.index", compact("users","categories"));
     }
 
     /**

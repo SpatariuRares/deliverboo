@@ -71,7 +71,8 @@ class paymentController extends Controller
     }
 
     public function makePayment(Request $request,Gateway $gateway){
-        $amount=$this->createOrder($request);
+        $order = $this->createOrder($request);
+        $amount=$order->total;
         $result=$gateway->transaction()->sale([
             'amount' => $amount,
             'paymentMethodNonce' =>$request->token,
@@ -81,6 +82,7 @@ class paymentController extends Controller
         ]);
         return response()->json($result);
         if($result->success){
+            $order->paymentStatus=true;
             $data=[
                 "success" => true, 
                 "message"=>"Transazione effetuata", 

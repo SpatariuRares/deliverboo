@@ -34,9 +34,7 @@ class RestaurantController extends Controller
                     }
                 }
             }
-            // dd($users);
         $categories = Category::all();
-        // $users = $category->user;
 
         $data = [
             "success" => true,
