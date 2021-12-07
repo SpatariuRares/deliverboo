@@ -14,9 +14,9 @@
             <div id="button-container" class="d-inline-flex justify-content-center align-items-center h-100">
                 @guest
                     <div class=" d-inline-flex justify-content-center align-items-center">
-                        <a class="accedi btn " href="{{ route('login') }}">Accedi</a>
+                        <a class="accedi btn text-white " href="{{ route('login') }}"><i class="fas fa-home"></i> Accedi</a>
                         @if (Route::has('register'))
-                            <a class="btn mx-3" href="{{ route('register') }}">Registrati</a>
+                            <a class="btn btn-outline-secondary mx-3" href="{{ route('register') }}">Registrati</a>
                         @endif
                     </div>
                     @else
