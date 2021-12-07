@@ -81,8 +81,14 @@ export default {
             .then(response => {
                 this.dataApi = response.data;
                 let flag = true;
-                console.log(this.dataApi.users);
-                this.dataApi.users.map((restaurant)=>{
+                var result = Object.keys(this.dataApi.users).map((key) => [this.dataApi.users[key]]);
+                result.map((res,index)=> {
+                    res = res[0];
+                    result[index] = res;
+                });
+
+
+                result.map((restaurant)=>{
                     for(let i=0; i<restaurant.category_id.length; i++){
                         flag=true;
                         this.dataApi.categories.map((category)=>{
