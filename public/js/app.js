@@ -37372,8 +37372,18 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
+__webpack_require__(/*! C:\Users\bacci\Desktop\cartella progetto final\deliverboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\bacci\Desktop\cartella progetto final\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+<<<<<<< HEAD
+__webpack_require__(/*! C:\Users\sonni\Desktop\lezioni\Laravel\Pogetto-Finale\deliverboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\sonni\Desktop\lezioni\Laravel\Pogetto-Finale\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
 __webpack_require__(/*! C:\Users\spata\Documents\roba\corso boolean\progetto finale super power\deliverboo\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\Users\spata\Documents\roba\corso boolean\progetto finale super power\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> b0f8fcb919a92fc67c3ee88a41eed78b4cd502f3
+>>>>>>> 9e5d9659e060c5122eae6d45fd00a5a06d4a5e60
 
 
 /***/ })

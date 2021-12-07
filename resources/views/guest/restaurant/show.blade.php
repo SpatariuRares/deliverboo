@@ -32,20 +32,6 @@
                 </div>
             </div>
             <div class="row row-cols-3 p-5" id="app">
-                {{-- @foreach ($user->foods as $food)
-                    <div class="col p-4 border d-flex justify-content-between align-items-center">
-                        <div>
-                            <h4>{{$food->name}}</h4>
-                            <p>{{$food->ingrediends}}</p>
-                            <p>{{$food->price}}</p>
-                        </div>
-                        <div class="test">
-                            @if($food->thumb)
-                                <img src="{{ asset('storage/'.$food->thumb)}}" alt="{{ $food->name}}">
-                            @endif
-                        </div>           
-                    </div>
-                @endforeach --}}
             </div>
         </div>
         @else

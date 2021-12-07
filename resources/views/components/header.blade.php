@@ -1,22 +1,22 @@
-<header style="background-color: white">
+<header>
     <div class="container">
-        <div class="row p-2 justify-content-around">
-            <div class="d-inline-flex justify-content-center" style="height: 80px;">
-                <a href="{{ route('index') }}"><img class="h-100" src="{{asset('images/Logo_Deliveboo.PNG')}}" alt=""></a>
+        <div class="row p-2 justify-content-between">
+            <div class="d-inline-flex justify-content-center h-100">
+                <a href="{{ route('index') }}"><img src="{{asset('images/Logo_Deliveboo.PNG')}}" alt=""></a>
             </div>
-            {{-- <div class="col">
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+            <div class="col-5 h-100 d-flex align-items-center">
+                <form class="d-flex w-100 h-75">
+                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                    <input class="w-100" type="search" placeholder="Digita il ristorante che vuoi cercare" aria-label="Search">
                 </form>
-            </div> --}}
+            </div>
             
-            <div class="d-inline-flex justify-content-center align-items-center">
+            <div id="button-container" class="d-inline-flex justify-content-center align-items-center h-100">
                 @guest
                     <div class=" d-inline-flex justify-content-center align-items-center">
-                        <a class="btn btn-outline-secondary mx-3" href="{{ route('login') }}">Accedi</a>
+                        <a class="accedi btn " href="{{ route('login') }}">Accedi</a>
                         @if (Route::has('register'))
-                            <a class="btn btn-outline-secondary mx-3" href="{{ route('register') }}">Registrati</a>
+                            <a class="btn mx-3" href="{{ route('register') }}">Registrati</a>
                         @endif
                     </div>
                     @else

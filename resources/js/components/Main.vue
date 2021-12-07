@@ -19,12 +19,13 @@
 
     </div> -->
     <div class="categories">
-        <ul class="d-flex justify-content-center bg-dark p-4">
+        <ul class="d-flex justify-content-center  p-4">
              <li @click="getData()">
                 <p class="btn btn-success m-2 text-white">Tutte</p>
             </li>
             <li v-for="category in dataApi.categories" :key="category.id" @click="getRestaurantCat(category.id)">
-                <p class="btn btn-success m-2 text-white">{{ category.name }}</p>
+                <img :src= "`/images/${category.slug}.jpg`" alt="">
+                <p class="">{{ category.name }}</p>
             </li>
         </ul>
     </div>
@@ -80,8 +81,14 @@ export default {
             .then(response => {
                 this.dataApi = response.data;
                 let flag = true;
-                console.log(this.dataApi.users);
-                this.dataApi.users.map((restaurant)=>{
+                var result = Object.keys(this.dataApi.users).map((key) => [this.dataApi.users[key]]);
+                result.map((res,index)=> {
+                    res = res[0];
+                    result[index] = res;
+                });
+
+
+                result.map((restaurant)=>{
                     for(let i=0; i<restaurant.category_id.length; i++){
                         flag=true;
                         this.dataApi.categories.map((category)=>{

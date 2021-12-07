@@ -10962,3 +10962,53 @@ a.text-dark:focus {
   }
 }
 
+header {
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+}
+
+header .container {
+  max-width: 1700px;
+}
+
+header .container div {
+  height: 70px;
+}
+
+header .container div img {
+  height: 100%;
+}
+
+header .container form span {
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: #F5F5F5;
+  color: lightgray;
+}
+
+header .container form input[type=search],
+header .container form textarea {
+  border: 1px solid lightgray;
+  border-left: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: #F5F5F5;
+}
+
+header .container form input::-moz-placeholder {
+  color: #c7c7c7;
+}
+
+header .container form input:-ms-input-placeholder {
+  color: #c7c7c7;
+}
+
+header .container form input::placeholder {
+  color: #c7c7c7;
+}
+
+header .container #button-container .accedi {
+  background-color: #00CCBC !important;
+}
+
