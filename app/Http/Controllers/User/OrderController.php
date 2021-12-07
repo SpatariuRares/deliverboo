@@ -110,52 +110,70 @@ class OrderController extends Controller
 
         
         //$lastWeekDay = $lastweek->subWeekday()->day;
-        
+        $startdate = $currentUser->updated_at;
         $currentDate = Carbon::now();
-        $currentmonth = $currentDate->month;
-        $date=[$currentmonth];
-        for($i=1;$i<=12;$i++){
-            $date[]=$currentDate->subDays(1)->month;
-        }
-        $date=array_reverse($date);
-        $contatore = count($orders);
-        for($i=0 ; $i<$contatore; $i++) {
-            if(isset($orders[$i])){
-                // dd($orders[$i]->updated_at,$currentDate,$orders[$i]->updated_at->gt($currentDate));
-                if($orders[$i]->updated_at->gt($currentDate)){
-                    for($j=$i+1 ; $j<$contatore; $j++) {
-                        if(isset($orders[$j])){
-                            if($orders[$j]->id == $orders[$i]->id) {
-                                $orders[$i]->id = $orders[$j]->id;
-                                unset($orders[$j]);
-                            }
-                        }
-                    }
-                }
-                else{
-                    unset($orders[$i]);
-                }
-            }
-        }
+        $startMonth = $startdate->month;
+        $dateMonth=[$currentDate->month];
 
-        $amount=[];
-        $labels=[];
+        while($startdate->lt($currentDate)){
+            $dateMonth[]=$currentDate->subMonths(1)->month;
+        }
+        $dateMonth=array_reverse($dateMonth);
+
+        
+        
+        $amountMonth=[];
+        $labelsMonth=[];
         foreach($orders as $order){
             $month = $order->updated_at->month;
-            if (!array_key_exists($month, $amount)) {
-                $amount[$month] = 0;
+            if (!array_key_exists($month, $amountMonth)) {
+                $amountMonth[$month] = 0;
             }
-            $amount[$month]+=$order->total;
+            $amountMonth[$month]+=$order->total;
         }
 
-        foreach($date as $key => $month){
-            if (!array_key_exists($month, $amount)) {
-                $labels[$key] = 0;
+        foreach($dateMonth as $key => $month){
+            if (!array_key_exists($month, $amountMonth)) {
+                $labelsMonth[$key] = 0;
             }
             else{
-                $labels[$key] = $amount[$month];
+                $labelsMonth[$key] = $amountMonth[$month];
             }
         }
+        
+        
+        //fine presa dati mesi
+
+        $startYear = $startdate->year;
+        $dateYear=[$currentDate->year];
+
+        while($startdate->lt($currentDate)){
+            $dateYear[]=$currentDate->subYears(1)->year;
+        }
+        $dateYear=array_reverse($dateYear);
+
+        
+        
+        $amountYear=[];
+        $labelsYear=[];
+        foreach($orders as $order){
+            $year = $order->updated_at->year;
+            if (!array_key_exists($year, $amountYear)) {
+                $amountYear[$year] = 0;
+            }
+            $amountYear[$year]+=$order->total;
+        }
+
+        foreach($dateYear as $key => $year){
+            if (!array_key_exists($year, $amountYear)) {
+                $labelsYear[$key] = 0;
+            }
+            else{
+                $labelsYear[$key] = $amountYear[$year];
+            }
+        }
+        
+        //serve per il grafico a torta
         $foods = Food::where('user_id', '=', $currentUser->id)->get();
         $donData = [];
         $donLabels=[];
@@ -173,7 +191,7 @@ class OrderController extends Controller
             }
         }
         // dd($order,$food->name,$food->id,$donData);
-        return view('user.orders.show', compact('labels',"date","donData","donLabels"));;
+        return view('user.orders.show', compact('labelsMonth',"dateMonth","donData","donLabels",'labelsYear',"dateYear",));;
     }
 
     // /**
