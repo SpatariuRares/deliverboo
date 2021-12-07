@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\User;
-
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; 
@@ -24,6 +24,19 @@ class OrderController extends Controller
             if($food->orders!=null){
                 foreach ($food->orders as $order){
                     $orders[]=$order;
+                }
+            }
+        }
+        $contatore = count($orders);
+        for($i=0 ; $i<$contatore; $i++) {
+            if(isset($orders[$i])){
+                for($j=$i+1 ; $j<$contatore; $j++) {
+                    if(isset($orders[$j])){
+                        if($orders[$j]->id == $orders[$i]->id) {
+                            $orders[$i]->id = $orders[$j]->id;
+                            unset($orders[$j]);
+                        }
+                    }
                 }
             }
         }
@@ -84,8 +97,66 @@ class OrderController extends Controller
     //  */
     public function show($id)
     {
-        $detailOrder = Order::findOrFail($id);
-        return view('user.orders.show', compact('detailOrder'));
+        $currentUser = Auth::user();
+        $foods = Food::where('user_id', '=', $currentUser->id)->get();
+        $data=[];
+        foreach ($foods as $food){
+            if($food->orders!=null){
+                foreach ($food->orders as $order){
+                    $orders[]=$order;
+                }
+            }
+        }
+
+        
+        //$lastWeekDay = $lastweek->subWeekday()->day;
+        
+        $currentDate = Carbon::now();
+        $currentday = $currentDate->day;
+        $date=[$currentday];
+        for($i=1;$i<=7;$i++){
+            $date[]=$currentDate->subDays(1)->day;
+        }
+        $date=array_reverse($date);
+        $contatore = count($orders);
+        for($i=0 ; $i<$contatore; $i++) {
+            if(isset($orders[$i])){
+                // dd($orders[$i]->updated_at,$currentDate,$orders[$i]->updated_at->gt($currentDate));
+                if($orders[$i]->updated_at->gt($currentDate)){
+                    for($j=$i+1 ; $j<$contatore; $j++) {
+                        if(isset($orders[$j])){
+                            if($orders[$j]->id == $orders[$i]->id) {
+                                $orders[$i]->id = $orders[$j]->id;
+                                unset($orders[$j]);
+                            }
+                        }
+                    }
+                }
+                else{
+                    unset($orders[$i]);
+                }
+            }
+        }
+
+        $amount=[];
+        $labels=[];
+        foreach($orders as $order){
+            $day = $order->updated_at->day;
+            if (!array_key_exists($day, $amount)) {
+                $amount[$day] = 0;
+            }
+            $amount[$day]+=$order->total;
+        }
+
+        foreach($date as $key => $day){
+            if (!array_key_exists($day, $amount)) {
+                $labels[$key] = 0;
+            }
+            else{
+                $labels[$key] = $amount[$day];
+            }
+        }
+        return view('user.orders.show', compact('labels',"date"));;
     }
 
     // /**

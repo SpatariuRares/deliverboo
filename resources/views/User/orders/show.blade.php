@@ -4,11 +4,9 @@
     <div class="container">
         <canvas id="myChart" width="800" height="400"></canvas>
     </div>
-        
-
-
 <script>
-    let data = [12, 19, 3, 5, 2, 3];
+    var labels = {!! json_encode($date) !!};
+    let data = {!! json_encode($labels) !!};
 </script>
     
     
