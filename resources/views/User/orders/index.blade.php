@@ -27,6 +27,10 @@
             </button>
     </div>
     @endif
+    <a href="{{ route('user.statistic') }}"
+        class="btn btn-info">
+        statistic
+    </a>
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -41,7 +45,6 @@
                             <th scope="col">Full Name</th>
                             <th scope="col">paymentStatus</th>
                             <th scope="col">foods</th>
-                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,12 +67,6 @@
                                                     @endif
                                                 @endforeach
                                             @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('user.orders.show', $order['id']) }}"
-                                                class="btn btn-info">
-                                                Details
-                                            </a>
                                         </td>
                                     </tr>
                             @endforeach

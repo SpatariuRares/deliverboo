@@ -2,11 +2,17 @@
 
 @section('content')
     <div class="container">
-        <canvas id="barChar" width="800" height="400"></canvas>
-        <button id="btnMonth" class="mx-2 btn btn-primary">Month</button><button id="btnYear"class="mx-2 btn btn-primary">Year</button>
-    </div>
-    <div class="container">
-        <canvas id="doughnutChar" width="800" height="400"></canvas>
+        <div class="row">
+            <div class="col-8">
+                <canvas id="barChar" width="800" height="400"></canvas>
+                <div>
+                    <button id="btnMonth" class="mx-2 btn btn-primary">Month</button><button id="btnYear"class="mx-2 btn btn-primary">Year</button>
+                </div>
+            </div>
+            <div class="col-4">
+                <canvas id="doughnutChar" width="800" height="400"></canvas>
+            </div>
+        </div>
     </div>
 <script>
     let barLabelsMonth = {!! json_encode($dateMonth) !!};
