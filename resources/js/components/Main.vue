@@ -18,16 +18,18 @@
         </div>
 
     </div> -->
-    <div class="categories">
-        <ul class="d-flex justify-content-center  p-4">
-             <li @click="getData()">
-                <p class="btn btn-success m-2 text-white">Tutte</p>
-            </li>
-            <li v-for="category in dataApi.categories" :key="category.id" @click="getRestaurantCat(category.id)">
-                <img :src= "`/images/${category.slug}.jpg`" alt="">
-                <p class="">{{ category.name }}</p>
-            </li>
-        </ul>
+    <div class="container-fluid mb-4">
+        <div class="row justify-content-center">
+            <div class="col-1">
+                <div @click="getData()">
+                    <p class="btn btn-success m-2 text-white">Tutte</p>
+                </div>
+            </div>
+            <div class="col-1 p-relative" v-for="category in dataApi.categories" :key="category.id" @click="getRestaurantCat(category.id)">
+                <img class="rounded" :src= "`/images/${category.slug}.jpg`" alt="">
+                <p class="category_name text-white">{{ category.name }}</p>
+            </div>
+        </div>
     </div>
 
     <div class="container">
@@ -127,18 +129,29 @@ export default {
         gap: 2rem;
     }
 
-    .categories ul {
-        display: inline-block;
+    .p-relative{
+        position: relative;
     }
 
-    .categories ul li {
-        list-style: none;
-        text-transform: capitalize;
+    .category_name {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
     }
+
+    // .categories ul {
+    //     display: inline-block;
+    // }
+
+    // .categories ul li {
+    //     list-style: none;
+    //     text-transform: capitalize;
+    // }
 
     img {
-        max-height: 100%;
-        max-width: 100%;
+        height: 100%;
+        width: 100%;
         display: block;
         object-fit: cover;
     }
