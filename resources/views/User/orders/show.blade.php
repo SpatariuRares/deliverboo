@@ -2,13 +2,16 @@
 
 @section('content')
     <div class="container">
-        <canvas id="myChart" width="800" height="400"></canvas>
+        <canvas id="barChar" width="800" height="400"></canvas>
     </div>
-        
-
-
+    <div class="container">
+        <canvas id="doughnutChar" width="800" height="400"></canvas>
+    </div>
 <script>
-    let data = [12, 19, 3, 5, 2, 3];
+    var barLabels = {!! json_encode($date) !!};
+    let barOrderData = {!! json_encode($labels) !!};
+    let donOrderData = {!! json_encode($donData) !!};
+    let donFoodLabels = {!! json_encode($donLabels) !!};
 </script>
     
     
