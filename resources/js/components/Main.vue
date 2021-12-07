@@ -18,16 +18,16 @@
         </div>
 
     </div> -->
-    <div class="container-fluid">
-        <div class="row row-cols-12 justify-content-center  p-4">
-            <div class="col d-flex">
+    <div class="container-fluid mb-4">
+        <div class="row justify-content-center">
+            <div class="col-1">
                 <div @click="getData()">
                     <p class="btn btn-success m-2 text-white">Tutte</p>
                 </div>
-                <div v-for="category in dataApi.categories" :key="category.id" @click="getRestaurantCat(category.id)">
-                    <img :src= "`/images/${category.slug}.jpg`" alt="">
-                    <p class="">{{ category.name }}</p>
-                </div>
+            </div>
+            <div class="col-1 p-relative" v-for="category in dataApi.categories" :key="category.id" @click="getRestaurantCat(category.id)">
+                <img class="rounded" :src= "`/images/${category.slug}.jpg`" alt="">
+                <p class="category_name text-white">{{ category.name }}</p>
             </div>
         </div>
     </div>
@@ -129,6 +129,17 @@ export default {
         gap: 2rem;
     }
 
+    .p-relative{
+        position: relative;
+    }
+
+    .category_name {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+    }
+
     // .categories ul {
     //     display: inline-block;
     // }
@@ -139,8 +150,8 @@ export default {
     // }
 
     img {
-        max-height: 100%;
-        max-width: 100%;
+        height: 100%;
+        width: 100%;
         display: block;
         object-fit: cover;
     }
