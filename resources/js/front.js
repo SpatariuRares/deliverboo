@@ -22,7 +22,7 @@ const restaurant = new Vue({
 import Chart from 'chart.js/auto';
 
 const ctx = document.getElementById('myChart');
-  
+
 const myChart = new Chart(ctx, {
     type: 'line',
     data: {
