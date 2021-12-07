@@ -19,12 +19,13 @@
 
     </div> -->
     <div class="categories">
-        <ul class="d-flex justify-content-center bg-dark p-4">
+        <ul class="d-flex justify-content-center  p-4">
              <li @click="getData()">
                 <p class="btn btn-success m-2 text-white">Tutte</p>
             </li>
             <li v-for="category in dataApi.categories" :key="category.id" @click="getRestaurantCat(category.id)">
-                <p class="btn btn-success m-2 text-white">{{ category.name }}</p>
+                <img :src= "`/images/${category.slug}.jpg`" alt="">
+                <p class="">{{ category.name }}</p>
             </li>
         </ul>
     </div>

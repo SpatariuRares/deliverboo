@@ -1,0 +1,44 @@
+header {
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+
+    .container {
+        max-width: 1700px;
+
+        div {
+            height: 70px;   
+            img {
+                height: 100%;
+            }
+        }
+        form {
+            span {
+                border-right: none;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                background-color: #F5F5F5;
+                color: lightgray;
+            }
+            input[type="search"], textarea {
+                border: 1px solid lightgray;
+                border-left: none;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                background-color : #F5F5F5; 
+              }
+            input {
+                &::placeholder{
+                    color: rgb(199, 199, 199);
+                }
+            }
+        }
+        #button-container {
+           
+            .accedi {
+                background-color: $deliveboo!important;
+            }
+           
+        }
+
+    }
+}
