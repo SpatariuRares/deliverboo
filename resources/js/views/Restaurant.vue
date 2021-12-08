@@ -5,8 +5,8 @@
     </div>
     <div class="container-fluid" id="ciao" v-if="!showIndex">
       <div class="row">
-        <Foods class="col-8" @updateCart="updateCart" :cart="cart"/>
-        <Cart class="col-4" @deleteCartItem="deleteCartItem" :cart="cart" :reset ="reset"/>
+        <Foods class=" col-12 col-lg-8" @updateCart="updateCart" :cart="cart"/>
+        <Cart class=" col-12 col-lg-4" @deleteCartItem="deleteCartItem" :cart="cart" :reset ="reset"/>
       </div>
     </div>
   </div>

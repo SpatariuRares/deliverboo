@@ -18,31 +18,32 @@
                         <input type="number" step="0.01" name="price" class="form-control" id="price" placeholder="Enter price" value="{{old('price')}}">
                     </div>
 
-                    <div class="form-group">
-                        <label for="image">image</label>
-                        <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @enderror">
-                        @error('image')
-                            <div class="alert alert-danger">{{$message}}</div>
-                        @enderror
+                    <div class="custom-file">
+                        <label class="custom-file-label" id="imageUrl" for="image">image</label>
+                        <input type="file" name="image" id="image" onchange="readURL(this)" class="custom-file-input @error('image') is-invalid @enderror" accept="image/*">
                     </div>
-
+                    @error('image')
+                        <div class="alert alert-danger">{{$message}}</div>
+                    @enderror
+                    
+                    
                     <div class="form-group">
                         <label for="ingredients">Ingredients</label>
                         <textarea type="text" name="ingredients" class="form-control" id="ingredients" placeholder="Enter ingredients">{{old('ingredients')}}</textarea>
                     </div>
 
-                    <div class="form-group">
-                        <label for="visible">Visible</label>
-                        <input type="checkbox" name="visible" class="form-control" id="visible" value="{{true}}" > 
-                    </div>
-
-                    <div class="form-group">
-                        <label for="quantity">Quantity</label>
-                        <input type="number" name="quantity" class="form-control" id="quantity" placeholder="Enter quantity" value="{{old('quantity')}}">
+                    <div class="form-check">
+                        <input value="{{true}}" {{ $food['visible']?'checked':null}} type="checkbox" name="visible" class="form-check-input" id="visible" value="{{true}}">
+                        <label for="visible" class="form-check-label"> Visible</label>
                     </div>
                     <button type="submit" class="btn btn-success my-3">Submit</button>
                 </form>
             </div>
         </div>
     </div> 
+    <script>
+        function readURL(file){
+            document.getElementById("imageUrl").innerHTML=file.value.substring(file.value.lastIndexOf('\\') + 1).toLowerCase()
+        }
+    </script>
 @endsection

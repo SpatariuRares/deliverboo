@@ -4,11 +4,11 @@
     <div class="container-fluid mb-5 px-5">
         <div class="row gx-4 mb-5">
             <div class="col-3 ml-3">
-                <div class="img rounded">
-                    @if($user->thumb)
+                @if($user->thumb)
+                    <div class="img rounded">
                         <img class="img-thumbnail border-success" src="{{ asset('storage/'.$user->thumb)}}" alt="{{ $user->name}}">
-                    @endif
-                </div>
+                    </div>
+                @endif
             </div>
             <div class="col-6 d-flex flex-column justify-content-center">
                 <h1>{{$user->username}}</h1>

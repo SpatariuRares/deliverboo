@@ -67,8 +67,8 @@
                         </div>
                         <div class="col-8">
                             <div class="custom-file">
-                                <input class="custom-file-input" type="file" name='image' id='image' class="@error('image') is-invalid @enderror">
-                                <label class="custom-file-label" for="image">Choose file</label>
+                                <input class="custom-file-input" type="file" onchange="readURL(this)" name='image' id='image' accept="image/*" class="@error('image') is-invalid @enderror">
+                                <label class="custom-file-label" id="imageUrl" for="image">Choose file</label>
                             </div>
                             @error('image')
                             <div class="alert alert-danger">{{$message}}</div>
@@ -85,14 +85,10 @@
                 </form>
             </div>
         </div>
-    </div> 
+    </div>
     <script>
-        document.getElementById('#image').addEventListener('change',()=>{
-            console.log("ciao")
-            //get the file name
-            var fileName = $(this).val();
-            //replace the "Choose a file" label
-            $(this).next('.custom-file-label').html(fileName);
-        })
+        function readURL(file){
+            document.getElementById("imageUrl").innerHTML=file.value.substring(file.value.lastIndexOf('\\') + 1).toLowerCase()
+        }
     </script>
 @endsection
