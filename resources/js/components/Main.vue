@@ -16,18 +16,16 @@
                 <a class="btn btn-primary" href="/register">Registrati</a>
             </div>
         </div>
-
     </div> -->
     <div class="container-fluid mb-4">
         <div class="row justify-content-center">
-            <div class="col-1">
-                <div @click="getData()">
-                    <p class="btn btn-success m-2 text-white">Tutte</p>
-                </div>
+            <div class="card-category" @click="getData()">
+                <img class="rounded" src="/images/all.jpg" alt="">
+                <p class="">Tutte</p>
             </div>
-            <div class="col-1 p-relative" v-for="category in dataApi.categories" :key="category.id" @click="getRestaurantCat(category.id)">
+            <div class="card-category" v-for="category in dataApi.categories" :key="category.id" @click="getRestaurantCat(category.id)">
                 <img class="rounded" :src= "`/images/${category.slug}.jpg`" alt="">
-                <p class="category_name text-white">{{ category.name }}</p>
+                <p class="">{{ category.name }}</p>
             </div>
         </div>
     </div>
@@ -121,89 +119,102 @@ export default {
         margin: 0;
     }
 
+    .container-fluid {
+
+        .card-category {
+            position: relative;
+            cursor: pointer;
+            margin: 10px 10px;
+
+            &:hover img {
+                -webkit-box-shadow: 0px 0px 12px 4px rgba(181,181,181,0.37); 
+                box-shadow: 0px 0px 12px 4px rgba(181,181,181,0.37);
+                filter:opacity(80%);
+                transition: linear 100ms;
+            }
+
+            img {
+                width: 150px;
+                height: 100%;
+                transition: linear 100ms;
+            }
+
+            p {
+                text-align: center;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.6);
+                font-size: 17px;
+                position: absolute;
+                transform: translate(-50%, -50%);
+                top: 50%;
+                left: 50%;
+                color: black;
+                font-weight: 800;
+                text-transform: capitalize;
+            }
+        }
+    }
+
     .container {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        max-width: 1200px;
+        max-width: 1600px;
         gap: 2rem;
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            flex-basis: calc(1300px / 5 );
+            // width: clamp(20rem, calc(20rem + 2vw), 22rem);
+            overflow: hidden;
+            box-shadow: 0 2px 5px 1px rgba(0, 0, 0, .25);
+            border-radius: 0.5em;
+            background: #ECE9E6;
+            background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+
+            &:hover {
+                filter: brightness(0.9);
+            }
+
+            .card__header {
+                height: 130px;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    display: block;
+                    object-fit: cover;
+                }
+            }
+
+            .card__body {
+                padding: 1rem;
+                gap: .5rem;
+
+                h4 {
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                    text-transform: capitalize;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: black!important;
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+
+                .address {
+                    font-size: 0.8rem;
+                }
+
+                p {
+                    margin-bottom: 0;
+                }
+            }
+        }
     }
-
-    .p-relative{
-        position: relative;
-    }
-
-    .category_name {
-        position: absolute;
-        transform: translate(-50%, -50%);
-        top: 50%;
-        left: 50%;
-    }
-
-    // .categories ul {
-    //     display: inline-block;
-    // }
-
-    // .categories ul li {
-    //     list-style: none;
-    //     text-transform: capitalize;
-    // }
-
-    img {
-        height: 100%;
-        width: 100%;
-        display: block;
-        object-fit: cover;
-    }
-
-    .card {
-        display: flex;
-        flex-direction: column;
-        flex-basis: calc(1300px / 5 );
-        // width: clamp(20rem, calc(20rem + 2vw), 22rem);
-        overflow: hidden;
-        box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
-        border-radius: 0.5em;
-        background: #ECE9E6;
-        background: linear-gradient(to right, #FFFFFF, #ECE9E6);
-    }
-
-    .card__header {
-        height: 130px;
-    }
-
-    .card__body {
-        padding: 1rem;
-        gap: .5rem;
-    }
-
-    p {
-        margin-bottom: 0;
-    }
-
-    .address {
-        font-size: 0.8rem;
-    }
-
-    a {
-        text-decoration: none;
-        color: black!important;
-    }
-
-    a:hover {
-        text-decoration: none;
-    }
-
-    .card__body h4 {
-        font-weight: 600;
-        font-size: 1.1rem;
-        text-transform: capitalize;
-    }
-
-    .card__footer {
-        display: flex;
-        padding: 1rem;
-        margin-top: auto;
-    }
-
+    
 </style>

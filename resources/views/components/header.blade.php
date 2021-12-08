@@ -4,7 +4,7 @@
             <div class="d-inline-flex justify-content-center h-100">
                 <a href="{{ route('index') }}"><img src="{{asset('images/Logo_Deliveboo.PNG')}}" alt=""></a>
             </div>
-            <div class="col-5 h-100 d-flex align-items-center">
+            <div class="col-5 h-100 d-flex align-items-center search-bar">
                 <form class="d-flex w-100 h-75">
                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                     <input class="w-100" type="search" placeholder="Digita il ristorante che vuoi cercare" aria-label="Search">
@@ -16,7 +16,7 @@
                     <div class=" d-inline-flex justify-content-center align-items-center">
                         <a class="accedi btn text-white " href="{{ route('login') }}"><i class="fas fa-home"></i> Accedi</a>
                         @if (Route::has('register'))
-                            <a class="btn btn-outline-secondary mx-3" href="{{ route('register') }}">Registrati</a>
+                            <a class="registrati btn mx-3" href="{{ route('register') }}">Registrati</a>
                         @endif
                     </div>
                     @else
