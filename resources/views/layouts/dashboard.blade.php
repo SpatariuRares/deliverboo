@@ -21,13 +21,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    @include('components.header')
-
-    <div class="container-fluid">
-        <div class="main-bg row pb-5">
-            <main role="main" class="container-fluid mt-4">
-                @yield('content')
-            </main>
+    <div id="layoutPrincipale">
+        @include('components.header')
+        
+        <div class="container-fluid">
+            <div class="main-bg row pb-5">
+                <main role="main" class="container-fluid mt-4">
+                    @yield('content')
+                </main>
+            </div>
         </div>
     </div>
     

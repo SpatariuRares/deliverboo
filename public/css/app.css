@@ -17265,3 +17265,7 @@ header .container #button-container .registrati:focus {
   margin-bottom: 0;
 }
 
+#layoutPrincipale {
+  min-height: 100vh;
+}
+

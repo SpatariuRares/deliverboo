@@ -90,6 +90,7 @@ class paymentController extends Controller
             return response()->json($data,200);
         }
         else{
+            Order::where("id",$order->id)->delete();
             $data=[
                 "success" => false,
                 "message"=>"Transazione fallita", 

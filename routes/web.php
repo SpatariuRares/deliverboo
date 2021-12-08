@@ -25,7 +25,7 @@ Route::middleware('auth')->namespace('user')->prefix('user')->name('user.')
     Route::resource('/orders', 'OrderController');
     Route::resource('/foods', 'FoodController');
     Route::resource('/restaurant', 'UserController');
-    
+    Route::get('/statistic', "OrderController@statistic")->name('statistic');
 });
 
 // Route::get('/', 'HomeController@index')->name('home');

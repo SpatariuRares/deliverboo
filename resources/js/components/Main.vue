@@ -31,15 +31,19 @@
     </div>
 
     <div class="container">
-        <div class="card" v-for="(restaurant) in dataApi.users" :key="restaurant.id">
-            <div class="card__header">
-                <img v-if="restaurant.thumb" :src="`storage/${restaurant.thumb}`" class="card__image" width="600">
-                <img v-else src="http://www.portofinoselecta.com/images/joomlart/demo/default.jpg" alt="">
-            </div>
-            <div class="card__body">
-                <a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a>
-                <p class="address">{{ restaurant.address }}</p>
-                <p v-for="category in restaurant.category_id" :key="category">{{ category }}</p>
+        <div class="row row-cols-2 row-cols-lg-4">
+            <div class=" p-3 " v-for="(restaurant) in dataApi.users" :key="restaurant.id">
+                <div class="card">
+                    <div class="card__header">
+                        <img v-if="restaurant.thumb" :src="`storage/${restaurant.thumb}`" class="card__image" width="600">
+                        <img v-else src="http://www.portofinoselecta.com/images/joomlart/demo/default.jpg" alt="">
+                    </div>
+                    <div class="card__body">
+                        <a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a>
+                        <p class="address">{{ restaurant.address }}</p>
+                        <p v-for="category in restaurant.category_id" :key="category">{{ category }}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -156,18 +160,15 @@ export default {
     }
 
     .container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
         max-width: 1600px;
         gap: 2rem;
 
         .card {
-            display: flex;
-            flex-direction: column;
-            flex-basis: calc(1300px / 5 );
+            // display: flex;
+            // flex-direction: column;
+            // flex-basis: calc(1600px / 5 );
             // width: clamp(20rem, calc(20rem + 2vw), 22rem);
-            overflow: hidden;
+            // overflow: hidden;
             box-shadow: 0 2px 5px 1px rgba(0, 0, 0, .25);
             border-radius: 0.5em;
             background: #ECE9E6;

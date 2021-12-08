@@ -33,8 +33,6 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">user_id</th>
                         <th scope="col">thumb</th>
                         <th scope="col">name</th>
                         <th scope="col">price</th>
@@ -46,10 +44,7 @@
                 </thead>
                 <tbody>
                     @foreach ($foods as $food)
-                        
                         <tr>
-                            <th scope="row">{{ $food['id'] }}</th>
-                            <td>{{ $food['user']['id'] }}</td>
                             <td>
                                 @if($food->thumb)
                                     <img src="{{ asset('storage/'.$food->thumb)}}" alt="{{ $food->name}}">
@@ -61,10 +56,6 @@
                             <td>{{ $food['visible'] }}</td>
                             <td>{{ $food['quantity'] }}</td>
                             <td>
-                                <a href="{{ route('user.foods.show', $food['id']) }}"
-                                    class="btn btn-info">
-                                    Details
-                                </a>
                                 <a href="{{ route('user.foods.edit', $food['id']) }}"
                                     class="btn btn-warning">
                                     Modify

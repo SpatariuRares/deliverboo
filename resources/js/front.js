@@ -19,6 +19,11 @@ const restaurant = new Vue({
     render: h =>h(Restaurant)
 });
 
+document.getElementById("btnMonth").addEventListener("click", putMonth);
+document.getElementById("btnYear").addEventListener("click", putYear);
+let barLabels=barLabelsMonth;
+let barOrderData=barOrderDataMonth;
+
 import Chart from 'chart.js/auto';
 
 const ctx = document.getElementById('barChar');
@@ -39,6 +44,7 @@ const barData = {
         tension:0.4,
     }]
 }
+
 let delayed;
 const barConfig = {
     type: 'bar',
@@ -68,13 +74,37 @@ const barConfig = {
                     }
                 }
             }
-
+        },
+        plugins: {
+            legend: {
+                position: 'bottom',
+            },
+            title: {
+                display: true,
+                text: 'Chart.js Line Chart'
+            }
         }
     }
 };
 
 const barCha = new Chart(ctx, barConfig);
 
+console.log(barCha.data.datasets.data)
+function putMonth() {
+    barCha.data.labels=barLabelsMonth;
+    barCha.data.datasets.forEach((dataset) => {
+        dataset.data=barOrderDataMonth
+    });
+    barCha.update();
+}
+
+function putYear() {
+    barCha.data.labels=barLabelsYear;
+    barCha.data.datasets.forEach((dataset) => {
+        dataset.data=barOrderDataYear
+    });
+    barCha.update();
+}
 
 const dounuts = document.getElementById('doughnutChar');
 const randomRGB =[]
@@ -113,3 +143,5 @@ const donConfig = {
 };
 
 const donChar = new Chart(dounuts, donConfig)
+
+

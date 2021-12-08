@@ -1,15 +1,16 @@
 <template>
 <div class="container-fluid">
-  <div class="row row-cols-3">
-    <div class="col p-2" v-for="food in foods" :key="food.id">
-      <div @click="addToCart(food.id)" class="border cibo rounded d-flex p-2" :class="id.includes(food.id) ? 'disattivato' : null">
+  <div class="row row-cols-1 row-cols-lg-3">
+    <div class="col p-2 ratio34"  v-for="food in foods" :key="food.id">
+      <div @click="addToCart(food.id)" class="border btn rounded d-flex " :class="id.includes(food.id) ? 'disabled' : null">
         <div class="w-50">
           <img :src="`/storage/${food.thumb}`" alt="">
         </div>
         <div class="w-50 pl-4">
-          <h4 class="fw-bold">{{ food.name }}</h4>
+          <h5 class="fw-bold text-truncate">{{ food.name }}</h5>
           <p>{{ food.ingredients}}</p>
           <h5 class="mt-4">€{{ food.price}}</h5>  
+          <p class="btn btn-success">add to cart</p>
         </div>
       </div>
     </div>
@@ -62,12 +63,11 @@ div img{
   width: 100%;
   height: 100%;
 }
-
-.disattivato {
-  filter: grayscale(80%);
-}
-
-.cibo {
-  cursor: pointer;
+.ratio34{
+  aspect-ratio: 2;
+  &>*{
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>
