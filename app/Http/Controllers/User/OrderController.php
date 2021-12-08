@@ -191,7 +191,7 @@ class OrderController extends Controller
             }
         }
         // dd($order,$food->name,$food->id,$donData);
-        return view('user.orders.show', compact('labelsMonth',"dateMonth","donData","donLabels",'labelsYear',"dateYear",));;
+        return view('user.orders.statistic', compact('labelsMonth',"dateMonth","donData","donLabels",'labelsYear',"dateYear",));;
     }
 
     // /**

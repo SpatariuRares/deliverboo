@@ -43,7 +43,7 @@
                         @endforeach
                     </div>
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         @if ($user['thumb'] != 'https://mod.go.ke/wp-content/uploads/2021/04/default-profile-pic.png')
                             <img src="{{ asset('storage/' .$user->thumb)}}" alt="{{ $user->name}}" id="image">
                         @elseif ($user['thumb'])
@@ -51,19 +51,48 @@
                         @endif
                         
                         <input type="file" name='image' id='image' class="@error('image') is-invalid @enderror">
-
-                        <input type="checkbox" name="deleteImage" id="deleteImage" class="form-control" @error('deleteImage') is-invalid @enderror>
                         
                         @error('image')
-                            <div class="alert alert-danger">{{$message}}</div>
+                        <div class="alert alert-danger">{{$message}}</div>
                         @enderror
+                    </div> --}}
+
+                    <div class="input-group mb-3">
+                        <div class="col-4">
+                            @if ($user['thumb'] != 'https://mod.go.ke/wp-content/uploads/2021/04/default-profile-pic.png')
+                                <img src="{{ asset('storage/' .$user->thumb)}}" alt="{{ $user->name}}" id="image">
+                            @elseif ($user['thumb'])
+                                <img src="https://mod.go.ke/wp-content/uploads/2021/04/default-profile-pic.png">
+                            @endif
+                        </div>
+                        <div class="col-8">
+                            <div class="custom-file">
+                                <input class="custom-file-input" type="file" name='image' id='image' class="@error('image') is-invalid @enderror">
+                                <label class="custom-file-label" for="image">Choose file</label>
+                            </div>
+                            @error('image')
+                            <div class="alert alert-danger">{{$message}}</div>
+                            @enderror
+                            <div class="form-check">
+                                <input type="checkbox" name="deleteImage" id="deleteImage" class="form-check-input" @error('deleteImage') is-invalid @enderror>
+                                <label class="form-check-label" for="deleteImage"> cancellare l'immagine </label>
+                            </div>
+                        </div>
                     </div>
-                        
-                        
+
                     <button type="submit" class="btn btn-success my-3">Submit</button>
                     
                 </form>
             </div>
         </div>
     </div> 
+    <script>
+        document.getElementById('#image').addEventListener('change',()=>{
+            console.log("ciao")
+            //get the file name
+            var fileName = $(this).val();
+            //replace the "Choose a file" label
+            $(this).next('.custom-file-label').html(fileName);
+        })
+    </script>
 @endsection

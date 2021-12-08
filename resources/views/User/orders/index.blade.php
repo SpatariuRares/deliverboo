@@ -31,39 +31,35 @@
         class="btn btn-info">
         statistic
     </a>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <h1 class="my-4">Ecco i tuoi ordini</h1>
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">total</th>
-                            <th scope="col">email</th>
-                            <th scope="col">address</th>
-                            <th scope="col">Full Name</th>
-                            <th scope="col">paymentStatus</th>
-                            <th scope="col">foods</th>
+                            <th>total</th>
+                            <th class="d-none d-lg-block">email</th>
+                            <th>address</th>
+                            <th>Full Name</th>
+                            <th>foods</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if(count($orders)!=0)
                             @foreach ($orders as $order)
-                                    <tr>
-                                        <th scope="row">{{ $order['id'] }}</th>
+                                    <tr>    
                                         <td>{{ $order['total'] }}</td>
-                                        <td>{{ $order['email'] }}</td>
+                                        <td class="d-none d-lg-block">{{ $order['email'] }}</td>
                                         <td>{{ $order['address'] }}</td>
                                         <td>{{ $order['fullName'] }}</td>
-                                        <td>{{ $order['paymentStatus'] }}</td>
                                         <td>
                                             @if ($order->foods)
                                                 @foreach ($order->foods as $food)
                                                     @if ($food->last)
-                                                        {{$food->id.', '}}
+                                                        {{$food->name.', '}}
                                                     @else
-                                                        {{$food->id}}
+                                                        {{$food->name}}
                                                     @endif
                                                 @endforeach
                                             @endif

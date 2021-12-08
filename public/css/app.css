@@ -17152,3 +17152,7 @@ header .container #button-container .accedi {
   background-color: #00CCBC !important;
 }
 
+#layoutPrincipale {
+  min-height: 100vh;
+}
+
