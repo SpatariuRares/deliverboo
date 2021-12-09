@@ -82,6 +82,7 @@ class paymentController extends Controller
         ]);
         return response()->json($result);
         if($result->success){
+            $order=Order::where("id",$order->id);
             $order->paymentStatus=true;
             $order->update();
             $data=[
