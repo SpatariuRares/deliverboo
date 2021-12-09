@@ -5,8 +5,8 @@
         <div class="row gx-4 mb-5">
             <div class="col-4 justify-content-end">
                 @if($user->thumb)
-                    <div class="img rounded">
-                        <img class="img-thumbnail border-success" src="{{ asset('storage/'.$user->thumb)}}" alt="{{ $user->name}}">
+                    <div class="d-flex justify-content-end rounded">
+                        <img class="img-thumbnail" src="{{ asset('storage/'.$user->thumb)}}" alt="{{ $user->name}}">
                     </div>
                 @endif
             </div>

@@ -2,18 +2,18 @@
 	<div class="px-3">
 		<FormClient v-if="dataForm" @updateForm="FormData"/>
 		<Payment v-if="brain && !dataForm" :authorization="token" @onSuccess="paymentOnSuccess"/>
-		<div class="text-white p-3 bg-dark mt-3">
+		<div class="text-white p-3 bg-dark rounded mt-3">
 			<h3>Ecco il tuo ordine:</h3>
 		
-			<div v-if="showOrder.length!=0">
+			<div v-if="showOrder.length!=0" class="border-bottom pb-2 mb-2">
 				<div v-for="(food,index) in showOrder" :key="food.id" class="row d-flex justify-content-between my-2">
-					<div class="col-3 text-white">
+					<div class="col-3 text-white cart_food_name">
 						{{food.name}}
 					</div>
-					<div class="col-6 d-flex justify-content-between ">
-						<button class="btn btn-sm circle btn-success" @click="minus(index)">-</button>{{form.quantity[index]}}<button class=" btn btn-sm circle btn-success" @click="plus(index)">+</button>
+					<div class="col-7 d-flex justify-content-around">
+						<button class="btn circle btn-secondary" @click="minus(index)">-</button>{{form.quantity[index]}}<button class="btn circle btn-secondary" @click="plus(index)">+</button>
 					</div>
-					<div class="col-3 text-white">
+					<div class="col-2 text-white d-flex justify-content-end">
 						€{{food.price}}	
 					</div>
 				</div>	
@@ -232,14 +232,12 @@ export default {
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-	background-color: #d9d9d9;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: 20px;
 	font-family: 'Open Sans';
 	font-weight: 900;
-	color: #202020;
 	cursor: pointer;
 }
 .count{
@@ -327,6 +325,10 @@ hr{
 	font-family: 'Open Sans';
 	font-weight: 600;
 	color: #202020;
+}
+
+.cart_food_name {
+	font-size: 20px;
 }
 
 
