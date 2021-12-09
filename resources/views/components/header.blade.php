@@ -1,7 +1,7 @@
 <header>
     <div class="container">
         <div class="row p-2 justify-content-between">
-            <div class="d-inline-flex justify-content-center h-100">
+            <div class="h-100">
                 <a href="{{ route('index') }}"><img src="{{asset('images/Logo_Deliveboo.PNG')}}" alt=""></a>
             </div>
             <div class="col-5 h-100 d-flex align-items-center search-bar">

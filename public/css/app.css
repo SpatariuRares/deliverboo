@@ -17175,6 +17175,10 @@ header .container #button-container .registrati:focus {
   box-shadow: none;
 }
 
+#layoutPrincipale {
+  min-height: 100vh;
+}
+
 .footer-dark {
   padding: 50px 0;
   color: #f0f9ff;
@@ -17263,9 +17267,5 @@ header .container #button-container .registrati:focus {
   opacity: 0.3;
   font-size: 13px;
   margin-bottom: 0;
-}
-
-#layoutPrincipale {
-  min-height: 100vh;
 }
 

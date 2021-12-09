@@ -33,17 +33,19 @@
     <div class="container">
         <div class="row row-cols-2 row-cols-lg-4">
             <div class=" p-3 " v-for="(restaurant) in dataApi.users" :key="restaurant.id">
-                <div class="card">
-                    <div class="card__header">
-                        <img v-if="restaurant.thumb" :src="`storage/${restaurant.thumb}`" class="card__image" width="600">
-                        <img v-else src="http://www.portofinoselecta.com/images/joomlart/demo/default.jpg" alt="">
+                <a class="link_card" :href="'/' + restaurant.slug">
+                    <div class="card">
+                        <div class="card__header">
+                            <img v-if="restaurant.thumb" :src="`storage/${restaurant.thumb}`" class="card__image" width="600">
+                            <img v-else src="http://www.portofinoselecta.com/images/joomlart/demo/default.jpg" alt="">
+                        </div>
+                        <div class="card__body">
+                            <h4>{{restaurant.username}}</h4>
+                            <p class="address">{{ restaurant.address }}</p>
+                            <p v-for="category in restaurant.category_id" :key="category">{{ category }}</p>
+                        </div>
                     </div>
-                    <div class="card__body">
-                        <a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a>
-                        <p class="address">{{ restaurant.address }}</p>
-                        <p v-for="category in restaurant.category_id" :key="category">{{ category }}</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -162,6 +164,11 @@ export default {
     .container {
         max-width: 1600px;
         gap: 2rem;
+
+        .link_card {
+            text-decoration: none;
+            color: black;
+        }
 
         .card {
             // display: flex;
