@@ -67,7 +67,7 @@ class paymentController extends Controller
         if(isset($data['foods'])){
             $new_order->foods()->attach($data['foods']);
         }
-        return $new_order["total"];
+        return $new_order;
     }
 
     public function makePayment(Request $request,Gateway $gateway){
@@ -83,6 +83,7 @@ class paymentController extends Controller
         return response()->json($result);
         if($result->success){
             $order->paymentStatus=true;
+            $order->update();
             $data=[
                 "success" => true, 
                 "message"=>"Transazione effetuata", 

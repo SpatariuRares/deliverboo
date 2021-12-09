@@ -86,7 +86,6 @@ export default {
 			// localStorage.cart = this.cart;
 			this.form.food = this.cart;
 			this.showOrder=this.cart;
-			console.log(this.total)
 			if(this.oldLength < this.cart.length){
 				this.total = 0;
 				this.cart.map((food)=> {
@@ -95,7 +94,6 @@ export default {
 				this.form.quantity.push(1);
 				this.oldLength=this.cart.length
 			}
-			console.log(this.total);
 			this.savecart();
         }
 	},
@@ -112,14 +110,13 @@ export default {
 		},
 		buy () {
 			axios.post("http://127.0.0.1:8000/api/makepayment", { ...this.form }).then((response) => {
-				// console.log(response)
+		
 				localStorage.removeItem('cart');
 				localStorage.removeItem('total');
 				localStorage.removeItem('randid');
 				localStorage.removeItem('oldLength');
 				localStorage.removeItem('quantity');
 				while ((localStorage.getItem('cart') != null && localStorage.getItem('total') != null && localStorage.getItem('randid') != null && localStorage.getItem('oldLength') != null && localStorage.getItem('quantity') != null)) {}
-					console.log(localStorage.getItem('cart'));
 					window.location.pathname="/checkout"
 			})
 		},
