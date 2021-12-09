@@ -61,23 +61,25 @@ export default {
       });
       if(cartFlag){
         axios.post("http://127.0.0.1:8000/api/food/cart",{ ...this.form }).then((response) => {
-          if(this.cart.length > 0) {
-            if(response.data.cart["user_id"] == this.cart[0]["user_id"]){
-                this.cart.push(response.data.cart);
-                this.reset=false;
+          if(response.data.cart.visible!=0){
+            if(this.cart.length > 0) {
+              if(response.data.cart["user_id"] == this.cart[0]["user_id"]){
+                  this.cart.push(response.data.cart);
+                  this.reset=false;
+                }
+                else{
+                  // console.log("2",this.cart[0]["id"])
+                  this.cart=[];
+                  this.reset=true;
+                  this.cart.push(response.data.cart);
+                }
               }
               else{
-                // console.log("2",this.cart[0]["id"])
-                this.cart=[];
                 this.reset=true;
                 this.cart.push(response.data.cart);
               }
-            }
-            else{
-              this.reset=true;
-              this.cart.push(response.data.cart);
-            }
-          this.savecart();
+            this.savecart();
+          }
         })
       }
     },
