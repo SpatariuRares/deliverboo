@@ -2,23 +2,23 @@
 	<div class="px-3">
 		<FormClient v-if="dataForm" @updateForm="FormData"/>
 		<Payment v-if="brain && !dataForm" :authorization="token" @onSuccess="paymentOnSuccess"/>
-		<div class="text-white p-3 bg-dark mt-3">
+		<div class="text-white p-3 bg-dark rounded mt-3">
 			<h3>Ecco il tuo ordine:</h3>
 		
-			<div v-if="showOrder.length!=0">
+			<div v-if="showOrder.length!=0" class="border-bottom pb-2 mb-2">
 				<div v-for="(food,index) in showOrder" :key="food.id" class="row d-flex justify-content-between my-2">
-					<div class="col-3 text-white">
+					<div class="col-3 text-white cart_food_name">
 						{{food.name}}
 					</div>
-					<div class="col-6 d-flex justify-content-between ">
-						<button class="btn btn-sm circle btn-success" @click="minus(index)">-</button>{{form.quantity[index]}}<button class=" btn btn-sm circle btn-success" @click="plus(index)">+</button>
+					<div class="col-7 d-flex justify-content-around">
+						<button class="btn circle btn-secondary" @click="minus(index)">-</button>{{form.quantity[index]}}<button class="btn circle btn-secondary" @click="plus(index)">+</button>
 					</div>
-					<div class="col-3 text-white">
+					<div class="col-2 text-white cart_food_price d-flex justify-content-end">
 						€{{food.price}}	
 					</div>
 				</div>	
 			</div>
-			<div>Total: {{total}}€</div>
+			<div><span class="cart_food_name">Total:</span><span class="cart_food_price"> {{total}}€</span></div>
 		</div>
 	</div>	
 </template>
@@ -86,7 +86,6 @@ export default {
 			// localStorage.cart = this.cart;
 			this.form.food = this.cart;
 			this.showOrder=this.cart;
-			console.log(this.total)
 			if(this.oldLength < this.cart.length){
 				this.total = 0;
 				this.cart.map((food)=> {
@@ -95,7 +94,6 @@ export default {
 				this.form.quantity.push(1);
 				this.oldLength=this.cart.length
 			}
-			console.log(this.total);
 			this.savecart();
         }
 	},
@@ -112,14 +110,13 @@ export default {
 		},
 		buy () {
 			axios.post("http://127.0.0.1:8000/api/makepayment", { ...this.form }).then((response) => {
-				// console.log(response)
+		
 				localStorage.removeItem('cart');
 				localStorage.removeItem('total');
 				localStorage.removeItem('randid');
 				localStorage.removeItem('oldLength');
 				localStorage.removeItem('quantity');
 				while ((localStorage.getItem('cart') != null && localStorage.getItem('total') != null && localStorage.getItem('randid') != null && localStorage.getItem('oldLength') != null && localStorage.getItem('quantity') != null)) {}
-					console.log(localStorage.getItem('cart'));
 					window.location.pathname="/checkout"
 			})
 		},
@@ -232,14 +229,12 @@ export default {
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-	background-color: #d9d9d9;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: 20px;
 	font-family: 'Open Sans';
 	font-weight: 900;
-	color: #202020;
 	cursor: pointer;
 }
 .count{
@@ -327,6 +322,15 @@ hr{
 	font-family: 'Open Sans';
 	font-weight: 600;
 	color: #202020;
+}
+
+.cart_food_name {
+	font-size: 20px;
+}
+
+.cart_food_price {
+	font-size: 15px;
+	font-weight: bold;
 }
 
 

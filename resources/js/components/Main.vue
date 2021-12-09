@@ -15,8 +15,8 @@
 
     <div class="container">
         <div class="row row-cols-2 row-cols-lg-4">
-            <div class=" p-3 " v-for="(restaurant) in dataApi.users" :key="restaurant.id">
-                <div class="card">
+            <div class="col p-3 d-flex" v-for="(restaurant) in dataApi.users" :key="restaurant.id">
+                <div class="card flex-fill">
                     <div class="card__header">
                         <img v-if="restaurant.thumb" :src="`storage/${restaurant.thumb}`" class="card__image" width="600">
                         <img v-else src="http://www.portofinoselecta.com/images/joomlart/demo/default.jpg" alt="">
@@ -24,16 +24,17 @@
                     <div class="card__body">
                         <a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a>
                         <p class="address">{{ restaurant.address }}</p>
-                        <div>
-                            <span v-for="category in restaurant.category_id" :key="category">{{ category + ' ' }}</span>
+                        <div v-if="!catFlag">
+                            <span v-for="category in restaurant.category_id" :key="category">{{ category }} </span>
                         </div>
-                        
+                        <div v-else>
+                            <span v-for="category in restaurant.pivot.category_id" :key="category">{{ category }} </span>
+                        </div>  
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 </template>
 
@@ -45,7 +46,7 @@ export default {
         return {
             dataApi: [],
             url: "http://127.0.0.1:8000/api/restaurant",
-            catFlug: false
+            catFlag:false,
         }
     },
     created() {
@@ -53,11 +54,28 @@ export default {
     },
     methods: {
         getRestaurantCat(id) {
-            this.catFlug = true
             axios.get("http://127.0.0.1:8000/api/categoryShow/" + id).then((response) => {
-				// console.log(response)
                 this.dataApi.users = response.data.users;
-                // console.log(response.data.users);
+                this.catFlag=true;
+                var result = Object.keys(this.dataApi.users).map((key) => [this.dataApi.users[key]]);
+                result.map((res,index)=> {
+                    res = res[0];
+                    result[index] = res;
+                });
+
+
+                result.map((restaurant)=>{
+                    for(let i=0; i<restaurant.pivot.category_id.length; i++){
+                        flag=true;
+                        this.dataApi.categories.map((category)=>{
+                            if(restaurant.pivot.category_id[i] != null && restaurant.pivot.category_id[i] == category.id && flag) {
+                                restaurant.pivot.category_id[i] = category.name;
+                                flag=false
+                            }
+                        })
+                    }
+                })
+                console.log(response.data.users);
 			})
         },
         getData() {
@@ -66,6 +84,7 @@ export default {
             .get(this.url)
             .then(response => {
                 this.dataApi = response.data;
+                this.catFlag=false;
                 let flag = true;
                 var result = Object.keys(this.dataApi.users).map((key) => [this.dataApi.users[key]]);
                 result.map((res,index)=> {
@@ -144,6 +163,11 @@ export default {
     .container {
         max-width: 1600px;
         gap: 2rem;
+
+        .link_card {
+            text-decoration: none;
+            color: black;
+        }
 
         .card {
             // display: flex;
