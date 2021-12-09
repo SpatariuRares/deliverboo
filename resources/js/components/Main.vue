@@ -164,6 +164,11 @@ export default {
         max-width: 1600px;
         gap: 2rem;
 
+        .link_card {
+            text-decoration: none;
+            color: black;
+        }
+
         .card {
             // display: flex;
             // flex-direction: column;
