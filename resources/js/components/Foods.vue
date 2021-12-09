@@ -58,6 +58,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'resources/sass/variables';
 
 div img{
   width: 100%;
@@ -81,7 +82,7 @@ div img{
 }
 
 .cart_btn {
-  background-color: #14D0C1;
+  background-color: $deliveboo;
   color: white;
 
   &:hover {
