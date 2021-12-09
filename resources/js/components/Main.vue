@@ -15,7 +15,7 @@
 
     <div class="container">
         <div class="row row-cols-2 row-cols-lg-4">
-            <div class=" d-flex flex-fill p-3 " v-for="(restaurant) in dataApi.users" :key="restaurant.id">
+            <div class="p-3" v-for="(restaurant) in dataApi.users" :key="restaurant.id">
                 <div class="card">
                     <div class="card__header">
                         <img v-if="restaurant.thumb" :src="`storage/${restaurant.thumb}`" class="card__image" width="600">

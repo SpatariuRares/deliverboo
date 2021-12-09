@@ -13,12 +13,12 @@
 					<div class="col-7 d-flex justify-content-around">
 						<button class="btn circle btn-secondary" @click="minus(index)">-</button>{{form.quantity[index]}}<button class="btn circle btn-secondary" @click="plus(index)">+</button>
 					</div>
-					<div class="col-2 text-white d-flex justify-content-end">
+					<div class="col-2 text-white cart_food_price d-flex justify-content-end">
 						€{{food.price}}	
 					</div>
 				</div>	
 			</div>
-			<div>Total: {{total}}€</div>
+			<div><span class="cart_food_name">Total:</span><span class="cart_food_price"> {{total}}€</span></div>
 		</div>
 	</div>	
 </template>
@@ -326,6 +326,11 @@ hr{
 
 .cart_food_name {
 	font-size: 20px;
+}
+
+.cart_food_price {
+	font-size: 15px;
+	font-weight: bold;
 }
 
 
