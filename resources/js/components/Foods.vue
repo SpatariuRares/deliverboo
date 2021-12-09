@@ -1,12 +1,7 @@
 <template>
 <div class="container-fluid">
-<<<<<<< HEAD
   <div class="row row-cols-1 row-cols-lg-3 ">
     <div class="col p-2 ratio34"  v-for="food in foods" :key="food.id">
-=======
-  <div class="row row-cols-1 row-cols-lg-3">
-    <div class="col p-3 ratio34"  v-for="food in foods" :key="food.id">
->>>>>>> 11099c06af1d9d07ffc19dd31ae1689490d987d0
       <div @click="addToCart(food.id)" class="border btn rounded d-flex " :class="id.includes(food.id) ? 'disabled' : null">
         <div class="w-50">
           <img :src="`/storage/${food.thumb}`" alt="">
