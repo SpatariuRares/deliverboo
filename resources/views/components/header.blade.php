@@ -21,7 +21,7 @@
                     </div>
                     @else
                     <div class="d-inline-flex justify-content-center">
-                        <ul class="list-group list-unstyled flex-row">
+                        <ul class="list-group list-unstyled flex-row align-items-center">
     
                             <li class="nav-item ">
                                 <a class="nav-link" href="{{ route('user.restaurant.index')}}">

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; 
 use App\Order;
 use App\Food;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -196,7 +197,26 @@ class OrderController extends Controller
 
     public function show($id)
     {
+        $foods = DB::table('foods')
+        ->rightJoin('food_order', 'foods.id', '=', 'food_order.food_id')
+        ->where('food_order.order_id', '=', $id)
+        ->get();
+        // $contatore = count($foods);
+        // for($i=0 ; $i<$contatore; $i++) {
+        //     if (isset($foods[$i])) {
+        //         $id = $foods[$i]->order_id;
+        //         $foods[$i]->order_id = [];
+        //         $foods[$i]->order_id[] = $id;
+        //         for($j=$i+1 ; $j<$contatore; $j++) {
+        //             if($foods[$j]->id == $foods[$i]->id) {
+        //                 $foods[$i]->order_id[] = $foods[$j]->order_id;
+        //                 unset($foods[$j]);
+        //             }
+        //         }
+        //     }
+        // }
+
         $detailOrder = Order::findOrFail($id);
-        return view('user.orders.show', compact('detailOrder'));
+        return view('user.orders.show', compact("detailOrder", "foods"));
     }
 }
