@@ -33,9 +33,9 @@ export default {
             this.form.email = this.$refs.email.value
             this.form.address = this.$refs.address.value
             this.form.fullName = this.$refs.fullName.value
+            if(this.form.email.includes("@") && this.form.email.includes(".") && this.form.email.indexOf("@")<this.form.email.indexOf(".")){
                 this.updateForm();
-            // if(this.form.email.includes("@") && this.form.email.includes(".") && this.form.email.indexOf("@")<this.form.email.indexOf(".")){
-            // }
+            }
         },
         updateForm(){
             this.$emit('updateForm', this.form)

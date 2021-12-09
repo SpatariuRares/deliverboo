@@ -1,6 +1,6 @@
 <template>
 <div class="container-fluid">
-  <div class="row row-cols-1 row-cols-lg-3">
+  <div class="row row-cols-1 row-cols-lg-3 ">
     <div class="col p-2 ratio34"  v-for="food in foods" :key="food.id">
       <div @click="addToCart(food.id)" class="border btn rounded d-flex " :class="id.includes(food.id) ? 'disabled' : null">
         <div class="w-50">

@@ -1,22 +1,5 @@
 <template>
 <div>
-    <!-- <div class="col">
-        <div class="row">
-            <div>
-                <a href="/">logo</a>
-            </div>
-            <form class="d-flex">
-                <input v-model="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" @keyup="emit('outputSearch', search)">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            <div>
-                <a class="btn btn-primary" href="/login">Accedi</a>
-            </div>
-            <div>
-                <a class="btn btn-primary" href="/register">Registrati</a>
-            </div>
-        </div>
-    </div> -->
     <div class="container-fluid mb-4">
         <div class="row justify-content-center">
             <div class="card-category" @click="getData()">
@@ -32,7 +15,7 @@
 
     <div class="container">
         <div class="row row-cols-2 row-cols-lg-4">
-            <div class=" p-3 " v-for="(restaurant) in dataApi.users" :key="restaurant.id">
+            <div class=" d-flex flex-fill p-3 " v-for="(restaurant) in dataApi.users" :key="restaurant.id">
                 <div class="card">
                     <div class="card__header">
                         <img v-if="restaurant.thumb" :src="`storage/${restaurant.thumb}`" class="card__image" width="600">
@@ -41,7 +24,12 @@
                     <div class="card__body">
                         <a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a>
                         <p class="address">{{ restaurant.address }}</p>
-                        <p v-for="category in restaurant.category_id" :key="category">{{ category }}</p>
+                        <div v-if="!catFlag">
+                            <span v-for="category in restaurant.category_id" :key="category">{{ category }}</span>
+                        </div>
+                        <div v-else>
+                            <span v-for="category in restaurant.pivot.category_id" :key="category">{{ category }}</span>
+                        </div>  
                     </div>
                 </div>
             </div>
@@ -59,10 +47,7 @@ export default {
         return {
             dataApi: [],
             url: "http://127.0.0.1:8000/api/restaurant",
-            // form : {
-			// 	id : "",
-			// }
-            // categoryFilter: [],
+            catFlag:false,
         }
     },
     created() {
@@ -70,13 +55,28 @@ export default {
     },
     methods: {
         getRestaurantCat(id) {
-            // console.log(id);
-            // this.form.id = id;
-            // console.log(this.form.id);
             axios.get("http://127.0.0.1:8000/api/categoryShow/" + id).then((response) => {
-				// console.log(response)
                 this.dataApi.users = response.data.users;
-                // console.log(response.data.users);
+                this.catFlag=true;
+                var result = Object.keys(this.dataApi.users).map((key) => [this.dataApi.users[key]]);
+                result.map((res,index)=> {
+                    res = res[0];
+                    result[index] = res;
+                });
+
+
+                result.map((restaurant)=>{
+                    for(let i=0; i<restaurant.pivot.category_id.length; i++){
+                        flag=true;
+                        this.dataApi.categories.map((category)=>{
+                            if(restaurant.pivot.category_id[i] != null && restaurant.pivot.category_id[i] == category.id && flag) {
+                                restaurant.pivot.category_id[i] = category.name;
+                                flag=false
+                            }
+                        })
+                    }
+                })
+                console.log(response.data.users);
 			})
         },
         getData() {
@@ -84,6 +84,7 @@ export default {
             .get(this.url)
             .then(response => {
                 this.dataApi = response.data;
+                this.catFlag=false;
                 let flag = true;
                 var result = Object.keys(this.dataApi.users).map((key) => [this.dataApi.users[key]]);
                 result.map((res,index)=> {
