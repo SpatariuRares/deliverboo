@@ -2,17 +2,17 @@
 	<form @submit.prevent="checkform()">
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" ref="email" name="email" class="form-control" id="email" required placeholder="Enter email">
+            <input type="email" ref="email" name="email" class="form-control" id="email" required placeholder="Inserisci email">
         </div>
         <div class="form-group">
-            <label for="address">Address</label>
-            <input type="text"  ref="address" name="address" class="form-control" id="address" required placeholder="Enter address">
+            <label for="address">Indirizzo</label>
+            <input type="text"  ref="address" name="address" class="form-control" id="address" required placeholder="Inserisci Indirizzo">
         </div>
         <div class="form-group">
-            <label for="fullName">FullName</label>
-            <input type="text"  ref="fullName" name="fullName" class="form-control" id="fullName" required placeholder="Enter fullName">
+            <label for="fullName">Nome Completo</label>
+            <input type="text"  ref="fullName" name="fullName" class="form-control" id="fullName" required placeholder="Inserisci il tuo nome">
         </div>
-        <button type="submit" class="btn btn-outline-secondary my-3">Submit</button>
+        <button type="submit" class="btn btn-outline-secondary my-3">Invia i tuoi dati per l'ordine!</button>
     </form>
 </template>
 

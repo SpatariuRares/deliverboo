@@ -15,9 +15,9 @@
                 <h5 class="text-muted">
                     @foreach ($user->categories as $category)
                         @if ($category == $user->categories->last())
-                            <p class="text-reset">{{ $category->name }}</p>
+                            <span class="text-reset">{{ $category->name }}</span>
                         @else
-                            <p class="text-reset">{{$category->name.', '}}</p>
+                            <span class="text-reset">{{$category->name.', '}}</span>
                         @endif
                     @endforeach
                 </h5>

@@ -15,8 +15,8 @@
 
     <div class="container">
         <div class="row row-cols-2 row-cols-lg-4">
-            <div class="p-3" v-for="(restaurant) in dataApi.users" :key="restaurant.id">
-                <div class="card">
+            <div class="col p-3 d-flex" v-for="(restaurant) in dataApi.users" :key="restaurant.id">
+                <div class="card flex-fill">
                     <div class="card__header">
                         <img v-if="restaurant.thumb" :src="`storage/${restaurant.thumb}`" class="card__image" width="600">
                         <img v-else src="http://www.portofinoselecta.com/images/joomlart/demo/default.jpg" alt="">
@@ -25,17 +25,16 @@
                         <a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a>
                         <p class="address">{{ restaurant.address }}</p>
                         <div v-if="!catFlag">
-                            <span v-for="category in restaurant.category_id" :key="category">{{ category }}</span>
+                            <span v-for="category in restaurant.category_id" :key="category">{{ category }} </span>
                         </div>
                         <div v-else>
-                            <span v-for="category in restaurant.pivot.category_id" :key="category">{{ category }}</span>
+                            <span v-for="category in restaurant.pivot.category_id" :key="category">{{ category }} </span>
                         </div>  
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 </template>
 
