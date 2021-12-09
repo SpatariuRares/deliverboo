@@ -1,22 +1,5 @@
 <template>
 <div>
-    <!-- <div class="col">
-        <div class="row">
-            <div>
-                <a href="/">logo</a>
-            </div>
-            <form class="d-flex">
-                <input v-model="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" @keyup="emit('outputSearch', search)">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-            <div>
-                <a class="btn btn-primary" href="/login">Accedi</a>
-            </div>
-            <div>
-                <a class="btn btn-primary" href="/register">Registrati</a>
-            </div>
-        </div>
-    </div> -->
     <div class="container-fluid mb-4">
         <div class="row justify-content-center">
             <div class="card-category" @click="getData()">
@@ -41,7 +24,10 @@
                     <div class="card__body">
                         <a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a>
                         <p class="address">{{ restaurant.address }}</p>
-                        <p v-for="category in restaurant.category_id" :key="category">{{ category }}</p>
+                        <div>
+                            <span v-for="category in restaurant.category_id" :key="category">{{ category + ' ' }}</span>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -59,10 +45,7 @@ export default {
         return {
             dataApi: [],
             url: "http://127.0.0.1:8000/api/restaurant",
-            // form : {
-			// 	id : "",
-			// }
-            // categoryFilter: [],
+            catFlug: false
         }
     },
     created() {
@@ -70,9 +53,7 @@ export default {
     },
     methods: {
         getRestaurantCat(id) {
-            // console.log(id);
-            // this.form.id = id;
-            // console.log(this.form.id);
+            this.catFlug = true
             axios.get("http://127.0.0.1:8000/api/categoryShow/" + id).then((response) => {
 				// console.log(response)
                 this.dataApi.users = response.data.users;
@@ -80,6 +61,7 @@ export default {
 			})
         },
         getData() {
+        this.catFlug = false;
         axios
             .get(this.url)
             .then(response => {
