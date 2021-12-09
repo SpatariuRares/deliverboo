@@ -27,9 +27,7 @@
                         <div v-if="!catFlag">
                             <span v-for="category in restaurant.category_id" :key="category">{{ category }} </span>
                         </div>
-                        <div v-else>
-                            <span v-for="category in restaurant.pivot.category_id" :key="category">{{ category }} </span>
-                        </div>  
+
                     </div>
                 </div>
             </div>
