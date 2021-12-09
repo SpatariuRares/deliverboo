@@ -5,8 +5,8 @@
         <div class="row gx-4 mb-5">
             <div class="col-4 justify-content-end">
                 @if($user->thumb)
-                    <div class="img rounded">
-                        <img class="img-thumbnail border-success" src="{{ asset('storage/'.$user->thumb)}}" alt="{{ $user->name}}">
+                    <div class="d-flex justify-content-end rounded">
+                        <img class="img-thumbnail" src="{{ asset('storage/'.$user->thumb)}}" alt="{{ $user->name}}">
                     </div>
                 @endif
             </div>
@@ -15,9 +15,9 @@
                 <h5 class="text-muted">
                     @foreach ($user->categories as $category)
                         @if ($category == $user->categories->last())
-                            <p class="text-reset">{{ $category->name }}</p>
+                            <span class="text-reset">{{ $category->name }}</span>
                         @else
-                            <p class="text-reset">{{$category->name.', '}}</p>
+                            <span class="text-reset">{{$category->name.', '}}</span>
                         @endif
                     @endforeach
                 </h5>
