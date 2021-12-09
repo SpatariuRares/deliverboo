@@ -77,6 +77,7 @@ export default {
 			})
         },
         getData() {
+        this.catFlug = false;
         axios
             .get(this.url)
             .then(response => {
