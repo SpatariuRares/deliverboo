@@ -28,9 +28,9 @@ class FoodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Food $food)
     {
-        return view('user.foods.create');
+        return view('user.foods.create', compact("food"));
     }
 
     /**
@@ -58,7 +58,8 @@ class FoodController extends Controller
         }
         $newFood = new Food();
         // storiamo i dati con il metodo fill
-
+        
+            // storiamo le immagini nel database
         if(array_key_exists('image', $formData)){
             //salviamo l'immagine e recuperiamo il path
             $thumb_path = Storage::put('food_thumb', $formData['image']);
