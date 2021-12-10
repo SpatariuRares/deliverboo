@@ -51,7 +51,7 @@
                                     @endif
                                 </div>
                                 <div class="w-50 d-flex flex-column justify-content-between align-items-center">
-                                    <span class="fw-bold text-truncate">{{ $food['name'] }}</span>
+                                    <span class="fw-bold ">{{ $food['name'] }}</span>
                                     <span>{{ $food['ingredients'] }}</span>
                                     <span class="">{{ $food['price'] }}€</span>
                                     <span class="">Acquistabile: {{ $food['visible'] }}</span>  
