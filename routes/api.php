@@ -28,3 +28,4 @@ Route::post('/makepayment', 'Api\paymentController@makePayment')->name('makepaym
 Route::get('/{slug}/foods', 'Api\FoodController@index');
 Route::get('/restaurant', 'Api\RestaurantController@index');
 Route::get('/categoryShow/{id}', 'Api\RestaurantController@show')->name('category_show');
+Route::post('/restaurant/search', 'Api\RestaurantController@search');

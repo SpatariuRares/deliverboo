@@ -169,11 +169,10 @@ export default {
         }
 
         .card {
-            // display: flex;
-            // flex-direction: column;
-            // flex-basis: calc(1600px / 5 );
-            // width: clamp(20rem, calc(20rem + 2vw), 22rem);
-            // overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex-basis: calc(1600px / 5 );
+            overflow: hidden;
             box-shadow: 0 2px 5px 1px rgba(0, 0, 0, .25);
             border-radius: 0.5em;
             background: #ECE9E6;

@@ -4,13 +4,16 @@
             <div class="h-100">
                 <a href="{{ route('index') }}"><img src="{{asset('images/Logo_Deliveboo.PNG')}}" alt=""></a>
             </div>
-            <div class="col-5 h-100 d-flex align-items-center search-bar">
+            {{-- <div class="col-5 h-100 d-flex align-items-center search-bar">
                 <form class="d-flex w-100 h-75">
                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                     <input class="w-100" type="search" placeholder="Digita il ristorante che vuoi cercare" aria-label="Search">
                 </form>
             </div>
-            
+             --}}
+            <div id="search">
+
+            </div>
             <div id="button-container" class="d-inline-flex justify-content-center align-items-center h-100">
                 @guest
                     <div class=" d-inline-flex justify-content-center align-items-center">
