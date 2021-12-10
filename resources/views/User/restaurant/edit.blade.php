@@ -60,7 +60,7 @@
                     <div class="input-group mb-3">
                         <div class="col-4">
                             @if ($user['thumb'] != 'https://mod.go.ke/wp-content/uploads/2021/04/default-profile-pic.png')
-                                <img src="{{ asset('storage/' .$user->thumb)}}" alt="{{ $user->name}}" id="image">
+                                <img class="w-100" src="{{ asset('storage/' .$user->thumb)}}" alt="{{ $user->name}}" id="image">
                             @elseif ($user['thumb'])
                                 <img src="https://mod.go.ke/wp-content/uploads/2021/04/default-profile-pic.png">
                             @endif
