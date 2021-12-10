@@ -164,10 +164,17 @@ class FoodController extends Controller
     public function destroy(Food $food)
     {
         $currentUser = Auth::user();
+        // dd("ciao");
         if(!$food || $food->user_id != $currentUser->id){
             abort(404);
         } 
-        $food->null();
+        $deleteFood=[];
+        $deleteFood["name"] = null;
+        $deleteFood["thumb"] = null;
+        $deleteFood["ingredients"] = null;
+        $deleteFood["price"] = null;
+        $deleteFood["visible"] = -1;
+        $food->update($deleteFood);
         return redirect()->route('user.foods.index')->with('deleted', 'food eliminato');
     }
 }
