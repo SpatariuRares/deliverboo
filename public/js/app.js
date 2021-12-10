@@ -37373,4 +37373,4 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! C:\Users\spata\Documents\roba\corso boolean\progetto finale super power\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
-
+}
