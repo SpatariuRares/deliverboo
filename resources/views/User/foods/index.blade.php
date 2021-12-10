@@ -27,52 +27,55 @@
             </button>
     </div>
     @endif
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-12">
-            <h1 class="mt-4 mb-4">all food</h1>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">thumb</th>
-                        <th scope="col">name</th>
-                        <th scope="col">price</th>
-                        <th scope="col">ingredients</th>
-                        <th scope="col">visible</th>
-                        <th scope="col">quantity</th>
-                        <th scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($foods as $food)
-                        <tr>
-                            <td>
-                                @if($food->thumb)
-                                    <img src="{{ asset('storage/'.$food->thumb)}}" alt="{{ $food->name}}">
-                                @endif
-                            </td>
-                            <td>{{ $food['name'] }}</td>
-                            <td>{{ $food['price'] }}</td>
-                            <td>{{ $food['ingredients'] }}</td>
-                            <td>{{ $food['visible'] }}</td>
-                            <td>{{ $food['quantity'] }}</td>
-                            <td>
-                                <a href="{{ route('user.foods.edit', $food['id']) }}"
-                                    class="btn btn-warning">
-                                    Modify
-                                </a>
-                                <form class="d-inline" method="post" onclick="return confirm('Questa azione è irreversibile!!! Sei sicuro di voler cancellare?')" action="{{ route('user.foods.destroy', $food['id']) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="">
+                <button class="btn p-2 btn-success">
+                    <a class="text-white text-decoration-none" href="{{ route('user.foods.create') }}">
+                        Aggiungi un piatto al menù
+                    </a>
+                </button>
+            </div>
         </div>
+    </div>    
+    <div class="row">
+        @foreach ($foods as $food)
+            @if ($food->name !=null)
+                <div class="col-4 p-2 d-flex">
+                    <div class="border rounded flex-fill d-flex">
+                        <div class="container-fluid d-flex flex-column justify-content-between">
+                            <div class="row p-2">
+                                <div class="w-50">
+                                    @if($food->thumb)
+                                        <img class="figure-img img-fluid" src="{{ asset('storage/'.$food->thumb)}}" alt="{{ $food->name}}">
+                                    @endif
+                                </div>
+                                <div class="w-50 d-flex flex-column justify-content-between align-items-center">
+                                    <span class="fw-bold ">{{ $food['name'] }}</span>
+                                    <span>{{ $food['ingredients'] }}</span>
+                                    <span class="">{{ $food['price'] }}€</span>
+                                    <span class="">Acquistabile: {{ $food['visible'] }}</span>  
+                                </div>
+                            </div>
+                            <div class="row p-2">
+                                <div class="col-6 d-flex justify-content-center">
+                                    <a href="{{ route('user.foods.edit', $food['id']) }}" class="btn btn-warning">
+                                        Modify
+                                    </a>
+                                </div>
+                                <div class="col-6 d-flex justify-content-center">
+                                    <form class="d-inline" method="post" onclick="return confirm('Questa azione è irreversibile!!! Sei sicuro di voler cancellare?')" action="{{ route('user.foods.destroy', $food['id']) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            @endif
+        @endforeach
     </div>
-    
-    
 </div>
 @endsection

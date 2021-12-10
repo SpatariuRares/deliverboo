@@ -1,23 +1,24 @@
 <template>
 <div class="container-fluid">
-  <div class="row row-cols-1 row-cols-lg-3 ">
-    <div class="col p-2 ratio34"  v-for="food in foods" :key="food.id">
-      <div @click="addToCart(food.id)" class="border btn rounded d-flex " :class="(id.includes(food.id) || food.visible==0) ? 'disabled' : null">
-        <div class="w-50">
-          <img :src="`/storage/${food.thumb}`" alt="">
-        </div>
-        <div class="w-50 d-flex flex-column justify-content-between pl-4">
-          <span class="fw-bold food_name text-truncate">{{ food.name }}</span>
-          <span>{{ food.ingredients}}</span>
-          <span class="mt-4 food_price">€{{ food.price}}</span>  
-          <span class="btn cart_btn">add to cart</span>
+  <div class="row ">
+    <div v-for="food in foods" :key="food.id" :class="(food.name!=null) ? 'd-flex col-6 col-lg-4 p-2' : null">
+      <div  :class="(food.name!=null) ? 'col p-2 d-flex ' : null"  v-if="food.name!=null">
+        <div @click="addToCart(food.id)" class="border flex-fill btn rounded d-flex " :class="(id.includes(food.id) || food.visible==0) ? 'disabled' : null">
+          <div class="w-50">
+            <img :src="`/storage/${food.thumb}`" alt="">
+          </div>
+          <div class="w-50 d-flex flex-column justify-content-between pl-4">
+            <span class="fw-bold food_name">{{ food.name }}</span>
+            <span>{{ food.ingredients}}</span>
+            <span class="mt-4 food_price">€{{ food.price}}</span>  
+            <span class="btn cart_btn">add to cart</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 </template>
-
 <script>
 export default {
     name: "Foods",

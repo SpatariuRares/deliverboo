@@ -6,7 +6,7 @@
             <div class=" col-12 col-lg-8">
                 <canvas id="barChar" width="800" height="400"></canvas>
                 <div>
-                    <button id="btnMonth" class="mx-2 btn btn-primary">Month</button><button id="btnYear"class="mx-2 btn btn-primary">Year</button>
+                    <button id="btnMonth" class="mx-2 btn btn-primary">Guarda statistiche mensili</button><button id="btnYear"class="mx-2 btn btn-primary">Guarda statistiche annuali</button>
                 </div>
             </div>
             <div class=" col-12 col-lg-4">

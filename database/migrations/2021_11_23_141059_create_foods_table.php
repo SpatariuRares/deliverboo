@@ -17,8 +17,8 @@ class CreateFoodsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('name');
-            $table->float('price',9,2);
+            $table->string('name')->nullable();
+            $table->float('price',9,2)->nullable();
             $table->string('thumb')->nullable();
             $table->text('ingredients')->nullable();
             $table->boolean('visible')->default(true);

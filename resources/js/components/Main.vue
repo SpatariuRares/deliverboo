@@ -14,18 +14,20 @@
     </div>
 
     <div class="container">
-        <div class="row row-cols-2 row-cols-lg-4">
-            <div class="col p-3 d-flex" v-for="(restaurant) in dataApi.users" :key="restaurant.id">
-                <div class="card flex-fill">
-                    <div class="card__header">
-                        <img v-if="restaurant.thumb" :src="`storage/${restaurant.thumb}`" class="card__image" width="600">
-                        <img v-else src="http://www.portofinoselecta.com/images/joomlart/demo/default.jpg" alt="">
-                    </div>
-                    <div class="card__body">
-                        <a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a>
-                        <p class="address">{{ restaurant.address }}</p>
-                        <div v-if="!catFlag">
-                            <span v-for="category in restaurant.category_id" :key="category">{{ category }} </span>
+        <div class="row">
+            <div v-for="(restaurant) in dataApi.users" :key="restaurant.id" :class="restaurant.username!=null ? 'col-2 col-lg-3' : null">
+                <div class="col p-3 d-flex"  v-if="restaurant.username!=null">
+                    <div class="card flex-fill ">
+                        <div class="card__header">
+                            <img v-if="restaurant.thumb" :src="`storage/${restaurant.thumb}`" class="card__image" width="600">
+                            <img v-else src="http://www.portofinoselecta.com/images/joomlart/demo/default.jpg" alt="">
+                        </div>
+                        <div class="card__body">
+                            <a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a>
+                            <p class="address">{{ restaurant.address }}</p>
+                            <div v-if="!catFlag">
+                                <span v-for="category in restaurant.category_id" :key="category">{{ category }} </span>
+                            </div>
                         </div>
                     </div>
                 </div>

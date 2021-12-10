@@ -27,33 +27,28 @@
             </button>
     </div>
     @endif
-    <a href="{{ route('user.statistic') }}"
-        class="btn btn-info">
-        statistic
-    </a>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <h1 class="my-4">Ecco i tuoi ordini</h1>
-                <table class="table table-striped">
+                <table class="table table-striped text-center">
                     <thead>
                         <tr>
-                            <th>total</th>
-                            <th class="d-none d-lg-block">email</th>
-                            <th>address</th>
-                            <th>Full Name</th>
-                            <th>foods</th>
-                            <th scope="col">Actions</th>
+                            <th>Nome Completo</th>
+                            <th class="d-none d-lg-block">Email</th>
+                            <th>Indirizzo</th>
+                            <th>Ordinazione</th>
+                            <th>Totale</th>
+                            <th scope="col">Dettagli Ordine</th>
                         </tr>
                     </thead>
                     <tbody>
                         @if(count($orders)!=0)
                             @foreach ($orders as $order)
                                     <tr>    
-                                        <td>{{ $order['total'] }}</td>
+                                        <td>{{ $order['fullName'] }}</td>
                                         <td class="d-none d-lg-block">{{ $order['email'] }}</td>
                                         <td>{{ $order['address'] }}</td>
-                                        <td>{{ $order['fullName'] }}</td>
                                         <td>
                                             @if ($order->foods)
                                                 @foreach ($order->foods as $food)
@@ -64,11 +59,12 @@
                                                     @endif
                                                 @endforeach
                                             @endif
+                                        <td>{{ $order['total'] }}€</td>
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <a href="{{ route('user.orders.show', $order['id']) }}"
                                                 class="btn btn-info">
-                                                Details
+                                                <i class="fas fa-clipboard-list"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -79,7 +75,9 @@
             </div>
         </div>
     </div>
-    
-    
+    <a href="{{ route('user.statistic') }}"
+        class="btn btn-info mt-2 ml-3">
+        Visualizza le tue statistiche
+    </a>
 </div>
 @endsection
