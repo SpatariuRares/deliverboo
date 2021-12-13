@@ -9,7 +9,7 @@
             <tr>
                 <th>{{nome}}</th>
             </tr>
-            <tr v-for="restaurant in restaurants" :key="restaurant.id">
+            <tr v-for="restaurant in restaurants" :key="restaurant.id" class="item">
                 <td><a :href="'/' + restaurant.slug"><h4>{{restaurant.username}}</h4></a></td>
             </tr>
         </table>
@@ -44,7 +44,7 @@ export default ({
 </script>
 
 <style scoped lang="scss">
-
+@import 'resources/sass/variables';
 .search-bar {
     margin-bottom: 10px;
 
@@ -58,7 +58,6 @@ export default ({
             border-bottom: 1 px solid rgba(0, 0, 0, 0.4);
         }
     }
-   
     span {
         border-right: none;
         border-top-right-radius: 0;
@@ -78,6 +77,15 @@ export default ({
         &::placeholder{
             color: rgb(199, 199, 199);
         }
+    }
+    a {
+        color: black;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+    .item:hover {
+        background: rgba($color: $deliveboo, $alpha: 0.2);
     }
 }
 
