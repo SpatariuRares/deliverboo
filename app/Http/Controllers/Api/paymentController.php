@@ -78,16 +78,19 @@ class paymentController extends Controller
             'paymentMethodNonce' =>$request->token,
             'options' => [
                 'submitForSettlement' => True
-            ]
-        ]);
+                ]
+            ]);
+            
         if($result->success){
             $order=Order::where("id",$order->id);
-            $order->paymentStatus=true;
-            $order->update();
+            $update=[];
+            $update['paymentStatus']=true;
+            $order->update($update);
             $data=[
                 "success" => true, 
                 "message"=>"Transazione effetuata", 
             ];
+            
             return response()->json($data,200);
         }
         else{
