@@ -15,7 +15,7 @@
 
     <div class="container">
         <div class="row">
-            <div v-for="(restaurant) in dataApi.users" :key="restaurant.id" :class="restaurant.username!=null ? 'col-6 col-lg-3' : null">
+            <div v-for="(restaurant) in dataApi.users" :key="restaurant.id" :class="restaurant.username!=null ? 'col-12 col-sm-6 col-md-6 col-lg-3' : null">
                 <div class="col p-3 d-flex"  v-if="restaurant.username!=null">
                     <div class="card flex-fill ">
                         <div class="card__header">
