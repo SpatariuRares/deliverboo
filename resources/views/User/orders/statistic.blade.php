@@ -15,12 +15,14 @@
         </div>
     </div>
 <script>
-    let barLabelsMonth = {!! json_encode($dateMonth) !!};
-    let barOrderDataMonth = {!! json_encode($labelsMonth) !!};
-    let barLabelsYear = {!! json_encode($dateYear) !!};
-    let barOrderDataYear = {!! json_encode($labelsYear) !!};
-    let donOrderData = {!! json_encode($donData) !!};
-    let donFoodLabels = {!! json_encode($donLabels) !!};
+    @isset($dateMonth)
+        let barLabelsMonth = {!! json_encode($dateMonth) !!};
+        let barOrderDataMonth = {!! json_encode($labelsMonth) !!};
+        let barLabelsYear = {!! json_encode($dateYear) !!};
+        let barOrderDataYear = {!! json_encode($labelsYear) !!};
+        let donOrderData = {!! json_encode($donData) !!};
+        let donFoodLabels = {!! json_encode($donLabels) !!};
+    @endisset
 </script>
     
     

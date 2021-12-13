@@ -125,74 +125,78 @@ class OrderController extends Controller
         
         $amountMonth=[];
         $labelsMonth=[];
-        foreach($orders as $order){
-            $month = $order->updated_at->month;
-            if (!array_key_exists($month, $amountMonth)) {
-                $amountMonth[$month] = 0;
-            }
-            $amountMonth[$month]+=$order->total;
-        }
+        if(isset($orders)){
 
-        foreach($dateMonth as $key => $month){
-            if (!array_key_exists($month, $amountMonth)) {
-                $labelsMonth[$key] = 0;
+            foreach($orders as $order){
+                $month = $order->updated_at->month;
+                if (!array_key_exists($month, $amountMonth)) {
+                    $amountMonth[$month] = 0;
+                }
+                $amountMonth[$month]+=$order->total;
             }
-            else{
-                $labelsMonth[$key] = $amountMonth[$month];
-            }
-        }
-        
-        
-        //fine presa dati mesi
-
-        $startYear = $startdate->year;
-        $dateYear=[$currentDate->year];
-
-        while($startdate->lt($currentDate)){
-            $dateYear[]=$currentDate->subYears(1)->year;
-        }
-        $dateYear=array_reverse($dateYear);
-
-        
-        
-        $amountYear=[];
-        $labelsYear=[];
-        foreach($orders as $order){
-            $year = $order->updated_at->year;
-            if (!array_key_exists($year, $amountYear)) {
-                $amountYear[$year] = 0;
-            }
-            $amountYear[$year]+=$order->total;
-        }
-
-        foreach($dateYear as $key => $year){
-            if (!array_key_exists($year, $amountYear)) {
-                $labelsYear[$key] = 0;
-            }
-            else{
-                $labelsYear[$key] = $amountYear[$year];
-            }
-        }
-        
-        //serve per il grafico a torta
-        $foods = Food::where('user_id', '=', $currentUser->id)->get();
-        $donData = [];
-        $donLabels=[];
-        foreach($foods as $key => $food){
-            if (!in_array($food->name, $donLabels)) {
-                $donLabels[] = $food->name;
-            }
-            foreach($food->orders as $order){
-                if (!array_key_exists($key, $donData)) {
-                    $donData[$key] = 1;
+    
+            foreach($dateMonth as $key => $month){
+                if (!array_key_exists($month, $amountMonth)) {
+                    $labelsMonth[$key] = 0;
                 }
                 else{
-                    $donData[$key]++;
+                    $labelsMonth[$key] = $amountMonth[$month];
                 }
             }
+            
+            
+            //fine presa dati mesi
+    
+            $startYear = $startdate->year;
+            $dateYear=[$currentDate->year];
+    
+            while($startdate->lt($currentDate)){
+                $dateYear[]=$currentDate->subYears(1)->year;
+            }
+            $dateYear=array_reverse($dateYear);
+    
+            
+            
+            $amountYear=[];
+            $labelsYear=[];
+            foreach($orders as $order){
+                $year = $order->updated_at->year;
+                if (!array_key_exists($year, $amountYear)) {
+                    $amountYear[$year] = 0;
+                }
+                $amountYear[$year]+=$order->total;
+            }
+    
+            foreach($dateYear as $key => $year){
+                if (!array_key_exists($year, $amountYear)) {
+                    $labelsYear[$key] = 0;
+                }
+                else{
+                    $labelsYear[$key] = $amountYear[$year];
+                }
+            }
+            
+            //serve per il grafico a torta
+            $foods = Food::where('user_id', '=', $currentUser->id)->get();
+            $donData = [];
+            $donLabels=[];
+            foreach($foods as $key => $food){
+                if (!in_array($food->name, $donLabels)) {
+                    $donLabels[] = $food->name;
+                }
+                foreach($food->orders as $order){
+                    if (!array_key_exists($key, $donData)) {
+                        $donData[$key] = 1;
+                    }
+                    else{
+                        $donData[$key]++;
+                    }
+                }
+            }
+            // dd($order,$food->name,$food->id,$donData);
+            return view('user.orders.statistic', compact('labelsMonth',"dateMonth","donData","donLabels",'labelsYear',"dateYear",));
         }
-        // dd($order,$food->name,$food->id,$donData);
-        return view('user.orders.statistic', compact('labelsMonth',"dateMonth","donData","donLabels",'labelsYear',"dateYear",));;
+        return view('user.orders.statistic');
     }
 
     public function show($id)

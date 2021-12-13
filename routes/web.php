@@ -31,8 +31,7 @@ Route::middleware('auth')->namespace('user')->prefix('user')->name('user.')
 // Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('/categories', 'CategoryController'); 
-Route::get('/pay', "PayController@payment")->name('pay');
-Route::get('/checkout', "PayController@checkout")->name('checkout');
+Route::get('/checkout', "HomeController@checkout")->name('checkout');
 //Route::get('/{any}', 'HomeController@index')->where('any', '.*');
 
 Route::get('/', 'UserController@index')->name('index');
