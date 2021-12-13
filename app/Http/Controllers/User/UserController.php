@@ -88,7 +88,7 @@ class UserController extends Controller
             "username" => "required | max:30",
             "address" => "required | max: 100",
             "categories" => "required | exists:categories,id",
-            "image" => "nullable | image | max:2048 | dimension:width=500,height=500",
+            "image" => "nullable | image | max:2048",
         ]);
         
         $form_data = $request->all();
