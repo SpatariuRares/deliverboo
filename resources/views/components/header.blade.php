@@ -11,13 +11,13 @@
                 </form>
             </div>
              --}}
-            <div id="search">
+            <div class="d-none" id="search">
 
             </div>
             <div id="button-container" class="d-inline-flex justify-content-center align-items-center h-100">
                 @guest
                     <div class=" d-inline-flex justify-content-center align-items-center">
-                        <a class="accedi btn text-white " href="{{ route('login') }}"><i class="fas fa-home"></i> Accedi</a>
+                        <a class="accedi btn text-white" href="{{ route('login') }}"><i class="fas fa-home"></i><span class="d-none d-sm-inline">Accedi</span></a>
                         @if (Route::has('register'))
                             <a class="registrati btn mx-3" href="{{ route('register') }}">Registrati</a>
                         @endif

@@ -1,6 +1,6 @@
 
 <template>
-    <div class="col h-100 d-flex align-items-center justify-content-center search-bar">
+    <div class="d-none col h-100 d-md-flex align-items-center justify-content-center search-bar">
         <div class="d-flex w-25 h-75">
             <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
             <input v-model="form.search" @keyup="getResta()" class="w-100" type="search" placeholder="Digita il ristorante che vuoi cercare" aria-label="Search">
