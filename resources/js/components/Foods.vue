@@ -1,6 +1,6 @@
 <template>
 <div class="container-fluid">
-  <div class="row ">
+  <div class="row word-wrap">
     <div v-for="food in foods" :key="food.id" :class="(food.name!=null) ? 'd-flex col-6 col-lg-4 p-2' : null">
       <div  :class="(food.name!=null) ? 'col p-2 d-flex ' : null"  v-if="food.name!=null">
         <div @click="addToCart(food.id)" class="border flex-fill btn rounded d-flex " :class="(id.includes(food.id) || food.visible==0) ? 'disabled' : null">
@@ -74,9 +74,13 @@ div img{
   }
 }
 
+.word-wrap {
+  word-wrap: break-word;
+}
+
 .food_name {
-  font-size: 1.5rem;
   font-weight: 600;
+  font-size: 1.5rem;
 }
 
 .food_price {
