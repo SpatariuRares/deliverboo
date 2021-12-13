@@ -1,7 +1,7 @@
 <template>
 <div class="container-fluid">
   <div class="row word-wrap">
-    <div v-for="food in foods" :key="food.id" :class="(food.name!=null) ? 'd-flex col-6 col-lg-4 p-2' : null">
+    <div v-for="food in foods" :key="food.id" :class="(food.name!=null) ? 'd-flex col-12 col-sm-6 col-lg-4 p-2' : null">
       <div  :class="(food.name!=null) ? 'col p-2 d-flex ' : null"  v-if="food.name!=null">
         <div @click="addToCart(food.id)" class="border flex-fill btn rounded d-flex " :class="(id.includes(food.id) || food.visible==0) ? 'disabled' : null">
           <div class="w-50">
