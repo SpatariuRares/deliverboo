@@ -115,8 +115,7 @@ class OrderController extends Controller
         $currentDate = Carbon::now();
         $startMonth = $startdate->month;
         $dateMonth=[$currentDate->month];
-
-        while($startdate->lt($currentDate)){
+        while($startdate->month > $currentDate->month){
             $dateMonth[]=$currentDate->subMonths(1)->month;
         }
         $dateMonth=array_reverse($dateMonth);
@@ -150,7 +149,7 @@ class OrderController extends Controller
             $startYear = $startdate->year;
             $dateYear=[$currentDate->year];
     
-            while($startdate->lt($currentDate)){
+            while($startdate->year > $currentDate->year){
                 $dateYear[]=$currentDate->subYears(1)->year;
             }
             $dateYear=array_reverse($dateYear);
