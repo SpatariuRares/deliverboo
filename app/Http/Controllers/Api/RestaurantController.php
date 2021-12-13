@@ -56,4 +56,11 @@ class RestaurantController extends Controller
         ];
         return response()->json($data);
     }
+
+    public function search(Request $request)
+    {
+        $users = DB::table('users')->where("username", "like", $request->search."%")->get();
+
+        return response()->json($users);
+    }
 }

@@ -8,32 +8,6 @@ header {
             img {
                 height: 100%;
             }
-            .search-bar {
-
-                form {
-        
-                    span {
-                        border-right: none;
-                        border-top-right-radius: 0;
-                        border-bottom-right-radius: 0;
-                        background-color: #F5F5F5;
-                        color: lightgray;
-                    }
-                    input[type="search"], textarea {
-                        border: 1px solid lightgray;
-                        border-left: none;
-                        border-top-left-radius: 0;
-                        border-bottom-left-radius: 0;
-                        background-color : #F5F5F5; 
-                        outline: none;
-                      }
-                    input {
-                        &::placeholder{
-                            color: rgb(199, 199, 199);
-                        }
-                    }
-                }
-            }
         }
         #button-container {
             .accedi {

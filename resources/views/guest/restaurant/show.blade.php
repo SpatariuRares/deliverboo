@@ -3,9 +3,9 @@
 @section('content')
     <div class="container-fluid mb-5 px-5">
         <div class="row gx-4 mb-5">
-            <div class="col-4 justify-content-end">
+            <div class="col-4 justify-content-center">
                 @if($user->thumb)
-                    <div class="d-flex justify-content-end rounded">
+                    <div class="d-flex justify-content-end rounded w-50">
                         <img class="img-thumbnail" src="{{ asset('storage/'.$user->thumb)}}" alt="{{ $user->name}}">
                     </div>
                 @endif

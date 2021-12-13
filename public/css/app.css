@@ -17119,36 +17119,6 @@ header .container div img {
   height: 100%;
 }
 
-header .container div .search-bar form span {
-  border-right: none;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  background-color: #F5F5F5;
-  color: lightgray;
-}
-
-header .container div .search-bar form input[type=search],
-header .container div .search-bar form textarea {
-  border: 1px solid lightgray;
-  border-left: none;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  background-color: #F5F5F5;
-  outline: none;
-}
-
-header .container div .search-bar form input::-moz-placeholder {
-  color: #c7c7c7;
-}
-
-header .container div .search-bar form input:-ms-input-placeholder {
-  color: #c7c7c7;
-}
-
-header .container div .search-bar form input::placeholder {
-  color: #c7c7c7;
-}
-
 header .container #button-container .accedi {
   background-color: #00CCBC;
 }

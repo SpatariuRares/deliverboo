@@ -15,9 +15,9 @@
 
     <div class="container">
         <div class="row">
-            <div v-for="(restaurant) in dataApi.users" :key="restaurant.id" :class="restaurant.username!=null ? 'col-2 col-lg-3' : null">
+            <div v-for="(restaurant) in dataApi.users" :key="restaurant.id" :class="restaurant.username!=null ? 'col-6 col-lg-3' : null">
                 <div class="col p-3 d-flex"  v-if="restaurant.username!=null">
-                    <div class="card flex-fill">
+                    <div class="card flex-fill ">
                         <div class="card__header">
                             <img v-if="restaurant.thumb" :src="`storage/${restaurant.thumb}`" class="card__image" width="600">
                             <img v-else src="http://www.portofinoselecta.com/images/joomlart/demo/default.jpg" alt="">
@@ -169,11 +169,10 @@ export default {
         }
 
         .card {
-            // display: flex;
-            // flex-direction: column;
-            // flex-basis: calc(1600px / 5 );
-            // width: clamp(20rem, calc(20rem + 2vw), 22rem);
-            // overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex-basis: calc(1600px / 5 );
+            overflow: hidden;
             box-shadow: 0 2px 5px 1px rgba(0, 0, 0, .25);
             border-radius: 0.5em;
             background: #ECE9E6;

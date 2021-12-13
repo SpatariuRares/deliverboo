@@ -27,6 +27,10 @@
             </button>
     </div>
     @endif
+    <a href="{{ route('user.statistic') }}"
+        class="btn btn-info mt-2 ml-3">
+        Visualizza le tue statistiche
+    </a>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -75,9 +79,6 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('user.statistic') }}"
-        class="btn btn-info mt-2 ml-3">
-        Visualizza le tue statistiche
-    </a>
+    
 </div>
 @endsection

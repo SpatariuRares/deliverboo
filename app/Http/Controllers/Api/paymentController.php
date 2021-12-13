@@ -80,7 +80,6 @@ class paymentController extends Controller
                 'submitForSettlement' => True
             ]
         ]);
-        return response()->json($result);
         if($result->success){
             $order=Order::where("id",$order->id);
             $order->paymentStatus=true;

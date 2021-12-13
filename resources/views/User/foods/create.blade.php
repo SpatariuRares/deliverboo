@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="form-check">
-                        <input value="{{true}}" {{ $food['visible']?'checked':null}} type="checkbox" name="visible" class="form-check-input" id="visible">
+                        <input value="{{true}}" type="checkbox" name="visible" class="form-check-input" id="visible">
                         <label for="visible" class="form-check-label"> Visible</label>
                     </div>
                     <button type="submit" class="btn btn-success my-3">Submit</button>

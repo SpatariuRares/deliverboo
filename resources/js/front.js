@@ -8,6 +8,8 @@ import Restaurant from './views/Restaurant';
 Vue.use(vueBraintree)
 Vue.use(BootstrapVue)
 
+import Search from './views/Search';
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -19,10 +21,18 @@ const restaurant = new Vue({
     render: h =>h(Restaurant)
 });
 
+const search = new Vue({
+    el: '#search',
+    render: h =>h(Search)
+});
+
 document.getElementById("btnMonth").addEventListener("click", putMonth);
 document.getElementById("btnYear").addEventListener("click", putYear);
 let barLabels=barLabelsMonth;
 let barOrderData=barOrderDataMonth;
+
+
+//STATISTICHE
 
 import Chart from 'chart.js/auto';
 
