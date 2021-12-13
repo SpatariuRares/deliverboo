@@ -59,7 +59,7 @@ class RestaurantController extends Controller
 
     public function search(Request $request)
     {
-        $users = DB::table('users')->where("username", "like", $request->search."%")->get();
+        $users = DB::table('users')->where("username", "like", "%".$request->search."%")->get();
 
         return response()->json($users);
     }

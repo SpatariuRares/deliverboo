@@ -110,7 +110,7 @@ export default {
 		},
 		buy () {
 			axios.post("http://127.0.0.1:8000/api/makepayment", { ...this.form }).then((response) => {
-		
+				console.log(response)
 				localStorage.removeItem('cart');
 				localStorage.removeItem('total');
 				localStorage.removeItem('randid');
