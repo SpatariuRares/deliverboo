@@ -10,7 +10,7 @@
                     <input class="w-100" type="search" placeholder="Digita il ristorante che vuoi cercare" aria-label="Search">
                 </form>
             </div>
-             --}}
+            --}}
             <div id="search">
 
             </div>

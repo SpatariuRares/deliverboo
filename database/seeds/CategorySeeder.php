@@ -12,7 +12,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['italiana', 'sushi', 'gelato', 'hamburger', 'kebab', 'giapponese'];
+        $categories = ['italiana', 'sushi', 'gelato', 'hamburger', 'kebab', 'cinese'];
         for($i = 0; $i < count($categories); $i++){
             $new_category = new Category();
             $new_category->name = $categories[$i];
